@@ -42,8 +42,8 @@ section{padding:clamp(4.5rem,9vw,7.5rem) 0;position:relative}
 .ticker{display:block;background:var(--ink);color:var(--paper);overflow:hidden;white-space:nowrap;padding:.55rem 0;border-bottom:1px solid var(--ink-deep);text-decoration:none;transition:background .2s}
 .ticker:hover{background:var(--ink-deep)}
 .ticker:hover .ticker__dot{color:var(--paper)}
-.ticker__track{display:inline-flex;gap:3rem;animation:tk 60s linear infinite;font-family:var(--fm);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase}
-.ticker__item{display:inline-flex;align-items:center;gap:3rem}
+.ticker__track{display:inline-flex;animation:tk 40s linear infinite;font-family:var(--fm);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;will-change:transform}
+.ticker__item{display:inline-flex;align-items:center;gap:3rem;padding-right:3rem;flex-shrink:0}
 .ticker__dot{color:var(--accent)}
 @keyframes tk{to{transform:translateX(-50%)}}
 
@@ -282,8 +282,8 @@ section{padding:clamp(4.5rem,9vw,7.5rem) 0;position:relative}
 <body>
 <a class="ticker" href="#tickets">
   <div class="ticker__track">
-    <span class="ticker__item">Early Bird tickets on sale <span class="ticker__dot">●</span> Save $400 vs. final release <span class="ticker__dot">●</span> Limited release — reserve your seat <span class="ticker__dot">●</span></span>
-    <span class="ticker__item">Early Bird tickets on sale <span class="ticker__dot">●</span> Save $400 vs. final release <span class="ticker__dot">●</span> Limited release — reserve your seat <span class="ticker__dot">●</span></span>
+    <span class="ticker__item">Early Bird tickets on sale — Limited release, buy tickets now <span class="ticker__dot">●</span></span>
+    <span class="ticker__item">Early Bird tickets on sale — Limited release, buy tickets now <span class="ticker__dot">●</span></span>
   </div>
 </a>
 
