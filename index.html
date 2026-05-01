@@ -35,9 +35,9 @@
 <style>
 :root{--ink:#131e33;--ink-deep:#0a1224;--ink-soft:#2b3a58;--paper:#F4ECE0;--paper-deep:#EADFCC;--paper-light:#FAF5EA;--accent:#D9651F;--accent-deep:#A84810;--rule:rgba(19,30,51,.18);--rule-str:rgba(19,30,51,.35);--fd:'Instrument Serif',Georgia,serif;--fb:'Archivo',system-ui,sans-serif;--fm:'JetBrains Mono',ui-monospace,monospace;--gut:clamp(1.25rem,3vw,2.5rem);--max:1360px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;scroll-padding-top:110px}
-@media (max-width:900px){html{scroll-padding-top:96px}}
-section[id]{scroll-margin-top:96px}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;scroll-padding-top:80px}
+@media (max-width:900px){html{scroll-padding-top:72px}}
+section[id],[id="side-events"],[id="sponsors"],[id="venue"],[id="faq"],[id="speakers"],[id="agenda"]{scroll-margin-top:80px}
 body{padding-bottom:env(safe-area-inset-bottom)}
 body{font-family:var(--fb);font-size:17px;line-height:1.55;color:var(--ink);background:var(--paper);overflow-x:hidden}
 img,svg{display:block;max-width:100%}
@@ -46,7 +46,7 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:none}
 ::selection{background:var(--ink);color:var(--paper)}
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 0.08 0 0 0 0 0.11 0 0 0 0 0.2 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.09;pointer-events:none;z-index:9999;mix-blend-mode:multiply}
 .container{width:100%;max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
-section{padding:clamp(4.5rem,9vw,7.5rem) 0;position:relative}
+section{padding:clamp(2.5rem,5vw,4rem) 0;position:relative}
 @media (max-width:720px){
   section{padding:2.25rem 0 2.75rem}
   .sec-hd{margin-bottom:1.4rem}
@@ -127,6 +127,7 @@ body.menu-open{overflow:hidden}
 .hero__eyebrow{color:var(--accent-deep);font-size:.78rem;letter-spacing:.24em}
 .hero__headline{font-family:var(--fd);font-size:clamp(2.25rem,5vw,5rem);font-weight:400;line-height:1;letter-spacing:-.02em}
 .hero__headline .ital{font-style:italic;color:var(--accent-deep)}
+.hero__headline .accent{color:var(--accent-deep)}
 .hero__rule{height:1px;background:var(--rule)}
 .hero__facts{display:flex;flex-direction:column;gap:.85rem;list-style:none;margin:0}
 .hero__fact{display:grid;grid-template-columns:160px 1fr;gap:1.75rem;align-items:baseline;margin:0}
@@ -166,7 +167,7 @@ body.menu-open{overflow:hidden}
 @media (max-width:480px){
   .hero{padding:.5rem 0 1.25rem}
   .hero__grid{gap:.55rem;padding:0}
-  .hero__logo-col img{max-width:clamp(320px,56svh,460px)}
+  .hero__logo-col img{max-width:clamp(300px,50svh,420px)}
   .hero__info{gap:.55rem;padding:0 1rem}
   .hero__eyebrow{font-size:.6rem}
   .hero__headline{font-size:1.6rem;line-height:1.05}
@@ -288,12 +289,12 @@ body.menu-open{overflow:hidden}
 
 /* VENUE */
 .venue{background:var(--paper-deep)}
-.venue{padding:clamp(2.5rem,5vw,4rem) 0 !important}
-.venue .sec-hd{margin-bottom:clamp(1.5rem,3vw,2.5rem)}
-.venue .section-title{font-size:clamp(1.75rem,3.5vw,3rem)}
-.venue__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(1.5rem,3.5vw,3rem);align-items:center}
-.venue__illus{background:var(--paper-light);aspect-ratio:4/3;border:1px solid var(--ink);padding:1.25rem;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.venue__illus::before{content:'';position:absolute;inset:.5rem;border:1px solid var(--rule);pointer-events:none;z-index:1}
+.venue{padding:1.25rem 0 2rem !important}
+.venue .sec-hd{margin-bottom:clamp(.85rem,1.75vw,1.25rem)}
+.venue .section-title{font-size:clamp(1.6rem,3vw,2.5rem)}
+.venue__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(1.5rem,3.5vw,3rem);align-items:start}
+.venue__illus{background:var(--paper-light);aspect-ratio:16/9;max-height:420px;border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.venue__illus::before{content:'';position:absolute;inset:.5rem;border:1px solid rgba(244,236,224,.4);pointer-events:none;z-index:1}
 .venue__illus svg{width:100%;height:auto;max-height:340px}
 .venue__illus img{width:100%;height:100%;object-fit:cover;display:block}
 .venue__photo-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--paper-light) 0%,var(--paper-deep) 100%);position:relative;min-height:240px}
@@ -304,15 +305,15 @@ body.menu-open{overflow:hidden}
 .venue__photo-caption span{color:var(--accent-deep);opacity:.85}
 .venue__photo-meta{font-family:var(--fm);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);opacity:.65;margin-top:.25rem}
 .venue__eyebrow{font-size:.7rem!important}
-.venue__content h3{font-family:var(--fd);font-size:clamp(1.5rem,2.8vw,2.25rem);line-height:1.05;margin:.75rem 0 1rem;letter-spacing:-.015em;font-weight:400}
+.venue__content h3{font-family:var(--fd);font-size:clamp(1.4rem,2.4vw,2rem);line-height:1.05;margin:.4rem 0 .65rem;letter-spacing:-.015em;font-weight:400}
 .venue__content h3 em{font-style:italic;color:var(--accent-deep)}
-.venue__content p{max-width:48ch;margin-bottom:.85rem;color:var(--ink-soft);font-size:.98rem;line-height:1.45}
-.venue__details{margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--rule);display:grid;grid-template-columns:repeat(2,1fr);gap:1rem 1.5rem}
+.venue__content p{max-width:48ch;margin-bottom:.65rem;color:var(--ink-soft);font-size:.95rem;line-height:1.4}
+.venue__details{margin-top:.85rem;padding-top:.85rem;border-top:1px solid var(--rule);display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem 1.25rem}
 .venue__detail-label{font-family:var(--fm);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.25rem}
 .venue__detail-value{font-family:var(--fd);font-size:.98rem;line-height:1.3}
 .venue__link{color:var(--accent-deep);text-decoration:none;border-bottom:1px solid var(--accent-deep);transition:color .2s,border-color .2s}
 .venue__link:hover{color:var(--ink);border-bottom-color:var(--ink)}
-@media (max-width:880px){.venue__grid{grid-template-columns:1fr}.venue__illus{aspect-ratio:5/4;max-height:280px}.venue__details{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:880px){.venue__grid{grid-template-columns:1fr}.venue__illus{aspect-ratio:16/9;max-height:240px}.venue__details{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:520px){
   .venue__grid{gap:1.25rem}
   .venue__illus{aspect-ratio:5/3;max-height:200px;padding:.85rem}
@@ -327,11 +328,11 @@ body.menu-open{overflow:hidden}
 }
 
 /* TICKETS */
-.tickets{padding:clamp(2.5rem,5vw,4rem) 0 !important}
-.tickets .sec-hd{margin-bottom:clamp(1.5rem,3vw,2.5rem)}
-.tickets .section-title{font-size:clamp(1.75rem,3.5vw,3rem)}
-.tickets__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-.tier{background:var(--paper-light);border:1px solid var(--ink);padding:1.5rem 1.4rem 1.4rem;position:relative;display:flex;flex-direction:column;min-height:auto;transition:transform .3s,box-shadow .3s}
+.tickets{padding:1.25rem 0 2rem !important}
+.tickets .sec-hd{margin-bottom:clamp(.85rem,1.75vw,1.25rem)}
+.tickets .section-title{font-size:clamp(1.6rem,3vw,2.5rem)}
+.tickets__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.tier{background:var(--paper-light);border:1px solid var(--ink);padding:1.15rem 1.15rem 1.1rem;position:relative;display:flex;flex-direction:column;min-height:auto;transition:transform .3s,box-shadow .3s}
 .tier:hover{transform:translateY(-4px);box-shadow:0 14px 40px -20px rgba(19,30,51,.3)}
 .tier::before{content:'';position:absolute;left:-1px;top:-1px;right:-1px;height:5px;background:var(--ink)}
 .tier--featured{background:var(--ink);color:var(--paper)}
@@ -339,20 +340,20 @@ body.menu-open{overflow:hidden}
 .tier--premium{border-color:var(--accent-deep)}
 .tier--premium::before{background:var(--accent-deep)}
 .tier__ribbon{position:absolute;top:-9px;right:1.25rem;background:var(--accent);color:var(--ink);font-family:var(--fm);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;padding:.25rem .65rem;font-weight:500}
-.tier__eyebrow{font-family:var(--fm);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.85rem}
+.tier__eyebrow{font-family:var(--fm);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.55rem}
 .tier--featured .tier__eyebrow{color:var(--accent)}
-.tier__name{font-family:var(--fd);font-size:clamp(1.5rem,2.6vw,2.1rem);line-height:1;letter-spacing:-.015em;margin-bottom:.5rem;font-weight:400}
+.tier__name{font-family:var(--fd);font-size:clamp(1.35rem,2.2vw,1.85rem);line-height:1;letter-spacing:-.015em;margin-bottom:.4rem;font-weight:400}
 .tier__name em{font-style:italic}
 .tier--featured .tier__name em{color:var(--accent)}
-.tier__price-wrap{display:flex;align-items:baseline;gap:.35rem;margin-bottom:.9rem;padding-bottom:.9rem;border-bottom:1px solid var(--rule)}
+.tier__price-wrap{display:flex;align-items:baseline;gap:.35rem;margin-bottom:.65rem;padding-bottom:.65rem;border-bottom:1px solid var(--rule)}
 .tier--featured .tier__price-wrap{border-bottom-color:rgba(244,236,224,.2)}
-.tier__price{font-family:var(--fd);font-size:2rem;line-height:1;letter-spacing:-.02em}
+.tier__price{font-family:var(--fd);font-size:1.75rem;line-height:1;letter-spacing:-.02em}
 .tier__price-unit{font-family:var(--fm);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-soft)}
 .tier--featured .tier__price-unit{color:var(--paper-deep)}
-.tier__desc{font-family:var(--fd);font-style:italic;font-size:.95rem;line-height:1.35;margin-bottom:1rem;color:var(--ink-soft)}
+.tier__desc{font-family:var(--fd);font-style:italic;font-size:.9rem;line-height:1.3;margin-bottom:.7rem;color:var(--ink-soft)}
 .tier--featured .tier__desc{color:var(--paper-deep)}
-.tier__list{list-style:none;margin-bottom:1.25rem;flex:1}
-.tier__list li{display:flex;gap:.6rem;padding:.35rem 0;font-size:.85rem;line-height:1.35;border-bottom:1px solid var(--rule)}
+.tier__list{list-style:none;margin-bottom:.85rem;flex:1}
+.tier__list li{display:flex;gap:.55rem;padding:.25rem 0;font-size:.82rem;line-height:1.3;border-bottom:1px solid var(--rule)}
 .tier__list li:last-child{border-bottom:none}
 .tier--featured .tier__list li{border-bottom-color:rgba(244,236,224,.14)}
 .tier__list li::before{content:'·';font-family:var(--fm);color:var(--accent-deep);font-size:1.1rem;line-height:1}
@@ -383,32 +384,35 @@ body.menu-open{overflow:hidden}
 
 
 /* SIDE EVENTS */
-.side-events{padding:clamp(2.5rem,5vw,4rem) 0 !important}
-.side-events .sec-hd{margin-bottom:clamp(1.5rem,3vw,2.5rem)}
-.side-events .section-title{font-size:clamp(1.75rem,3.5vw,3rem)}
+.side-events{padding:1.25rem 0 2rem !important}
+.side-events .sec-hd{margin-bottom:clamp(.85rem,1.75vw,1.25rem)}
+.side-events .section-title{font-size:clamp(1.6rem,3vw,2.5rem)}
 .side-events__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
-.side-event{padding:1.5rem 1.5rem;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);background:var(--paper-light);display:flex;flex-direction:column;gap:.6rem;transition:background .3s;text-decoration:none;color:inherit}
+.side-event{padding:1.05rem 1.25rem;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);background:var(--paper-light);display:flex;flex-direction:column;gap:.45rem;transition:background .3s;text-decoration:none;color:inherit}
 .side-event:hover{background:var(--paper-deep)}
 .side-event:hover .side-event__title{color:var(--accent-deep)}
 .side-event__date{font-family:var(--fm);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-deep)}
-.side-event__time{font-family:var(--fm);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.15rem}
-.side-event__title{font-family:var(--fd);font-size:clamp(1.5rem,2vw,1.85rem);line-height:1.05;letter-spacing:-.01em;font-weight:400;margin-bottom:.25rem}
+.side-event__time{font-family:var(--fm);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.1rem}
+.side-event__title{font-family:var(--fd);font-size:clamp(1.4rem,1.75vw,1.7rem);line-height:1.05;letter-spacing:-.01em;font-weight:400;margin-bottom:.15rem}
 .side-event__title em{font-style:italic}
-.side-event__desc{font-family:var(--fd);font-size:1rem;line-height:1.4;color:var(--ink-soft);flex:1}
-.side-event__meta{font-family:var(--fm);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);padding-top:.6rem;border-top:1px solid var(--rule)}
+.side-event__venue{display:inline-flex;align-items:baseline;gap:.5rem;font-family:var(--fd);font-size:1rem;color:var(--ink);padding:.3rem .55rem;background:var(--paper-deep);border-left:2px solid var(--accent-deep);align-self:flex-start;line-height:1.2}
+.side-event__venue-label{font-family:var(--fm);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+.side-event__venue-name{font-style:italic;color:var(--accent-deep);font-weight:400}
+.side-event__desc{font-family:var(--fd);font-size:.95rem;line-height:1.35;color:var(--ink-soft);flex:1}
+.side-event__meta{font-family:var(--fm);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);padding-top:.5rem;border-top:1px solid var(--rule)}
 @media (max-width:720px){.side-events__grid{grid-template-columns:1fr}}
 @media (max-width:520px){
   .side-events{padding:1rem 0 1.5rem !important}
-  .side-events .sec-hd{margin-bottom:.6rem;gap:.5rem}
-  .side-events .sec-hd__num{padding-top:.55rem;font-size:.7rem}
-  .side-events .section-title{font-size:1.5rem}
+  .side-events .sec-hd{margin-bottom:.5rem;gap:.4rem}
+  .side-events .sec-hd__num{padding-top:.45rem;font-size:.7rem}
+  .side-events .section-title{font-size:1.4rem}
   .side-events .sec-hd__title{padding-top:0}
   .side-event{
     display:grid;
     grid-template-columns:74px 1fr;
     column-gap:.95rem;
     align-items:start;
-    padding:.8rem .95rem;
+    padding:.65rem .95rem;
     gap:0
   }
   .side-event__date{
@@ -430,26 +434,26 @@ body.menu-open{overflow:hidden}
   .side-event__title{
     grid-column:2;
     grid-row:1;
-    font-size:1.15rem;
+    font-size:1.1rem;
     line-height:1.05;
-    margin-bottom:.2rem
+    margin-bottom:.25rem
   }
-  .side-event__desc{
+  .side-event__venue{
     grid-column:2;
     grid-row:2;
-    font-size:.8rem;
-    line-height:1.3;
-    margin-bottom:.35rem;
-    display:-webkit-box;
-    -webkit-line-clamp:2;
-    -webkit-box-orient:vertical;
-    overflow:hidden
+    font-size:.78rem;
+    padding:.2rem .45rem;
+    margin-bottom:.3rem;
+    line-height:1.15;
+    gap:.4rem
   }
+  .side-event__venue-label{font-size:.5rem;letter-spacing:.16em}
+  .side-event__desc{display:none}
   .side-event__meta{
     grid-column:2;
     grid-row:3;
     font-size:.55rem;
-    padding-top:.35rem;
+    padding-top:.3rem;
     letter-spacing:.16em
   }
 }
@@ -629,10 +633,9 @@ body.menu-open{overflow:hidden}
       <div class="hero__info">
         <div class="eyebrow hero__eyebrow">Inaugural Edition · 2027</div>
         <h1 class="hero__headline">
-          An immersive<br>
-          <span class="ital">full-day</span><br>
-          Bitcoin Experience<br class="keep-mobile">
-          in Miami, FL
+          A <em>premier</em> gathering<br class="keep-mobile">
+          <span class="accent">discussing Bitcoin</span><br class="keep-mobile">
+          in vibrant Miami, FL
         </h1>
         <a href="#hero-details" class="hero__scroll" aria-label="Scroll to event details">
           <span class="hero__scroll-icon" aria-hidden="true">↓</span>
@@ -645,7 +648,7 @@ body.menu-open{overflow:hidden}
           </div>
           <div class="hero__fact">
             <dt>Venue</dt>
-            <dd><em>TBD</em> · Miami, Florida</dd>
+            <dd><em>Fontainebleau</em> · Miami Beach</dd>
           </div>
           <div class="hero__fact">
             <dt>Hours</dt>
@@ -857,28 +860,32 @@ body.menu-open{overflow:hidden}
         <div class="side-event__date">Wed · Jan 27</div>
         <div class="side-event__time">7:00 PM</div>
         <h3 class="side-event__title">Welcome <em>Dinner</em></h3>
-        <p class="side-event__desc">A relaxed kickoff the night before the Summit. Speakers, partners, and a small group of attendees gather over a long table for the first conversations of the week.</p>
+        <div class="side-event__venue"><span class="side-event__venue-label">At</span><span class="side-event__venue-name">Prime 54</span></div>
+        <p class="side-event__desc">The night before, at Fontainebleau's signature steakhouse. Speakers, partners, and a small group of attendees gather over a long table for the first conversations of the week.</p>
         <div class="side-event__meta">Price TBD</div>
       </a>
       <a class="side-event" href="#">
         <div class="side-event__date">Thu · Jan 28</div>
         <div class="side-event__time">7:00 PM</div>
         <h3 class="side-event__title">After <em>Party &amp; Dinner</em></h3>
-        <p class="side-event__desc">Drinks, dinner, and unhurried conversation after the program closes. The day doesn't end at 5 — the most useful conversations rarely happen in the room.</p>
+        <div class="side-event__venue"><span class="side-event__venue-label">At</span><span class="side-event__venue-name">Hakkasan</span></div>
+        <p class="side-event__desc">Drinks, dinner, and unhurried conversation at Michelin-recognized Cantonese on Fontainebleau's fourth floor. The day doesn't end at 5 — the most useful conversations rarely happen in the room.</p>
         <div class="side-event__meta">Price TBD</div>
       </a>
       <a class="side-event" href="#">
         <div class="side-event__date">Fri · Jan 29</div>
         <div class="side-event__time">10:00 AM</div>
         <h3 class="side-event__title">Builder <em>Brunch</em></h3>
-        <p class="side-event__desc">A smaller, more technical morning for developers and operators. Working sessions, informal talks, and strong coffee. Bring something you're stuck on.</p>
+        <div class="side-event__venue"><span class="side-event__venue-label">At</span><span class="side-event__venue-name">La Côte</span></div>
+        <p class="side-event__desc">A smaller, more technical morning at Fontainebleau's beachside French Mediterranean. Working sessions, informal talks, ocean views, and strong coffee. Bring something you're stuck on.</p>
         <div class="side-event__meta">Price TBD</div>
       </a>
       <a class="side-event" href="#">
         <div class="side-event__date">Fri · Jan 29</div>
         <div class="side-event__time">2:00 PM</div>
         <h3 class="side-event__title">Miami <em>Walking Tour</em></h3>
-        <p class="side-event__desc">A guided afternoon walk through Miami with a local historian. Art, architecture, and a little city history. Small group, comfortable shoes.</p>
+        <div class="side-event__venue"><span class="side-event__venue-label">Meet at</span><span class="side-event__venue-name">Fontainebleau Lobby</span></div>
+        <p class="side-event__desc">A guided afternoon walk through Miami with a local historian. Art, architecture, and a little city history. Hotel guests are picked up at the lobby; everyone else meets there at the start time.</p>
         <div class="side-event__meta">Price TBD</div>
       </a>
     </div>
@@ -911,7 +918,7 @@ body.menu-open{overflow:hidden}
       </button>
     </div>
     <div class="friends__become">
-      <div class="friends__become-text">A handful of partner slots remain. <em>Built bitcoin-only?</em></div>
+      <div class="friends__become-text">A handful of partner seats remain. <em>Built bitcoin-only?</em></div>
       <a href="#" class="btn">Sponsorship details <span class="btn__arrow">→</span></a>
     </div>
   </div>
@@ -921,36 +928,23 @@ body.menu-open{overflow:hidden}
   <div class="container">
     <header class="sec-hd" id="venue">
       <div class="sec-hd__num">Nº 05 — Venue</div>
-      <h2 class="section-title sec-hd__title">A venue, <em>to be announced.</em></h2>
+      <h2 class="section-title sec-hd__title"><em>Fontainebleau.</em> Miami Beach.</h2>
     </header>
     <div class="venue__grid">
       <div class="venue__illus">
-        <!-- TO ADD A REAL PHOTO: replace the entire <div class="venue__photo-placeholder">...</div> below with: -->
-        <!-- <img src="moore.jpg" alt="The Moore, Miami Design District"> -->
-        <div class="venue__photo-placeholder">
-          <div class="venue__photo-frame">
-            <div class="venue__photo-icon">
-              <svg viewBox="0 0 80 60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="6" y="10" width="68" height="44" rx="1"/>
-                <path d="M 6 42 L 24 28 L 38 38 L 56 22 L 74 36 L 74 54 L 6 54 Z" fill="currentColor" fill-opacity=".08"/>
-                <circle cx="58" cy="22" r="4"/>
-              </svg>
-            </div>
-            <div class="venue__photo-caption">Photograph<br><span>of the venue</span></div>
-            <div class="venue__photo-meta">Address · TBD</div>
-          </div>
-        </div>
+        <img src="fontainebleau.jpg" alt="Fontainebleau Miami Beach — aerial view of the resort, pool deck, and oceanfront">
       </div>
       <div class="venue__content">
-        <div class="eyebrow" style="color:var(--accent-deep)">Announcement to follow</div>
-        <h3>Venue <em>TBD.</em></h3>
-        <p>The venue is being finalized. We're choosing carefully — a single beautiful building in Miami, big enough for 300 seats and a courtyard, small enough that you'll know the room by the end of the day.</p>
-        <p>Hotel block, parking, and travel details will arrive with the venue reveal. Subscribe below to hear it first.</p>
+        <div class="eyebrow" style="color:var(--accent-deep)">The venue, confirmed</div>
+        <h3>The most <em>iconic</em> hotel in Miami Beach.</h3>
+        <p>Twenty oceanfront acres on Collins Avenue. Designed by Morris Lapidus in 1954, named to the National Register of Historic Places, and a fixture of American glamour ever since — from <em>Goldfinger</em> to Sinatra at La Ronde to a billion-dollar renovation that preserved every curve.</p>
+        <p>The summit takes over the Coastal Convention Center: forty-five thousand square feet of dedicated space, a private rooftop terrace, and ocean views from every angle. The entire week of side events runs on-property — Prime 54, Hakkasan, La Côte — without ever leaving the resort.</p>
+        <p>A summit-rate room block runs through January 28. Travel guidance below.</p>
         <div class="venue__details">
-          <div><div class="venue__detail-label">Address</div><div class="venue__detail-value">TBD<br>Miami, FL</div></div>
-          <div><div class="venue__detail-label">Getting there</div><div class="venue__detail-value">Details to follow<br>with venue reveal</div></div>
-          <div><div class="venue__detail-label">Lodging</div><div class="venue__detail-value"><a class="venue__link" href="#">Book a Room at The Venue</a></div></div>
-          <div><div class="venue__detail-label">Capacity</div><div class="venue__detail-value">300 seats<br>Single track</div></div>
+          <div><div class="venue__detail-label">Address</div><div class="venue__detail-value">4441 Collins Avenue<br>Miami Beach, FL 33140</div></div>
+          <div><div class="venue__detail-label">Getting there</div><div class="venue__detail-value">~25 min from MIA<br>~45 min from FLL</div></div>
+          <div><div class="venue__detail-label">Lodging</div><div class="venue__detail-value"><a class="venue__link" href="https://www.fontainebleau.com/miamibeach/" target="_blank" rel="noopener">Fontainebleau Miami Beach</a></div></div>
+          <div><div class="venue__detail-label">On-property</div><div class="venue__detail-value">Lapis Spa · LIV<br>Beach &amp; pools</div></div>
         </div>
       </div>
     </div>
@@ -966,11 +960,11 @@ body.menu-open{overflow:hidden}
     <div class="faq__list">
       <details class="faq__item">
         <summary class="faq__q"><span class="faq__num">01</span><span class="faq__q-text">Is this for <em>me?</em></span><span class="faq__icon"></span></summary>
-        <div class="faq__a"><p>Probably, if you've spent a few years around bitcoin in some capacity — builder, allocator, writer, operator, serious reader — and you want a concentrated day with people you respect. It is not a first-conference conference, but it's not a secret handshake either. If you're on the fence, buy The Day ticket and come.</p></div>
+        <div class="faq__a"><p>Likely, if you've spent serious time around bitcoin in some capacity — builder, allocator, founder, business owner, writer, operator — or if you're a thoughtful newcomer who wants to go deeper. The room is built for substance, not status. If you're on the fence, come.</p></div>
       </details>
       <details class="faq__item">
         <summary class="faq__q"><span class="faq__num">02</span><span class="faq__q-text">What's included with my ticket?</span><span class="faq__icon"></span></summary>
-        <div class="faq__a"><p>Every ticket includes the full program, morning coffee, lunch in the courtyard, and the rooftop evening reception. Reserved Row adds a named seat and the afternoon meet-and-greet. Founding Circle adds the evening dinner.</p><p>You should not have to upgrade to get lunch. We feel strongly about that.</p></div>
+        <div class="faq__a"><p>Every ticket includes the full program, food and drink across the day, all sessions, and access to the recordings. The tiers differ in price, not in what you receive.</p><p>You should not have to upgrade to get lunch. We feel strongly about that.</p></div>
       </details>
       <details class="faq__item">
         <summary class="faq__q"><span class="faq__num">03</span><span class="faq__q-text">Can I buy a ticket <em>with bitcoin?</em></span><span class="faq__icon"></span></summary>
@@ -978,7 +972,7 @@ body.menu-open{overflow:hidden}
       </details>
       <details class="faq__item">
         <summary class="faq__q"><span class="faq__num">04</span><span class="faq__q-text">What's the refund policy?</span><span class="faq__icon"></span></summary>
-        <div class="faq__a"><p>Full refund until November 28, 2026. After that, tickets are transferable — you can name a replacement attendee up to 48 hours before the event.</p></div>
+        <div class="faq__a"><p>Full refund through November 28, 2026. After that, tickets are transferable — name a replacement up to 48 hours before the event.</p></div>
       </details>
       <details class="faq__item">
         <summary class="faq__q"><span class="faq__num">05</span><span class="faq__q-text">Are talks <em>recorded?</em></span><span class="faq__icon"></span></summary>
@@ -986,11 +980,11 @@ body.menu-open{overflow:hidden}
       </details>
       <details class="faq__item">
         <summary class="faq__q"><span class="faq__num">06</span><span class="faq__q-text">Group rates and company passes?</span><span class="faq__icon"></span></summary>
-        <div class="faq__a"><p>Four-pack of The Day is $1,395 (an unsubtle discount). Companies buying six or more seats for a team: write to us directly.</p></div>
+        <div class="faq__a"><p>Group rates available — four seats together at a discount, six or more by direct arrangement. Write to us.</p></div>
       </details>
       <details class="faq__item">
         <summary class="faq__q"><span class="faq__num">07</span><span class="faq__q-text">How is this different from the other Miami bitcoin events?</span><span class="faq__icon"></span></summary>
-        <div class="faq__a"><p>The big ones are excellent at being big. We're doing the opposite: one day, one stage, three hundred seats, fourteen speakers we chose on purpose. If the trade-show model is the festival, we're the dinner party.</p></div>
+        <div class="faq__a"><p>The big ones are excellent at being big. We do the opposite — one day, one stage, three hundred seats, fourteen speakers chosen with intent. If the trade-show model is the festival, this is the dinner party.</p></div>
       </details>
       <details class="faq__item">
         <summary class="faq__q"><span class="faq__num">08</span><span class="faq__q-text">Accessibility, dietary, and other accommodations?</span><span class="faq__icon"></span></summary>
@@ -1012,7 +1006,7 @@ body.menu-open{overflow:hidden}
         <div class="tier__eyebrow">Phase 01 · Early Bird</div>
         <h3 class="tier__name">Early <em>Bird</em></h3>
         <div class="tier__price-wrap"><span class="tier__price">$XXX</span><span class="tier__price-unit">Price TBD</span></div>
-        <p class="tier__desc">Save $XXX vs. final release. Our lowest price — closes when the allotment is gone or September 30, whichever comes first.</p>
+        <p class="tier__desc">Save $XXX vs. final release. The first allotment — closing September 30, or when it's gone.</p>
         <ul class="tier__list">
           <li>Full-day program · keynotes &amp; panels</li>
           <li>Food &amp; drink · TBD</li>
@@ -1027,7 +1021,7 @@ body.menu-open{overflow:hidden}
         <div class="tier__eyebrow">Phase 02 · Standard</div>
         <h3 class="tier__name">Standard</h3>
         <div class="tier__price-wrap"><span class="tier__price">$XXX</span><span class="tier__price-unit">Price TBD</span></div>
-        <p class="tier__desc">Save $XXX vs. final release. Available October 1 through December 31 — the price most attendees pay.</p>
+        <p class="tier__desc">Save $XXX vs. final release. October 1 through December 31 — the standard rate.</p>
         <ul class="tier__list">
           <li>Full-day program · keynotes &amp; panels</li>
           <li>Food &amp; drink · TBD</li>
@@ -1042,7 +1036,7 @@ body.menu-open{overflow:hidden}
         <div class="tier__eyebrow">Phase 03 · Final Release</div>
         <h3 class="tier__name">Final <em>Release</em></h3>
         <div class="tier__price-wrap"><span class="tier__price">$XXX</span><span class="tier__price-unit">Price TBD</span></div>
-        <p class="tier__desc">What's left after December 31 — if anything is. Last year, none of it was.</p>
+        <p class="tier__desc">What remains after December 31. If anything does.</p>
         <ul class="tier__list">
           <li>Full-day program · keynotes &amp; panels</li>
           <li>Food &amp; drink · TBD</li>
@@ -1054,7 +1048,7 @@ body.menu-open{overflow:hidden}
         <a href="#" class="btn">Reserve Final Release <span class="btn__arrow">→</span></a>
       </article>
     </div>
-    <p class="tickets__trust">Same seat, same program, same Saturday — only the price changes. Full refund through December 1, 2026 · transfers honored until January 20, 2027.</p>
+    <p class="tickets__trust">Same seat, same program, same Thursday — only the price changes. Full refund through December 1, 2026 · transfers honored until January 20, 2027.</p>
   </div>
 </section>
 
@@ -1138,7 +1132,11 @@ body.menu-open{overflow:hidden}
         closeMenu();
         // wait for menu transform + scroll-lock release before scrolling
         setTimeout(() => {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Manual scroll that accounts for the sticky nav height (~77px on mobile)
+          // scrollIntoView ignores scroll-padding-top, so we calculate the offset ourselves
+          const navHeight = document.getElementById('navWrap')?.getBoundingClientRect().height || 80;
+          const targetTop = target.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({ top: targetTop - navHeight - 8, behavior: 'smooth' });
         }, 280);
       });
     });
