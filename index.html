@@ -37,9 +37,9 @@
 <style>
 :root{--ink:#131e33;--ink-deep:#0a1224;--ink-soft:#2b3a58;--paper:#F4ECE0;--paper-deep:#EADFCC;--paper-light:#FAF5EA;--accent:#D9651F;--accent-deep:#A84810;--rule:rgba(19,30,51,.18);--rule-str:rgba(19,30,51,.35);--fd:'Instrument Serif',Georgia,serif;--fb:'Archivo',system-ui,sans-serif;--fm:'JetBrains Mono',ui-monospace,monospace;--gut:clamp(1.25rem,3vw,2.5rem);--max:1360px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;scroll-padding-top:80px;background:#F4ECE0;background-color:#F4ECE0;min-height:100%}
-@media (max-width:900px){html{scroll-padding-top:72px}}
-section[id],[id="side-events"],[id="sponsors"],[id="venue"],[id="faq"],[id="speakers"],[id="agenda"],[id="tickets"]{scroll-margin-top:80px}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;scroll-padding-top:110px;background:#F4ECE0;background-color:#F4ECE0;min-height:100%}
+@media (max-width:900px){html{scroll-padding-top:90px}}
+section[id],[id="side-events"],[id="sponsors"],[id="venue"],[id="faq"],[id="speakers"],[id="agenda"],[id="tickets"]{scroll-margin-top:110px}
 body{padding-bottom:env(safe-area-inset-bottom)}
 body{font-family:var(--fb);font-size:17px;line-height:1.55;color:var(--ink);background:#F4ECE0;background-color:#F4ECE0;overflow-x:hidden;min-height:100vh}
 img,svg{display:block;max-width:100%}
@@ -1199,7 +1199,7 @@ body.menu-open{overflow:hidden}
           // scrollIntoView ignores scroll-padding-top, so we calculate the offset ourselves
           const navHeight = document.getElementById('navWrap')?.getBoundingClientRect().height || 80;
           const targetTop = target.getBoundingClientRect().top + window.scrollY;
-          window.scrollTo({ top: targetTop - navHeight - 8, behavior: 'smooth' });
+          window.scrollTo({ top: targetTop - navHeight - 18, behavior: 'smooth' });
         }, 280);
       });
     });
