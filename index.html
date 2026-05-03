@@ -217,7 +217,8 @@ body.menu-open{overflow:hidden}
 .speaker{padding:1.75rem 1.5rem 1.5rem;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);background:var(--paper-light);position:relative;transition:background .3s;text-decoration:none;color:inherit;display:flex;flex-direction:column;cursor:pointer}
 .speaker--hidden{display:none}
 .speaker.speaker--hidden{display:none}
-.speakers__actions{display:flex;justify-content:center;margin-top:2rem}
+.speakers{padding:clamp(2rem,4vw,3rem) 0 clamp(1.5rem,3vw,2.25rem)}
+.speakers__actions{display:flex;justify-content:center;margin-top:1.25rem}
 .speakers__toggle-hide{display:none}
 .speakers__toggle[aria-expanded="true"] .speakers__toggle-show{display:none}
 .speakers__toggle[aria-expanded="true"] .speakers__toggle-hide{display:inline}
@@ -285,7 +286,7 @@ body.menu-open{overflow:hidden}
     line-height:1.25
   }
 }
-.speakers__footnote{margin-top:1.5rem;font-family:var(--fd);font-style:italic;font-size:1.1rem;color:var(--ink-soft);text-align:center;max-width:48ch;margin-left:auto;margin-right:auto}
+.speakers__footnote{margin-top:1rem;font-family:var(--fd);font-style:italic;font-size:1.1rem;color:var(--ink-soft);text-align:center;max-width:48ch;margin-left:auto;margin-right:auto}
 .speakers__footnote em{color:var(--accent-deep)}
 
 /* VENUE */
