@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#F4ECE0" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
 <title>Miami Bitcoin Summit · January 28, 2027</title>
 <meta name="description" content="An immersive full-day Bitcoin experience in Miami, FL. Thursday, January 28, 2027." />
 
@@ -35,16 +37,15 @@
 <style>
 :root{--ink:#131e33;--ink-deep:#0a1224;--ink-soft:#2b3a58;--paper:#F4ECE0;--paper-deep:#EADFCC;--paper-light:#FAF5EA;--accent:#D9651F;--accent-deep:#A84810;--rule:rgba(19,30,51,.18);--rule-str:rgba(19,30,51,.35);--fd:'Instrument Serif',Georgia,serif;--fb:'Archivo',system-ui,sans-serif;--fm:'JetBrains Mono',ui-monospace,monospace;--gut:clamp(1.25rem,3vw,2.5rem);--max:1360px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;scroll-padding-top:80px}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;scroll-padding-top:80px;background:#F4ECE0;background-color:#F4ECE0;min-height:100%}
 @media (max-width:900px){html{scroll-padding-top:72px}}
 section[id],[id="side-events"],[id="sponsors"],[id="venue"],[id="faq"],[id="speakers"],[id="agenda"],[id="tickets"]{scroll-margin-top:80px}
 body{padding-bottom:env(safe-area-inset-bottom)}
-body{font-family:var(--fb);font-size:17px;line-height:1.55;color:var(--ink);background:var(--paper);overflow-x:hidden}
+body{font-family:var(--fb);font-size:17px;line-height:1.55;color:var(--ink);background:#F4ECE0;background-color:#F4ECE0;overflow-x:hidden;min-height:100vh}
 img,svg{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;cursor:pointer;background:none;border:none}
 ::selection{background:var(--ink);color:var(--paper)}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 0.08 0 0 0 0 0.11 0 0 0 0 0.2 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.09;pointer-events:none;z-index:9999;mix-blend-mode:multiply}
 .container{width:100%;max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
 section{padding:clamp(2.5rem,5vw,4rem) 0;position:relative}
 @media (max-width:720px){
@@ -970,32 +971,68 @@ body.menu-open{overflow:hidden}
         <div class="faq__a"><p>Likely, if you've spent serious time around bitcoin in some capacity — builder, allocator, founder, business owner, writer, operator — or if you're a thoughtful newcomer who wants to go deeper. The room is built for substance, not status. If you're on the fence, come.</p></div>
       </details>
       <details class="faq__item">
-        <summary class="faq__q"><span class="faq__num">02</span><span class="faq__q-text">What's included with my ticket?</span><span class="faq__icon"></span></summary>
-        <div class="faq__a"><p>Every ticket includes the full program, food and drink across the day, all sessions, and access to the recordings. The tiers differ in price, not in what you receive.</p><p>You should not have to upgrade to get lunch. We feel strongly about that.</p></div>
+        <summary class="faq__q"><span class="faq__num">02</span><span class="faq__q-text">Why <em>bitcoin-only?</em></span><span class="faq__icon"></span></summary>
+        <div class="faq__a"><p>Because bitcoin deserves a room of its own. We respect what other projects are building, but the conversations we want — sound money, the network's future, what attendees are actually shipping — get diluted when the agenda has to also accommodate every L2 token launch and protocol pitch.</p><p>One topic. Deeper conversations. No shitcoin tourism.</p></div>
       </details>
       <details class="faq__item">
-        <summary class="faq__q"><span class="faq__num">03</span><span class="faq__q-text">Can I buy a ticket <em>with bitcoin?</em></span><span class="faq__icon"></span></summary>
-        <div class="faq__a"><p>Of course. Checkout supports on-chain, Lightning, and card. Lightning is the fastest and our preferred method. You'll get the same ticket either way.</p></div>
-      </details>
-      <details class="faq__item">
-        <summary class="faq__q"><span class="faq__num">04</span><span class="faq__q-text">What's the refund policy?</span><span class="faq__icon"></span></summary>
-        <div class="faq__a"><p>Full refund through November 28, 2026. After that, tickets are transferable — name a replacement up to 48 hours before the event.</p></div>
-      </details>
-      <details class="faq__item">
-        <summary class="faq__q"><span class="faq__num">05</span><span class="faq__q-text">Are talks <em>recorded?</em></span><span class="faq__icon"></span></summary>
-        <div class="faq__a"><p>Yes. All keynotes and talks are recorded and published to ticketholders within two weeks. Panel and fireside recordings are released with speaker approval. Q&amp;A sessions are intentionally off the record.</p></div>
-      </details>
-      <details class="faq__item">
-        <summary class="faq__q"><span class="faq__num">06</span><span class="faq__q-text">Group rates and company passes?</span><span class="faq__icon"></span></summary>
-        <div class="faq__a"><p>Group rates available — four seats together at a discount, six or more by direct arrangement. Write to us.</p></div>
-      </details>
-      <details class="faq__item">
-        <summary class="faq__q"><span class="faq__num">07</span><span class="faq__q-text">How is this different from the other Miami bitcoin events?</span><span class="faq__icon"></span></summary>
+        <summary class="faq__q"><span class="faq__num">03</span><span class="faq__q-text">How is this different from the other Miami bitcoin events?</span><span class="faq__icon"></span></summary>
         <div class="faq__a"><p>The big ones are excellent at being big. We do the opposite — one day, one stage, three hundred seats, fourteen speakers chosen with intent. If the trade-show model is the festival, this is the dinner party.</p></div>
       </details>
       <details class="faq__item">
-        <summary class="faq__q"><span class="faq__num">08</span><span class="faq__q-text">Accessibility, dietary, and other accommodations?</span><span class="faq__icon"></span></summary>
-        <div class="faq__a"><p>The venue will be fully accessible — that's a hard requirement when we choose. Lunch is plated, with vegetarian, kosher, halal, and gluten-free options noted in your ticket form. If there's something we haven't thought of, ask — it's one day in one building, we can usually accommodate.</p></div>
+        <summary class="faq__q"><span class="faq__num">04</span><span class="faq__q-text">This is the inaugural year. Why should I <em>trust it?</em></span><span class="faq__icon"></span></summary>
+        <div class="faq__a"><p>Fair question. The honest answer: a confirmed landmark venue, a real refund policy, transparent pricing, and a speaker lineup we'll publish in full before final-release tickets go live. If anything in our public commitments slips, you'll see it before you have to commit your last dollar.</p><p>First years should earn trust, not assume it.</p></div>
+      </details>
+      <details class="faq__item">
+        <summary class="faq__q"><span class="faq__num">05</span><span class="faq__q-text">What does the day <em>actually look like?</em></span><span class="faq__icon"></span></summary>
+        <div class="faq__a"><p>Doors open at 8 AM for coffee on the rooftop terrace. The program runs from 9 AM to 5 PM — keynotes, panels, and fireside conversations on a single stage with proper breaks between sessions. Lunch is plated, served in the courtyard, and long enough that you'll actually finish a conversation. The room reconvenes for an afternoon flagship session before closing remarks.</p><p>From there, the After Party at Hakkasan runs through the evening for those staying.</p></div>
+      </details>
+      <details class="faq__item">
+        <summary class="faq__q"><span class="faq__num">06</span><span class="faq__q-text">What's included with my ticket?</span><span class="faq__icon"></span></summary>
+        <div class="faq__a"><p>Every ticket includes the full Thursday program, food and drink across the day, all sessions, and access to the recordings. The tiers differ in price, not in what you receive.</p><p>You should not have to upgrade to get lunch. We feel strongly about that.</p></div>
+      </details>
+      <details class="faq__item">
+        <summary class="faq__q"><span class="faq__num">07</span><span class="faq__q-text">Are the side events <em>included?</em></span><span class="faq__icon"></span></summary>
+        <div class="faq__a"><p>No — the Welcome Dinner, After Party, bitcoin++ builder day, and Biscayne Bay boat tour are ticketed separately. Pricing is intentionally accessible and announced alongside speaker reveals.</p><p>You can attend as many or as few as you want. Most attendees do at least two.</p></div>
+      </details>
+      <details class="faq__item">
+        <summary class="faq__q"><span class="faq__num">08</span><span class="faq__q-text">Will I get to <em>meet the speakers?</em></span><span class="faq__icon"></span></summary>
+        <div class="faq__a"><p>Yes. Speakers don't disappear after their talks — they stay in the room, eat lunch with the audience, and join the After Party at Hakkasan in the evening. The single-track format and three-hundred-seat scale make this feasible in a way the bigger conferences can't match.</p><p>If there's someone you specifically want to talk to, the long lunch is your best window.</p></div>
+      </details>
+      <details class="faq__item">
+        <summary class="faq__q"><span class="faq__num">09</span><span class="faq__q-text">Are talks <em>recorded?</em></span><span class="faq__icon"></span></summary>
+        <div class="faq__a"><p>Yes. All keynotes and talks are recorded and published to ticketholders within two weeks. Panel and fireside recordings are released with speaker approval. Q&amp;A sessions are intentionally off the record — that's where speakers can be most candid.</p></div>
+      </details>
+      <details class="faq__item">
+        <summary class="faq__q"><span class="faq__num">10</span><span class="faq__q-text">What's the photo and social media policy?</span><span class="faq__icon"></span></summary>
+        <div class="faq__a"><p>Stage is fair game — photograph and post freely. Audience is not — please ask before photographing or tagging fellow attendees, and respect anyone who declines. Q&amp;A is off the record entirely. We take privacy seriously because many of our attendees do.</p></div>
+      </details>
+      <details class="faq__item">
+        <summary class="faq__q"><span class="faq__num">11</span><span class="faq__q-text">What's the <em>dress code?</em></span><span class="faq__icon"></span></summary>
+        <div class="faq__a"><p>Smart casual. The venue is a Miami Beach landmark and the room reflects it — no suits required, no t-shirts and shorts either. Wear what you'd wear to a business dinner you actually wanted to attend.</p></div>
+      </details>
+      <details class="faq__item">
+        <summary class="faq__q"><span class="faq__num">12</span><span class="faq__q-text">Where should I stay, and how do I get there?</span><span class="faq__icon"></span></summary>
+        <div class="faq__a"><p>Fontainebleau Miami Beach hosts the summit. We've secured a preferred-rate room block running through January 28 — see the Venue section for the link.</p><p>If you'd prefer a different hotel, our travel partner <a class="venue__link" href="https://www.victoirevoyages.com" target="_blank" rel="noopener">Victoire Voyages</a> can secure rates at most properties in Miami Beach and downtown. MIA airport is about 25 minutes by car; FLL is about 45.</p></div>
+      </details>
+      <details class="faq__item">
+        <summary class="faq__q"><span class="faq__num">13</span><span class="faq__q-text">Can I pay <em>with bitcoin?</em></span><span class="faq__icon"></span></summary>
+        <div class="faq__a"><p>Of course. Checkout supports on-chain, Lightning, and card. Lightning is the fastest and our preferred method. You'll get the same ticket either way.</p></div>
+      </details>
+      <details class="faq__item">
+        <summary class="faq__q"><span class="faq__num">14</span><span class="faq__q-text">Group rates and team tickets?</span><span class="faq__icon"></span></summary>
+        <div class="faq__a"><p>Group rates available — four seats together at a discount, six or more by direct arrangement. If your team is coming, write to us and we'll handle it cleanly: <a class="venue__link" href="mailto:info@miamibitcoinsummit.com">info@miamibitcoinsummit.com</a>.</p></div>
+      </details>
+      <details class="faq__item">
+        <summary class="faq__q"><span class="faq__num">15</span><span class="faq__q-text">What's the refund policy?</span><span class="faq__icon"></span></summary>
+        <div class="faq__a"><p>Full refund through November 28, 2026. After that, tickets are transferable — name a replacement up to 48 hours before the event, no fee. Side event tickets are refundable up to seven days before each event. If we cancel, you get a full refund regardless of date.</p></div>
+      </details>
+      <details class="faq__item">
+        <summary class="faq__q"><span class="faq__num">16</span><span class="faq__q-text">Accessibility, dietary, and other accommodations?</span><span class="faq__icon"></span></summary>
+        <div class="faq__a"><p>Fontainebleau is fully ADA-accessible — that's part of why we chose it. Lunch is plated, with vegetarian, kosher, halal, and gluten-free options on the registration form. Nursing rooms, prayer space, quiet rooms — ask, and we'll make it happen.</p><p>It's one day in one building. We want everyone in the room.</p></div>
+      </details>
+      <details class="faq__item">
+        <summary class="faq__q"><span class="faq__num">17</span><span class="faq__q-text">Still have questions?</span><span class="faq__icon"></span></summary>
+        <div class="faq__a"><p>Write to us at <a class="venue__link" href="mailto:info@miamibitcoinsummit.com">info@miamibitcoinsummit.com</a> or DM <a class="venue__link" href="https://twitter.com/miamibitcoinsummit" target="_blank" rel="noopener">@miamibitcoinsummit</a> on X. A real person answers, usually within a day.</p></div>
       </details>
     </div>
   </div>
