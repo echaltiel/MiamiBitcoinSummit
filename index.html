@@ -1149,7 +1149,10 @@ body.menu-open{overflow:hidden}
   <div class="container">
     <div class="footer__top">
       <div class="footer__brand">
-        <img class="footer__brand-mark" src="images/footer-logo.png" alt="Miami Bitcoin Summit">
+        <picture>
+          <source srcset="images/footer-logo.webp" type="image/webp">
+          <img class="footer__brand-mark" src="images/footer-logo.png" alt="Miami Bitcoin Summit" width="480" height="480" loading="lazy" decoding="async">
+        </picture>
       </div>
       <div class="footer__col"><div class="footer__col-label">Summit</div><ul><li><a href="#speakers">Speakers</a></li><li><a href="#agenda">Agenda</a></li><li><a href="#side-events">Side Events</a></li><li><a href="#sponsors">Sponsors</a></li><li><a href="#venue">Venue</a></li><li><a href="#faq">FAQ</a></li><li><a href="#tickets">Tickets</a></li></ul></div>
       <div class="footer__col"><div class="footer__col-label">Contact</div><ul><li><a href="mailto:info@miamibitcoinsummit.com">info@miamibitcoinsummit.com</a></li></ul></div>
