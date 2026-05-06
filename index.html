@@ -1169,22 +1169,16 @@ body.menu-open{overflow:hidden}
 
 <script>
   const navWrap = document.getElementById('navWrap');
-  let scrollRafPending = false;
-  let isScrolled = false;
-  const onScroll = () => {
-    if (scrollRafPending) return;
-    scrollRafPending = true;
-    requestAnimationFrame(() => {
-      const shouldBeScrolled = window.scrollY > 8;
-      if (shouldBeScrolled !== isScrolled) {
-        isScrolled = shouldBeScrolled;
-        navWrap.classList.toggle('scrolled', isScrolled);
-      }
-      scrollRafPending = false;
-    });
-  };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  // Use an invisible sentinel at the top of the page. When it scrolls out of view,
+  // the IntersectionObserver fires — off the main thread, no forced reflow. Replaces
+  // the old scroll-event + window.scrollY read pattern, which forced layout on every frame.
+  const scrollSentinel = document.createElement('div');
+  scrollSentinel.setAttribute('aria-hidden', 'true');
+  scrollSentinel.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:8px;pointer-events:none;visibility:hidden';
+  document.body.prepend(scrollSentinel);
+  new IntersectionObserver(([entry]) => {
+    navWrap.classList.toggle('scrolled', !entry.isIntersecting);
+  }, { threshold: 0 }).observe(scrollSentinel);
 
   // Mobile menu toggle
   const navToggle = document.getElementById('navToggle');
