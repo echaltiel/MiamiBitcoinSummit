@@ -37,23 +37,23 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Archivo:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Archivo:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap"></noscript>
 <style>
-/* Metric-matched fallbacks. These render close to Instrument Serif and Archivo when
-   the real fonts haven't loaded yet — minimizes the visible reflow when the swap happens
-   and brings CLS for the hero headline from ~0.41 to near zero. */
+/* Metric-matched fallbacks. Values measured from the actual font files using fontTools,
+   so the fallback renders at almost-identical visual proportions to the real fonts. When
+   the swap happens, text barely moves — fixes hero headline CLS. */
 @font-face {
   font-family: 'Instrument Serif Fallback';
   src: local('Georgia'), local('Times New Roman');
-  size-adjust: 100%;
-  ascent-override: 95%;
-  descent-override: 28%;
+  size-adjust: 80%;
+  ascent-override: 124%;
+  descent-override: 39%;
   line-gap-override: 0%;
 }
 @font-face {
   font-family: 'Archivo Fallback';
   src: local('Arial');
-  size-adjust: 100%;
-  ascent-override: 92%;
-  descent-override: 23%;
+  size-adjust: 116%;
+  ascent-override: 76%;
+  descent-override: 18%;
   line-gap-override: 0%;
 }
 :root{--ink:#131e33;--ink-deep:#0a1224;--ink-soft:#2b3a58;--paper:#F4ECE0;--paper-deep:#EADFCC;--paper-light:#FAF5EA;--accent:#D9651F;--accent-deep:#A84810;--rule:rgba(19,30,51,.18);--rule-str:rgba(19,30,51,.35);--fd:'Instrument Serif','Instrument Serif Fallback',Georgia,serif;--fb:'Archivo','Archivo Fallback',system-ui,Arial,sans-serif;--fm:'JetBrains Mono',ui-monospace,monospace;--gut:clamp(1.25rem,3vw,2.5rem);--max:1360px}
