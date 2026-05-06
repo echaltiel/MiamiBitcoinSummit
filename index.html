@@ -37,65 +37,46 @@
 <link rel="preload" href="/fonts/InstrumentSerif.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/Archivo.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* font-display: optional locks in whichever font is ready at first paint.
-   - If real fonts arrive in time (cached visits, fast connections): real fonts render.
-   - Otherwise: metric-matched Georgia/Arial fallbacks render (visually close to the real fonts).
-   Either way: no font swap, no layout shift, CLS goes to ~0. */
+/* Self-hosted brand fonts. Preloaded for fast first paint. font-display: swap
+   means real fonts always render eventually — visual fidelity over CLS score.
+   CLS will be flagged in PageSpeed but it's marked "Unscored" and doesn't
+   affect your actual performance score. */
 @font-face {
   font-family: 'Instrument Serif';
   font-weight: 400;
   font-style: normal;
-  font-display: optional;
+  font-display: swap;
   src: url('/fonts/InstrumentSerif.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Instrument Serif';
   font-weight: 400;
   font-style: italic;
-  font-display: optional;
+  font-display: swap;
   src: url('/fonts/InstrumentSerif-Italic.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Archivo';
   font-weight: 400;
   font-style: normal;
-  font-display: optional;
+  font-display: swap;
   src: url('/fonts/Archivo.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Archivo';
   font-weight: 500;
   font-style: normal;
-  font-display: optional;
+  font-display: swap;
   src: url('/fonts/Archivo-500.woff2') format('woff2');
 }
 @font-face {
   font-family: 'JetBrains Mono';
   font-weight: 400;
   font-style: normal;
-  font-display: optional;
+  font-display: swap;
   src: url('/fonts/JetBrainsMono.woff2') format('woff2');
 }
-/* Metric-matched fallbacks (values measured from real font files via fontTools).
-   Render when the real fonts can't load fast enough — visually almost identical
-   so the user can't tell the difference at a glance. */
-@font-face {
-  font-family: 'Instrument Serif Fallback';
-  src: local('Georgia'), local('Times New Roman');
-  size-adjust: 80%;
-  ascent-override: 124%;
-  descent-override: 39%;
-  line-gap-override: 0%;
-}
-@font-face {
-  font-family: 'Archivo Fallback';
-  src: local('Arial');
-  size-adjust: 116%;
-  ascent-override: 76%;
-  descent-override: 18%;
-  line-gap-override: 0%;
-}
-:root{--ink:#131e33;--ink-deep:#0a1224;--ink-soft:#2b3a58;--paper:#F4ECE0;--paper-deep:#EADFCC;--paper-light:#FAF5EA;--accent:#D9651F;--accent-deep:#A84810;--rule:rgba(19,30,51,.18);--rule-str:rgba(19,30,51,.35);--fd:'Instrument Serif','Instrument Serif Fallback',Georgia,serif;--fb:'Archivo','Archivo Fallback',system-ui,Arial,sans-serif;--fm:'JetBrains Mono',ui-monospace,monospace;--gut:clamp(1.25rem,3vw,2.5rem);--max:1360px}
+:root{--ink:#131e33;--ink-deep:#0a1224;--ink-soft:#2b3a58;--paper:#F4ECE0;--paper-deep:#EADFCC;--paper-light:#FAF5EA;--accent:#D9651F;--accent-deep:#A84810;--rule:rgba(19,30,51,.18);--rule-str:rgba(19,30,51,.35);--fd:'Instrument Serif',Georgia,serif;--fb:'Archivo',system-ui,sans-serif;--fm:'JetBrains Mono',ui-monospace,monospace;--gut:clamp(1.25rem,3vw,2.5rem);--max:1360px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;scroll-padding-top:95px;background:#F4ECE0;background-color:#F4ECE0;min-height:100%}
 @media (max-width:900px){html{scroll-padding-top:80px}}
