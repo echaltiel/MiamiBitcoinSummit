@@ -37,45 +37,65 @@
 <link rel="preload" href="/fonts/InstrumentSerif.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/Archivo.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* Self-hosted fonts. Loaded immediately from /fonts/ — no Google CDN roundtrip,
-   no font-swap layout shift. The two preloaded files (Instrument Serif normal, Archivo normal)
-   are available before first paint; the rest load with the page. */
+/* font-display: optional locks in whichever font is ready at first paint.
+   - If real fonts arrive in time (cached visits, fast connections): real fonts render.
+   - Otherwise: metric-matched Georgia/Arial fallbacks render (visually close to the real fonts).
+   Either way: no font swap, no layout shift, CLS goes to ~0. */
 @font-face {
   font-family: 'Instrument Serif';
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: optional;
   src: url('/fonts/InstrumentSerif.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Instrument Serif';
   font-weight: 400;
   font-style: italic;
-  font-display: swap;
+  font-display: optional;
   src: url('/fonts/InstrumentSerif-Italic.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Archivo';
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: optional;
   src: url('/fonts/Archivo.woff2') format('woff2');
 }
 @font-face {
   font-family: 'Archivo';
   font-weight: 500;
   font-style: normal;
-  font-display: swap;
+  font-display: optional;
   src: url('/fonts/Archivo-500.woff2') format('woff2');
 }
 @font-face {
   font-family: 'JetBrains Mono';
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: optional;
   src: url('/fonts/JetBrainsMono.woff2') format('woff2');
 }
-:root{--ink:#131e33;--ink-deep:#0a1224;--ink-soft:#2b3a58;--paper:#F4ECE0;--paper-deep:#EADFCC;--paper-light:#FAF5EA;--accent:#D9651F;--accent-deep:#A84810;--rule:rgba(19,30,51,.18);--rule-str:rgba(19,30,51,.35);--fd:'Instrument Serif',Georgia,serif;--fb:'Archivo',system-ui,sans-serif;--fm:'JetBrains Mono',ui-monospace,monospace;--gut:clamp(1.25rem,3vw,2.5rem);--max:1360px}
+/* Metric-matched fallbacks (values measured from real font files via fontTools).
+   Render when the real fonts can't load fast enough — visually almost identical
+   so the user can't tell the difference at a glance. */
+@font-face {
+  font-family: 'Instrument Serif Fallback';
+  src: local('Georgia'), local('Times New Roman');
+  size-adjust: 80%;
+  ascent-override: 124%;
+  descent-override: 39%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Archivo Fallback';
+  src: local('Arial');
+  size-adjust: 116%;
+  ascent-override: 76%;
+  descent-override: 18%;
+  line-gap-override: 0%;
+}
+:root{--ink:#131e33;--ink-deep:#0a1224;--ink-soft:#2b3a58;--paper:#F4ECE0;--paper-deep:#EADFCC;--paper-light:#FAF5EA;--accent:#D9651F;--accent-deep:#A84810;--rule:rgba(19,30,51,.18);--rule-str:rgba(19,30,51,.35);--fd:'Instrument Serif','Instrument Serif Fallback',Georgia,serif;--fb:'Archivo','Archivo Fallback',system-ui,Arial,sans-serif;--fm:'JetBrains Mono',ui-monospace,monospace;--gut:clamp(1.25rem,3vw,2.5rem);--max:1360px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;scroll-padding-top:95px;background:#F4ECE0;background-color:#F4ECE0;min-height:100%}
 @media (max-width:900px){html{scroll-padding-top:80px}}
@@ -163,7 +183,7 @@ body.menu-open{overflow:hidden}
 .hero > .container{max-width:none !important;padding:0 !important;width:100%}
 .hero__grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;width:100%;min-height:calc(100vh - 130px);padding:0 clamp(1rem,2vw,2rem);max-height:calc(100vh - 130px)}
 .hero__logo-col{display:flex;align-items:center;justify-content:center;min-height:0;width:100%;overflow:hidden}
-.hero__logo-col img{display:block;width:100%;height:auto;max-height:calc(100vh - 180px);object-fit:contain}
+.hero__logo-col img{display:block;width:100%;height:auto;aspect-ratio:1/1;max-height:calc(100vh - 180px);object-fit:contain}
 .hero__info{display:flex;flex-direction:column;gap:clamp(1rem,1.5vw,1.5rem);padding-left:clamp(1.5rem,3vw,3rem);padding-right:clamp(1rem,2vw,2rem);justify-content:center;max-height:calc(100vh - 180px);overflow:hidden}
 .hero__eyebrow{color:var(--accent-deep);font-size:.78rem;letter-spacing:.24em}
 .hero__headline{font-family:var(--fd);font-size:clamp(2.25rem,5vw,5rem);font-weight:400;line-height:1;letter-spacing:-.02em}
