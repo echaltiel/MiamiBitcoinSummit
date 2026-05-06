@@ -31,32 +31,51 @@
 <link rel="icon" type="image/png" href="/images/og-image.png" />
 <link rel="apple-touch-icon" href="/images/og-image.png" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Archivo:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Archivo:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Archivo:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap"></noscript>
+<!-- Self-hosted fonts: preload the two most-critical weights so they're available before first paint.
+     This eliminates the font-swap layout shift entirely (no more reliance on metric-matched fallbacks
+     hoping to fool the browser). The full @font-face declarations are inline in the <style> below. -->
+<link rel="preload" href="/fonts/InstrumentSerif.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/Archivo.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* Metric-matched fallbacks. Values measured from the actual font files using fontTools,
-   so the fallback renders at almost-identical visual proportions to the real fonts. When
-   the swap happens, text barely moves — fixes hero headline CLS. */
+/* Self-hosted fonts. Loaded immediately from /fonts/ — no Google CDN roundtrip,
+   no font-swap layout shift. The two preloaded files (Instrument Serif normal, Archivo normal)
+   are available before first paint; the rest load with the page. */
 @font-face {
-  font-family: 'Instrument Serif Fallback';
-  src: local('Georgia'), local('Times New Roman');
-  size-adjust: 80%;
-  ascent-override: 124%;
-  descent-override: 39%;
-  line-gap-override: 0%;
+  font-family: 'Instrument Serif';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/InstrumentSerif.woff2') format('woff2');
 }
 @font-face {
-  font-family: 'Archivo Fallback';
-  src: local('Arial');
-  size-adjust: 116%;
-  ascent-override: 76%;
-  descent-override: 18%;
-  line-gap-override: 0%;
+  font-family: 'Instrument Serif';
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url('/fonts/InstrumentSerif-Italic.woff2') format('woff2');
 }
-:root{--ink:#131e33;--ink-deep:#0a1224;--ink-soft:#2b3a58;--paper:#F4ECE0;--paper-deep:#EADFCC;--paper-light:#FAF5EA;--accent:#D9651F;--accent-deep:#A84810;--rule:rgba(19,30,51,.18);--rule-str:rgba(19,30,51,.35);--fd:'Instrument Serif','Instrument Serif Fallback',Georgia,serif;--fb:'Archivo','Archivo Fallback',system-ui,Arial,sans-serif;--fm:'JetBrains Mono',ui-monospace,monospace;--gut:clamp(1.25rem,3vw,2.5rem);--max:1360px}
+@font-face {
+  font-family: 'Archivo';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/Archivo.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Archivo';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/Archivo-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/fonts/JetBrainsMono.woff2') format('woff2');
+}
+:root{--ink:#131e33;--ink-deep:#0a1224;--ink-soft:#2b3a58;--paper:#F4ECE0;--paper-deep:#EADFCC;--paper-light:#FAF5EA;--accent:#D9651F;--accent-deep:#A84810;--rule:rgba(19,30,51,.18);--rule-str:rgba(19,30,51,.35);--fd:'Instrument Serif',Georgia,serif;--fb:'Archivo',system-ui,sans-serif;--fm:'JetBrains Mono',ui-monospace,monospace;--gut:clamp(1.25rem,3vw,2.5rem);--max:1360px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;scroll-padding-top:95px;background:#F4ECE0;background-color:#F4ECE0;min-height:100%}
 @media (max-width:900px){html{scroll-padding-top:80px}}
