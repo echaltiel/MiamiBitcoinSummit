@@ -1169,7 +1169,20 @@ body.menu-open{overflow:hidden}
 
 <script>
   const navWrap = document.getElementById('navWrap');
-  const onScroll = () => navWrap.classList.toggle('scrolled', window.scrollY > 8);
+  let scrollRafPending = false;
+  let isScrolled = false;
+  const onScroll = () => {
+    if (scrollRafPending) return;
+    scrollRafPending = true;
+    requestAnimationFrame(() => {
+      const shouldBeScrolled = window.scrollY > 8;
+      if (shouldBeScrolled !== isScrolled) {
+        isScrolled = shouldBeScrolled;
+        navWrap.classList.toggle('scrolled', isScrolled);
+      }
+      scrollRafPending = false;
+    });
+  };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
