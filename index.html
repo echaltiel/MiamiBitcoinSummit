@@ -532,8 +532,25 @@ body.menu-open{overflow:hidden}
 @media (max-width:640px){.faq__q{grid-template-columns:30px 1fr 24px;gap:.75rem}.faq__a{padding-left:40px}}
 
 /* FRIENDS */
-.friends__grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
+.friends__tier{margin-top:2rem}
+.friends__tier:first-of-type{margin-top:0}
+.friends__tier--hidden{display:none}
+.friends__tier-label{font-family:var(--fm);font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);display:flex;align-items:baseline;gap:.85rem;margin:0 0 .65rem}
+.friends__tier-label::after{content:"";flex:1;height:1px;background:var(--ink)}
+.friends__grid{display:grid;gap:0;border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
+.friends__grid--platinum{grid-template-columns:1fr}
+.friends__grid--gold{grid-template-columns:repeat(2,1fr)}
+.friends__grid--silver{grid-template-columns:repeat(2,1fr)}
+.friends__grid--activation{grid-template-columns:repeat(4,1fr)}
 .friend{padding:2.25rem 1rem;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;text-align:center;min-height:140px;transition:background .2s;text-decoration:none;color:inherit;position:relative}
+.friend--platinum{min-height:210px;padding:3rem 1.5rem;gap:.75rem}
+.friend--platinum .friend__name{font-size:2rem}
+.friend--gold{min-height:175px;padding:2.5rem 1.25rem}
+.friend--gold .friend__name{font-size:1.6rem}
+.friend--silver{min-height:140px}
+.friend--activation{min-height:115px;padding:1.5rem .75rem;gap:.4rem}
+.friend--activation .friend__name{font-size:1.1rem}
+.friends__grid--activation > .friend:last-child:nth-child(4n+3){grid-column:span 2}
 .friend--hidden{display:none}
 .friend.friend--hidden{display:none}
 .friend:hover{background:var(--paper-light)}
@@ -547,16 +564,43 @@ body.menu-open{overflow:hidden}
 .friends__toggle[aria-expanded="true"] .friends__toggle-show{display:none}
 .friends__toggle[aria-expanded="true"] .friends__toggle-hide{display:inline}
 .friends__toggle[aria-expanded="true"] .btn__arrow{transform:rotate(180deg)}
-@media (max-width:880px){.friends__grid{grid-template-columns:repeat(3,1fr)}}
-@media (max-width:540px){.friends__grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:880px){
+  .friends__grid--platinum{grid-template-columns:1fr}
+  .friends__grid--gold{grid-template-columns:repeat(2,1fr)}
+  .friends__grid--silver{grid-template-columns:repeat(2,1fr)}
+  .friends__grid--activation{grid-template-columns:repeat(3,1fr)}
+  .friends__grid--activation > .friend:last-child:nth-child(4n+3){grid-column:auto}
+  .friends__grid--activation > .friend:last-child:nth-child(3n+1){grid-column:span 3}
+  .friend--platinum .friend__name{font-size:1.7rem}
+  .friend--gold .friend__name{font-size:1.45rem}
+}
+@media (max-width:540px){
+  .friends__grid--platinum{grid-template-columns:1fr}
+  .friends__grid--gold{grid-template-columns:repeat(2,1fr)}
+  .friends__grid--silver{grid-template-columns:repeat(2,1fr)}
+  .friends__grid--activation{grid-template-columns:repeat(2,1fr)}
+  .friends__grid--activation > .friend:last-child:nth-child(3n+1){grid-column:auto}
+  .friends__grid--activation > .friend:last-child:nth-child(2n+1){grid-column:span 2}
+}
 @media (max-width:520px){
   .friends{padding:1rem 0 1.5rem}
   .friends .sec-hd{margin-bottom:.6rem;gap:.5rem}
   .friends .sec-hd__num{padding-top:.55rem;font-size:.7rem}
   .friends .section-title{font-size:1.5rem}
   .friends .sec-hd__title{padding-top:0}
-  .friends__grid{grid-template-columns:1fr}
-  .friend{
+  .friends__tier{margin-top:1.25rem}
+  .friends__tier-label{font-size:.62rem;letter-spacing:.18em;margin-bottom:.45rem;gap:.6rem}
+  .friends__grid,
+  .friends__grid--platinum,
+  .friends__grid--gold,
+  .friends__grid--silver,
+  .friends__grid--activation{grid-template-columns:1fr}
+  .friends__grid--activation > .friend:last-child:nth-child(2n+1){grid-column:auto}
+  .friend,
+  .friend--platinum,
+  .friend--gold,
+  .friend--silver,
+  .friend--activation{
     display:flex;
     flex-direction:row;
     align-items:center;
@@ -586,6 +630,10 @@ body.menu-open{overflow:hidden}
     line-height:1.05;
     font-style:italic
   }
+  .friend--platinum .friend__name,
+  .friend--gold .friend__name,
+  .friend--silver .friend__name,
+  .friend--activation .friend__name{font-size:1.2rem}
   .friend__type{
     font-size:.58rem;
     letter-spacing:.16em;
@@ -601,6 +649,204 @@ body.menu-open{overflow:hidden}
 .friends__become{text-align:center;margin-top:2.5rem}
 .friends__become-text{font-family:var(--fd);font-style:italic;font-size:1.2rem;color:var(--ink-soft);margin-bottom:1.25rem}
 .friends__become-text em{color:var(--accent-deep)}
+
+/* METALLIC TIER STYLING */
+.friends__tier--platinum .friends__tier-label,
+.friends__tier--gold .friends__tier-label,
+.friends__tier--silver .friends__tier-label{font-weight:700;font-size:.82rem;letter-spacing:.26em}
+.friends__tier--platinum .friends__tier-label > span,
+.friends__tier--gold .friends__tier-label > span,
+.friends__tier--silver .friends__tier-label > span{
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  display:inline-block;
+}
+
+/* PLATINUM LABEL — cool burnished metal, peaks stay readable on cream */
+.friends__tier--platinum .friends__tier-label > span{
+  background-image:linear-gradient(115deg,
+    #131e33 0%,
+    #1c2740 18%,
+    #2b3a58 35%,
+    #45527a 50%,
+    #2b3a58 65%,
+    #1c2740 82%,
+    #131e33 100%
+  );
+}
+.friends__tier--platinum .friends__tier-label::after{
+  height:4px;
+  background:linear-gradient(90deg,
+    #2a2d3a 0%,
+    #8488a0 18%,
+    #c4c8d8 35%,
+    #d0d4e0 50%,
+    #c4c8d8 65%,
+    #8488a0 82%,
+    #2a2d3a 100%
+  );
+  box-shadow:0 0 6px rgba(150,165,200,0.4);
+}
+
+/* GOLD LABEL — warm burnished bronze-gold */
+.friends__tier--gold .friends__tier-label > span{
+  background-image:linear-gradient(115deg,
+    #2a1c04 0%,
+    #3e2a08 18%,
+    #5a3e0c 35%,
+    #7a5814 50%,
+    #5a3e0c 65%,
+    #3e2a08 82%,
+    #2a1c04 100%
+  );
+}
+.friends__tier--gold .friends__tier-label::after{
+  height:3px;
+  background:linear-gradient(90deg,
+    #4a3208 0%,
+    #946018 18%,
+    #d4a035 35%,
+    #e8b840 50%,
+    #d4a035 65%,
+    #946018 82%,
+    #4a3208 100%
+  );
+  box-shadow:0 0 5px rgba(180,128,40,0.4);
+}
+
+/* SILVER LABEL — deep gunmetal */
+.friends__tier--silver .friends__tier-label > span{
+  background-image:linear-gradient(115deg,
+    #0a0c14 0%,
+    #161824 18%,
+    #25283a 35%,
+    #36394a 50%,
+    #25283a 65%,
+    #161824 82%,
+    #0a0c14 100%
+  );
+}
+.friends__tier--silver .friends__tier-label::after{
+  height:2px;
+  background:linear-gradient(90deg,
+    #14151a 0%,
+    #2e3140 25%,
+    #585c6c 50%,
+    #2e3140 75%,
+    #14151a 100%
+  );
+  box-shadow:0 0 3px rgba(50,55,68,0.35);
+}
+
+/* CARDS — base + animated sheen overlay + subtler outer glow */
+.friend--platinum,
+.friend--gold,
+.friend--silver{position:relative;overflow:hidden}
+.friend--platinum .friend__text,
+.friend--gold .friend__text,
+.friend--silver .friend__text{position:relative;z-index:2}
+.friend--platinum::before,
+.friend--gold::before,
+.friend--silver::before{
+  content:"";
+  position:absolute;
+  top:-25%;
+  left:-100%;
+  width:50%;
+  height:150%;
+  transform:skewX(-22deg);
+  pointer-events:none;
+  z-index:1;
+}
+
+/* PLATINUM CARDS — bright cool gradient, restrained glow */
+.friend--platinum{
+  background:linear-gradient(180deg,#eef1f8 0%,#d4d8e4 50%,#dfe3ec 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.85),
+    inset 0 -1px 0 rgba(120,140,180,0.18),
+    0 0 28px rgba(160,180,210,0.3),
+    0 0 56px rgba(200,215,240,0.18);
+}
+.friend--platinum::before{
+  background:linear-gradient(90deg,
+    transparent 0%,
+    rgba(255,255,255,0.25) 35%,
+    rgba(255,255,255,0.55) 50%,
+    rgba(255,255,255,0.25) 65%,
+    transparent 100%
+  );
+  animation:sheen-platinum 4.5s ease-in-out infinite;
+}
+.friend--platinum:hover{background:linear-gradient(180deg,#f4f6fb 0%,#dde1ec 50%,#e6eaf2 100%)}
+.friend--platinum .friend__type{color:#3a4060}
+
+/* GOLD CARDS — saturated polished gold, warm restrained glow */
+.friend--gold{
+  background:linear-gradient(180deg,#f0d97a 0%,#caa83a 50%,#dab94a 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,245,200,0.7),
+    inset 0 -1px 0 rgba(140,100,20,0.22),
+    0 0 24px rgba(220,180,90,0.3),
+    0 0 48px rgba(235,205,140,0.18);
+}
+.friend--gold::before{
+  background:linear-gradient(90deg,
+    transparent 0%,
+    rgba(255,240,180,0.2) 35%,
+    rgba(255,245,200,0.45) 50%,
+    rgba(255,240,180,0.2) 65%,
+    transparent 100%
+  );
+  animation:sheen-gold 5.5s ease-in-out infinite;
+}
+.friend--gold:hover{background:linear-gradient(180deg,#f4dd85 0%,#d2af40 50%,#dec050 100%)}
+.friend--gold .friend__type{color:#4a3208}
+
+/* SILVER CARDS — dark gunmetal, moody restrained glow */
+.friend--silver{
+  background:linear-gradient(180deg,#aaacb2 0%,#7a7c84 50%,#8e9097 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(200,202,210,0.5),
+    inset 0 -1px 0 rgba(20,21,26,0.32),
+    0 0 18px rgba(110,113,120,0.32),
+    0 0 36px rgba(85,88,95,0.18);
+}
+.friend--silver::before{
+  background:linear-gradient(90deg,
+    transparent 0%,
+    rgba(220,222,228,0.18) 35%,
+    rgba(230,232,238,0.4) 50%,
+    rgba(220,222,228,0.18) 65%,
+    transparent 100%
+  );
+  animation:sheen-silver 6.5s ease-in-out infinite;
+}
+.friend--silver:hover{background:linear-gradient(180deg,#b2b4ba 0%,#82848c 50%,#96989f 100%)}
+.friend--silver .friend__type{color:#14151a}
+
+@keyframes sheen-platinum{
+  0%{left:-100%}
+  40%{left:200%}
+  100%{left:200%}
+}
+@keyframes sheen-gold{
+  0%{left:-100%}
+  36%{left:200%}
+  100%{left:200%}
+}
+@keyframes sheen-silver{
+  0%{left:-100%}
+  30%{left:200%}
+  100%{left:200%}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .friend--platinum::before,
+  .friend--gold::before,
+  .friend--silver::before{animation:none}
+}
 
 /* NEWS */
 .news{background:var(--ink);color:var(--paper);padding:clamp(5rem,9vw,7rem) 0}
@@ -968,21 +1214,41 @@ body.menu-open{overflow:hidden}
       <div class="sec-hd__num">Nº 04 — Sponsors</div>
       <h2 class="section-title sec-hd__title">Bitcoin-only. <em>Hand-picked.</em></h2>
     </header>
-    <div class="friends__grid" id="friendsGrid">
-      <a class="friend" href="#" data-friend="1"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Presenting</div></div></a>
-      <a class="friend" href="#" data-friend="2"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Presenting</div></div></a>
-      <a class="friend" href="#" data-friend="3"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Program</div></div></a>
-      <a class="friend" href="#" data-friend="4"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Program</div></div></a>
-      <a class="friend" href="#" data-friend="5"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Program</div></div></a>
-      <a class="friend friend--hidden" href="#" data-friend="6"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Rooftop Reception</div></div></a>
-      <a class="friend friend--hidden" href="#" data-friend="7"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Courtyard Lunch</div></div></a>
-      <a class="friend friend--hidden" href="#" data-friend="8"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Media</div></div></a>
-      <a class="friend friend--hidden" href="#" data-friend="9"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Morning Coffee</div></div></a>
-      <a class="friend friend--hidden" href="#" data-friend="10"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Founding Dinner</div></div></a>
+    <div class="friends__tier friends__tier--platinum">
+      <div class="friends__tier-label"><span>Platinum</span></div>
+      <div class="friends__grid friends__grid--platinum">
+        <a class="friend friend--platinum" href="#"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Platinum</div></div></a>
+      </div>
+    </div>
+    <div class="friends__tier friends__tier--gold">
+      <div class="friends__tier-label"><span>Gold</span></div>
+      <div class="friends__grid friends__grid--gold">
+        <a class="friend friend--gold" href="#"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Gold</div></div></a>
+        <a class="friend friend--gold" href="#"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Gold</div></div></a>
+      </div>
+    </div>
+    <div class="friends__tier friends__tier--silver">
+      <div class="friends__tier-label"><span>Silver</span></div>
+      <div class="friends__grid friends__grid--silver">
+        <a class="friend friend--silver" href="#"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Silver</div></div></a>
+        <a class="friend friend--silver" href="#"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Silver</div></div></a>
+      </div>
+    </div>
+    <div class="friends__tier friends__tier--hidden" id="friendsActivations">
+      <div class="friends__tier-label">Activation Sponsors</div>
+      <div class="friends__grid friends__grid--activation">
+        <a class="friend friend--activation" href="#"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Badge</div></div></a>
+        <a class="friend friend--activation" href="#"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Lanyard</div></div></a>
+        <a class="friend friend--activation" href="#"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Coffee &amp; Water</div></div></a>
+        <a class="friend friend--activation" href="#"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Bag</div></div></a>
+        <a class="friend friend--activation" href="#"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Exhibition Table</div></div></a>
+        <a class="friend friend--activation" href="#"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Side Event</div></div></a>
+        <a class="friend friend--activation" href="#"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Promotional Insert</div></div></a>
+      </div>
     </div>
     <div class="friends__actions">
-      <button type="button" class="btn friends__toggle" id="friendsToggle" aria-expanded="false">
-        <span class="friends__toggle-show">Show all 10 sponsors</span>
+      <button type="button" class="btn friends__toggle" id="friendsToggle" aria-expanded="false" aria-controls="friendsActivations">
+        <span class="friends__toggle-show">Show activation sponsors</span>
         <span class="friends__toggle-hide">Show fewer</span>
         <span class="btn__arrow">↓</span>
       </button>
@@ -1338,17 +1604,17 @@ body.menu-open{overflow:hidden}
     });
   }
 
-  // Sponsors show-all toggle
+  // Sponsors show-all toggle (controls activations tier)
   const friendsToggle = document.getElementById('friendsToggle');
   if (friendsToggle) {
     friendsToggle.addEventListener('click', () => {
-      const grid = document.getElementById('friendsGrid');
+      const activations = document.getElementById('friendsActivations');
       const expanded = friendsToggle.getAttribute('aria-expanded') === 'true';
       const next = !expanded;
       friendsToggle.setAttribute('aria-expanded', String(next));
-      grid.querySelectorAll('.friend').forEach((card) => {
-        card.classList.toggle('friend--hidden', !next && parseInt(card.dataset.friend, 10) > 5);
-      });
+      if (activations) {
+        activations.classList.toggle('friends__tier--hidden', !next);
+      }
     });
   }
 </script>
