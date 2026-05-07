@@ -450,6 +450,7 @@ body.menu-open{overflow:hidden}
 .side-event__venue-name{font-style:italic;color:var(--accent-deep);font-weight:400}
 .side-event__desc{font-family:var(--fd);font-size:.95rem;line-height:1.35;color:var(--ink-soft);flex:1}
 .side-event__meta{font-family:var(--fm);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);padding-top:.5rem;border-top:1px solid var(--rule)}
+.side-events__grid > .side-event:nth-child(odd):last-child{grid-column:1/-1}
 @media (max-width:720px){.side-events__grid{grid-template-columns:1fr}}
 @media (max-width:520px){
   .side-events{padding:1rem 0 1.5rem !important}
@@ -917,6 +918,14 @@ body.menu-open{overflow:hidden}
       <h2 class="section-title sec-hd__title">Before and after <em>the main day.</em></h2>
     </header>
     <div class="side-events__grid">
+      <a class="side-event" href="#">
+        <div class="side-event__date">Wed · Jan 27</div>
+        <div class="side-event__time">5PM — 6:30PM</div>
+        <h3 class="side-event__title">Bitcoin <em>for Beginners</em></h3>
+        <div class="side-event__venue"><span class="side-event__venue-label">At</span><span class="side-event__venue-name">Fontainebleau</span></div>
+        <p class="side-event__desc">Short thirty-minute sessions on the basics, mining, Layer 2, and the rest. The night before the summit, for anyone who wants to walk in already fluent.</p>
+        <div class="side-event__meta">Free with ticket · Limited seats</div>
+      </a>
       <a class="side-event" href="#">
         <div class="side-event__date">Wed · Jan 27</div>
         <div class="side-event__time">7PM — 10PM</div>
