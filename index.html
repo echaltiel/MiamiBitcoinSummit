@@ -450,6 +450,12 @@ body.menu-open{overflow:hidden}
 .side-event__venue-name{font-style:italic;color:var(--accent-deep);font-weight:400}
 .side-event__desc{font-family:var(--fd);font-size:.95rem;line-height:1.35;color:var(--ink-soft);flex:1}
 .side-event__meta{font-family:var(--fm);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);padding-top:.5rem;border-top:1px solid var(--rule)}
+.side-event__sponsor{display:inline-flex;align-items:center;gap:.45rem;align-self:flex-start;font-family:var(--fm);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);padding:.45rem .7rem;border:1px dashed var(--rule-str);background:transparent;transition:all .25s ease;text-decoration:none;margin-top:.15rem}
+.side-event__sponsor:hover{background:var(--ink);color:var(--paper);border-color:var(--ink);border-style:solid}
+.side-event__sponsor-label{color:var(--accent-deep);transition:color .25s ease}
+.side-event__sponsor:hover .side-event__sponsor-label{color:var(--accent)}
+.side-event__sponsor-arrow{transition:transform .25s ease;font-size:.7rem;letter-spacing:0}
+.side-event__sponsor:hover .side-event__sponsor-arrow{transform:translateX(3px)}
 .side-events__grid > .side-event:nth-child(odd):last-child{grid-column:1/-1}
 @media (max-width:720px){.side-events__grid{grid-template-columns:1fr}}
 @media (max-width:520px){
@@ -507,6 +513,16 @@ body.menu-open{overflow:hidden}
     padding-top:.3rem;
     letter-spacing:.16em
   }
+  .side-event__sponsor{
+    grid-column:2;
+    grid-row:4;
+    font-size:.5rem;
+    letter-spacing:.14em;
+    padding:.35rem .5rem;
+    margin-top:.3rem;
+    gap:.3rem
+  }
+  .side-event__sponsor-arrow{font-size:.6rem}
 }
 
 /* FAQ */
@@ -1164,46 +1180,60 @@ body.menu-open{overflow:hidden}
       <h2 class="section-title sec-hd__title">Before and after <em>the main day.</em></h2>
     </header>
     <div class="side-events__grid">
-      <a class="side-event" href="#">
+      <article class="side-event">
         <div class="side-event__date">Wed · Jan 27</div>
         <div class="side-event__time">5PM — 6:30PM</div>
         <h3 class="side-event__title">Bitcoin <em>for Beginners</em></h3>
         <div class="side-event__venue"><span class="side-event__venue-label">At</span><span class="side-event__venue-name">Fontainebleau</span></div>
         <p class="side-event__desc">Short thirty-minute sessions on the basics, mining, Layer 2, and the rest. The night before the summit, for anyone who wants to walk in already fluent.</p>
         <div class="side-event__meta">Free with ticket · Limited seats</div>
-      </a>
-      <a class="side-event" href="#">
+        <a class="side-event__sponsor" href="#sponsor"><span class="side-event__sponsor-label">Presented by</span> Sponsor Name <span class="side-event__sponsor-arrow">→</span></a>
+      </article>
+      <article class="side-event">
         <div class="side-event__date">Wed · Jan 27</div>
         <div class="side-event__time">7PM — 10PM</div>
         <h3 class="side-event__title">Welcome <em>Dinner</em></h3>
         <div class="side-event__venue"><span class="side-event__venue-label">At</span><span class="side-event__venue-name">Prime 54</span></div>
         <p class="side-event__desc">The night before, at Fontainebleau's signature steakhouse. Speakers, partners, and a small group of attendees gather over a long table for the first conversations of the week.</p>
-        <div class="side-event__meta">Price TBD</div>
-      </a>
-      <a class="side-event" href="#">
+        <div class="side-event__meta">$295 · Separate ticket</div>
+        <a class="side-event__sponsor" href="#sponsor"><span class="side-event__sponsor-label">Presented by</span> Sponsor Name <span class="side-event__sponsor-arrow">→</span></a>
+      </article>
+      <article class="side-event">
         <div class="side-event__date">Thu · Jan 28</div>
         <div class="side-event__time">7PM — 10PM</div>
         <h3 class="side-event__title">After <em>Party &amp; Dinner</em></h3>
         <div class="side-event__venue"><span class="side-event__venue-label">At</span><span class="side-event__venue-name">Hakkasan</span></div>
         <p class="side-event__desc">Drinks, dinner, and unhurried conversation at Michelin-recognized Cantonese on Fontainebleau's fourth floor. The day doesn't end at 5 — the most useful conversations rarely happen in the room.</p>
-        <div class="side-event__meta">Price TBD</div>
-      </a>
-      <a class="side-event" href="#">
+        <div class="side-event__meta">$195 · Separate ticket</div>
+        <a class="side-event__sponsor" href="#sponsor"><span class="side-event__sponsor-label">Presented by</span> Sponsor Name <span class="side-event__sponsor-arrow">→</span></a>
+      </article>
+      <article class="side-event">
         <div class="side-event__date">Fri · Jan 29</div>
         <div class="side-event__time">10AM — 5PM</div>
         <h3 class="side-event__title">bitcoin++ <em>finds liquidity</em></h3>
         <div class="side-event__venue"><span class="side-event__venue-label">At</span><span class="side-event__venue-name">The LAB Miami</span></div>
         <p class="side-event__desc">A hands-on builder day in Wynwood with long-form talks, workshops, and deeper conversations around Bitcoin tech. More technical and intimate than the main summit.</p>
-        <div class="side-event__meta">Price TBD</div>
-      </a>
-      <a class="side-event" href="#">
+        <div class="side-event__meta">$195 · Separate ticket</div>
+        <a class="side-event__sponsor" href="#sponsor"><span class="side-event__sponsor-label">Presented by</span> Sponsor Name <span class="side-event__sponsor-arrow">→</span></a>
+      </article>
+      <article class="side-event">
         <div class="side-event__date">Sat · Jan 30</div>
         <div class="side-event__time">2PM — 5:30PM</div>
         <h3 class="side-event__title">Biscayne Bay <em>Boat Tour</em></h3>
         <div class="side-event__venue"><span class="side-event__venue-label">Meet at</span><span class="side-event__venue-name">Fontainebleau → Bayside Marina</span></div>
         <p class="side-event__desc">A private afternoon cruise through Biscayne Bay with skyline views, ocean air, and one last chance for relaxed conversation before everyone heads home. Shuttle from the Fontainebleau lobby to Bayside Marketplace; departs from Miami Tour Company.</p>
-        <div class="side-event__meta">Price TBD</div>
-      </a>
+        <div class="side-event__meta">$195 · Separate ticket</div>
+        <a class="side-event__sponsor" href="#sponsor"><span class="side-event__sponsor-label">Presented by</span> Sponsor Name <span class="side-event__sponsor-arrow">→</span></a>
+      </article>
+      <article class="side-event">
+        <div class="side-event__date">Sun · Jan 31</div>
+        <div class="side-event__time">From 6AM</div>
+        <h3 class="side-event__title">2027 Miami <em>Marathon</em></h3>
+        <div class="side-event__venue"><span class="side-event__venue-label">Start</span><span class="side-event__venue-name">Downtown Miami → Bayfront Park</span></div>
+        <p class="side-event__desc">The Life Time Miami Marathon &amp; Half — a flat, Boston-qualifying loop with skyline views, ocean breeze, and a finish at Bayfront Park. Full marathon, half marathon, and 5K (on Saturday). Sign up here so Bitcoiners can race together.</p>
+        <div class="side-event__meta">Free · Sign up so Bitcoiners can race together</div>
+        <a class="side-event__sponsor" href="#sponsor"><span class="side-event__sponsor-label">Presented by</span> Sponsor Name <span class="side-event__sponsor-arrow">→</span></a>
+      </article>
     </div>
   </div>
 </section>
@@ -1326,11 +1356,11 @@ body.menu-open{overflow:hidden}
       </details>
       <details class="faq__item">
         <summary class="faq__q"><span class="faq__num">08</span><span class="faq__q-text">Are the side events <em>included?</em></span><span class="faq__icon"></span></summary>
-        <div class="faq__a"><p>No. The Welcome Dinner, Dinner &amp; After Party, bitcoin++ builder day, and Biscayne Bay boat tour are ticketed separately.</p><p>You can attend as many or as few as you want. The summit is designed to stand on its own, but the side events are there for people who want the full week experience.</p><p>See the <a class="venue__link" href="#side-events">Side Events</a> section for details.</p></div>
+        <div class="faq__a"><p>No. The Welcome Dinner, Dinner &amp; After Party, bitcoin++ builder day, and Biscayne Bay boat tour are ticketed separately. The 2027 Miami Marathon is a separate registration through Life Time.</p><p>You can attend as many or as few as you want. The summit is designed to stand on its own, but the side events are there for people who want the full week experience.</p><p>See the <a class="venue__link" href="#side-events">Side Events</a> section for details.</p></div>
       </details>
       <details class="faq__item">
         <summary class="faq__q"><span class="faq__num">09</span><span class="faq__q-text">What are the <em>side events?</em></span><span class="faq__icon"></span></summary>
-        <div class="faq__a"><p>The week is built around a few smaller, more social gatherings:</p><ul class="faq__bullets"><li>Welcome Dinner for early arrivals, speakers, and sponsors</li><li>Dinner &amp; After Party at Hakkasan after the summit</li><li>bitcoin++ Builder Day at The LAB Miami in Wynwood</li><li>Biscayne Bay Boat Tour departing from Bayside Marina</li></ul><p>Each event has its own ticket, capacity, and format. See the <a class="venue__link" href="#side-events">Side Events</a> section for details.</p></div>
+        <div class="faq__a"><p>The week is built around a few smaller, more social gatherings:</p><ul class="faq__bullets"><li>Welcome Dinner for early arrivals, speakers, and sponsors</li><li>Dinner &amp; After Party at Hakkasan after the summit</li><li>bitcoin++ Builder Day at The LAB Miami in Wynwood</li><li>Biscayne Bay Boat Tour departing from Bayside Marina</li><li>2027 Miami Marathon — Bitcoiners running together</li></ul><p>Each event has its own ticket, capacity, and format. See the <a class="venue__link" href="#side-events">Side Events</a> section for details.</p></div>
       </details>
       <details class="faq__item">
         <summary class="faq__q"><span class="faq__num">10</span><span class="faq__q-text">Will I get to <em>meet the speakers?</em></span><span class="faq__icon"></span></summary>
@@ -1395,8 +1425,8 @@ body.menu-open{overflow:hidden}
         <div class="tier__ribbon">Limited release</div>
         <div class="tier__eyebrow">Phase 01 · Early Bird</div>
         <h3 class="tier__name">Early <em>Bird</em></h3>
-        <div class="tier__price-wrap"><span class="tier__price">$XXX</span><span class="tier__price-unit">Price TBD</span></div>
-        <p class="tier__desc">Save $XXX vs. final release. The first allotment — closing September 30, or when it's gone.</p>
+        <div class="tier__price-wrap"><span class="tier__price">$495</span><span class="tier__price-unit">USD</span></div>
+        <p class="tier__desc">Save $500 vs. final release. The first allotment — closing September 30, or when it's gone.</p>
         <ul class="tier__list">
           <li>Full-day program · keynotes &amp; panels</li>
           <li>Food &amp; drink · TBD</li>
@@ -1410,8 +1440,8 @@ body.menu-open{overflow:hidden}
       <article class="tier">
         <div class="tier__eyebrow">Phase 02 · Standard</div>
         <h3 class="tier__name">Standard</h3>
-        <div class="tier__price-wrap"><span class="tier__price">$XXX</span><span class="tier__price-unit">Price TBD</span></div>
-        <p class="tier__desc">Save $XXX vs. final release. October 1 through December 31 — the standard rate.</p>
+        <div class="tier__price-wrap"><span class="tier__price">$695</span><span class="tier__price-unit">USD</span></div>
+        <p class="tier__desc">Save $300 vs. final release. October 1 through December 31 — the standard rate.</p>
         <ul class="tier__list">
           <li>Full-day program · keynotes &amp; panels</li>
           <li>Food &amp; drink · TBD</li>
@@ -1425,7 +1455,7 @@ body.menu-open{overflow:hidden}
       <article class="tier tier--premium">
         <div class="tier__eyebrow">Phase 03 · Final Release</div>
         <h3 class="tier__name">Final <em>Release</em></h3>
-        <div class="tier__price-wrap"><span class="tier__price">$XXX</span><span class="tier__price-unit">Price TBD</span></div>
+        <div class="tier__price-wrap"><span class="tier__price">$995</span><span class="tier__price-unit">USD</span></div>
         <p class="tier__desc">What remains after December 31. If anything does.</p>
         <ul class="tier__list">
           <li>Full-day program · keynotes &amp; panels</li>
