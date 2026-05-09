@@ -587,24 +587,24 @@ body.menu-open{overflow:hidden}
 @media (max-width:640px){.faq__q{grid-template-columns:30px 1fr 24px;gap:.75rem}.faq__a{padding-left:40px}}
 
 /* FRIENDS */
-.friends__tier{margin-top:2rem}
+.friends__tier{margin-top:1rem}
 .friends__tier:first-of-type{margin-top:0}
 .friends__tier--hidden{display:none}
-.friends__tier-label{font-family:var(--fm);font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink);display:flex;align-items:baseline;gap:.85rem;margin:0 0 .65rem}
+.friends__tier-label{font-family:var(--fm);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);display:flex;align-items:baseline;gap:.75rem;margin:0 0 .35rem}
 .friends__tier-label::after{content:"";flex:1;height:1px;background:var(--ink)}
 .friends__grid{display:grid;gap:0;border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
 .friends__grid--platinum{grid-template-columns:1fr}
 .friends__grid--gold{grid-template-columns:repeat(2,1fr)}
 .friends__grid--silver{grid-template-columns:repeat(2,1fr)}
 .friends__grid--activation{grid-template-columns:repeat(4,1fr)}
-.friend{padding:2.25rem 1rem;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;text-align:center;min-height:140px;transition:background .2s;text-decoration:none;color:inherit;position:relative}
-.friend--platinum{min-height:210px;padding:3rem 1.5rem;gap:.75rem}
-.friend--platinum .friend__name{font-size:2rem}
-.friend--gold{min-height:175px;padding:2.5rem 1.25rem}
-.friend--gold .friend__name{font-size:1.6rem}
-.friend--silver{min-height:140px}
-.friend--activation{min-height:115px;padding:1.5rem .75rem;gap:.4rem}
-.friend--activation .friend__name{font-size:1.1rem}
+.friend{padding:1rem .9rem;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;text-align:center;min-height:80px;transition:background .2s;text-decoration:none;color:inherit;position:relative}
+.friend--platinum{min-height:110px;padding:1.25rem 1.25rem;gap:.4rem}
+.friend--platinum .friend__name{font-size:1.55rem}
+.friend--gold{min-height:90px;padding:1rem 1rem}
+.friend--gold .friend__name{font-size:1.3rem}
+.friend--silver{min-height:80px}
+.friend--activation{min-height:62px;padding:.7rem .6rem;gap:.25rem}
+.friend--activation .friend__name{font-size:.95rem}
 .friends__grid--activation > .friend:last-child:nth-child(4n+3){grid-column:span 2}
 .friend--hidden{display:none}
 .friend.friend--hidden{display:none}
@@ -612,9 +612,10 @@ body.menu-open{overflow:hidden}
 .friend:hover .friend__name{color:var(--accent-deep)}
 .friend__logo{display:none}
 .friend__text{display:contents}
-.friend__name{font-family:var(--fd);font-size:1.35rem;font-style:italic;line-height:1.1}
-.friend__type{font-family:var(--fm);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
-.friends__actions{display:flex;justify-content:center;margin-top:2rem}
+.friend__name{font-family:var(--fd);font-size:1.15rem;font-style:italic;line-height:1.1}
+.friend__type{font-family:var(--fm);font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+.friends__actions{display:flex;justify-content:center;margin-top:1rem}
+.friends{padding:.5rem 0 1.5rem !important}
 .friends__toggle-hide{display:none}
 .friends__toggle[aria-expanded="true"] .friends__toggle-show{display:none}
 .friends__toggle[aria-expanded="true"] .friends__toggle-hide{display:inline}
