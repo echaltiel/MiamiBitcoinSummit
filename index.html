@@ -78,8 +78,8 @@
 }
 :root{--ink:#131e33;--ink-deep:#0a1224;--ink-soft:#2b3a58;--paper:#F4ECE0;--paper-deep:#EADFCC;--paper-light:#FAF5EA;--accent:#D9651F;--accent-deep:#A84810;--rule:rgba(19,30,51,.18);--rule-str:rgba(19,30,51,.35);--fd:'Instrument Serif',Georgia,serif;--fb:'Archivo',system-ui,sans-serif;--fm:'JetBrains Mono',ui-monospace,monospace;--gut:clamp(1.25rem,3vw,2.5rem);--max:1360px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;scroll-padding-top:120px;background:#F4ECE0;background-color:#F4ECE0;min-height:100%}
-@media (max-width:900px){html{scroll-padding-top:108px}}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;scroll-padding-top:160px;background:#F4ECE0;background-color:#F4ECE0;min-height:100%}
+@media (max-width:900px){html{scroll-padding-top:140px}}
 body{padding-bottom:env(safe-area-inset-bottom)}
 body{font-family:var(--fb);font-size:17px;line-height:1.55;color:var(--ink);background:#F4ECE0;background-color:#F4ECE0;overflow-x:hidden;min-height:100vh}
 img,svg{display:block;max-width:100%}
@@ -377,8 +377,8 @@ body.menu-open{overflow:hidden}
 }
 
 /* TICKETS */
-.tickets{padding:3rem 0 2rem !important}
-.tickets .sec-hd{margin-bottom:clamp(.85rem,1.75vw,1.25rem)}
+.tickets{padding:3.5rem 0 2rem !important}
+.tickets .sec-hd{margin-bottom:clamp(.85rem,1.75vw,1.25rem);padding-top:1.5rem}
 .tickets .section-title{font-size:clamp(1.6rem,3vw,2.5rem)}
 .tickets__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
 .tier{background:var(--paper-light);border:1px solid var(--ink);padding:1.15rem 1.15rem 1.1rem;position:relative;display:flex;flex-direction:column;min-height:auto;transition:transform .3s,box-shadow .3s}
@@ -433,8 +433,8 @@ body.menu-open{overflow:hidden}
 
 
 /* SIDE EVENTS */
-.side-events{padding:3rem 0 2rem !important}
-.side-events .sec-hd{margin-bottom:clamp(.85rem,1.75vw,1.25rem)}
+.side-events{padding:3.5rem 0 2rem !important}
+.side-events .sec-hd{margin-bottom:clamp(.85rem,1.75vw,1.25rem);padding-top:1.5rem}
 .side-events .section-title{font-size:clamp(1.6rem,3vw,2.5rem)}
 .side-events__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
 .side-event{padding:1.05rem 1.25rem;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);background:var(--paper-light);display:flex;flex-direction:column;gap:.45rem;transition:background .3s;text-decoration:none;color:inherit}
@@ -460,14 +460,14 @@ body.menu-open{overflow:hidden}
 .side-events__grid > .side-event:nth-child(odd):last-child{grid-column:1/-1}
 @media (max-width:720px){.side-events__grid{grid-template-columns:1fr}}
 @media (max-width:520px){
-  .side-events{padding:2.25rem 0 1.5rem !important}
+  .side-events{padding:2.75rem 0 1.5rem !important}
   .side-events .sec-hd{margin-bottom:.5rem;gap:.4rem}
   .side-events .sec-hd__num{padding-top:.45rem;font-size:.7rem}
   .side-events .section-title{font-size:1.4rem}
   .side-events .sec-hd__title{padding-top:0}
   .side-event{
     display:grid;
-    grid-template-columns:74px 1fr;
+    grid-template-columns:100px 1fr;
     column-gap:.95rem;
     align-items:start;
     padding:.65rem .95rem;
@@ -1592,11 +1592,12 @@ body.menu-open{overflow:hidden}
         closeMenu();
         // wait for menu transform + scroll-lock release before scrolling
         setTimeout(() => {
-          // Manual scroll that accounts for the sticky nav height (~77px on mobile)
-          // scrollIntoView ignores scroll-padding-top, so we calculate the offset ourselves
+          // Manual scroll that accounts for the sticky nav height plus generous breathing room.
+          // scrollIntoView ignores scroll-padding-top, so we calculate the offset ourselves.
+          // 40px buffer below nav matches the visual breathing room that scroll-padding-top gives.
           const navHeight = document.getElementById('navWrap')?.getBoundingClientRect().height || 80;
           const targetTop = target.getBoundingClientRect().top + window.scrollY;
-          window.scrollTo({ top: targetTop - navHeight - 12, behavior: 'smooth' });
+          window.scrollTo({ top: targetTop - navHeight - 40, behavior: 'smooth' });
         }, 280);
       });
     });
