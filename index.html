@@ -473,7 +473,9 @@ body.menu-open{overflow:hidden}
 .side-events .sec-hd{margin-bottom:clamp(.85rem,1.75vw,1.25rem);padding-top:1.5rem}
 .side-events .section-title{font-size:clamp(1.6rem,3vw,2.5rem)}
 .side-events__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
-.side-event{padding:.7rem .95rem;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);background:var(--paper-light);display:flex;flex-direction:column;gap:.3rem;transition:background .3s;text-decoration:none;color:inherit}
+.side-event{padding:.7rem .95rem;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);background:var(--paper-light);display:flex;flex-direction:column;gap:.3rem;transition:background .3s;text-decoration:none;color:inherit;position:relative}
+.side-event__link{position:absolute;inset:0;z-index:1;text-decoration:none}
+.side-event__link:focus-visible{outline:2px solid var(--accent-deep);outline-offset:-3px}
 .side-event:hover{background:var(--paper-deep)}
 .side-event:hover .side-event__title{color:var(--accent-deep)}
 .side-event__date{font-family:var(--fm);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-deep)}
@@ -487,7 +489,7 @@ body.menu-open{overflow:hidden}
 .side-event__meta{font-family:var(--fm);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);padding-top:.35rem;border-top:1px solid var(--rule)}
 .side-event__top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;width:100%}
 .side-event__when{display:flex;flex-direction:column;gap:.05rem}
-.side-event__sponsor{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--fm);font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);padding:.4rem .65rem;border:1px dashed var(--rule-str);background:transparent;transition:all .25s ease;text-decoration:none;flex-shrink:0}
+.side-event__sponsor{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--fm);font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);padding:.4rem .65rem;border:1px dashed var(--rule-str);background:transparent;transition:all .25s ease;text-decoration:none;flex-shrink:0;position:relative;z-index:2}
 .side-event__sponsor:hover{background:var(--ink);color:var(--paper);border-color:var(--ink);border-style:solid}
 .side-event__sponsor-label{color:var(--accent-deep);transition:color .25s ease}
 .side-event__sponsor:hover .side-event__sponsor-label{color:var(--accent)}
@@ -1221,6 +1223,7 @@ body.menu-open{overflow:hidden}
     </header>
     <div class="side-events__grid">
       <article class="side-event">
+        <a class="side-event__link" href="#" aria-label="Bitcoin for Beginners — more info"></a>
         <div class="side-event__top">
           <div class="side-event__when">
             <div class="side-event__date">Wed · Jan 27</div>
@@ -1234,6 +1237,7 @@ body.menu-open{overflow:hidden}
         <div class="side-event__meta">Free with ticket · Limited seats</div>
       </article>
       <article class="side-event">
+        <a class="side-event__link" href="#" aria-label="Welcome Dinner — more info"></a>
         <div class="side-event__top">
           <div class="side-event__when">
             <div class="side-event__date">Wed · Jan 27</div>
@@ -1247,6 +1251,7 @@ body.menu-open{overflow:hidden}
         <div class="side-event__meta">$295 · Separate ticket</div>
       </article>
       <article class="side-event">
+        <a class="side-event__link" href="#" aria-label="After Party — more info"></a>
         <div class="side-event__top">
           <div class="side-event__when">
             <div class="side-event__date">Thu · Jan 28</div>
@@ -1260,6 +1265,7 @@ body.menu-open{overflow:hidden}
         <div class="side-event__meta">$195 · Separate ticket</div>
       </article>
       <article class="side-event">
+        <a class="side-event__link" href="#" aria-label="bitcoin++ finds liquidity — more info"></a>
         <div class="side-event__top">
           <div class="side-event__when">
             <div class="side-event__date">Fri · Jan 29</div>
@@ -1273,6 +1279,7 @@ body.menu-open{overflow:hidden}
         <div class="side-event__meta">$149 · Separate ticket</div>
       </article>
       <article class="side-event">
+        <a class="side-event__link" href="#" aria-label="Biscayne Bay Boat Tour — more info"></a>
         <div class="side-event__top">
           <div class="side-event__when">
             <div class="side-event__date">Sat · Jan 30</div>
@@ -1286,12 +1293,12 @@ body.menu-open{overflow:hidden}
         <div class="side-event__meta">$99 · Separate ticket</div>
       </article>
       <article class="side-event">
+        <a class="side-event__link" href="#" aria-label="2027 Miami Marathon — sign up"></a>
         <div class="side-event__top">
           <div class="side-event__when">
             <div class="side-event__date">Sun · Jan 31</div>
             <div class="side-event__time">From 6AM</div>
           </div>
-          <a class="side-event__sponsor" href="#sponsor"><span class="side-event__sponsor-label">Presented by</span> Sponsor Name <span class="side-event__sponsor-arrow">→</span></a>
         </div>
         <h3 class="side-event__title">2027 Miami <em>Marathon</em></h3>
         <div class="side-event__venue"><span class="side-event__venue-label">Start</span><span class="side-event__venue-name">Downtown Miami → Bayfront Park</span></div>
@@ -1306,7 +1313,7 @@ body.menu-open{overflow:hidden}
   <div class="container">
     <header class="sec-hd" id="sponsors">
       <div class="sec-hd__num">Nº 04 — Sponsors</div>
-      <h2 class="section-title sec-hd__title">Bitcoin-only. <em>Hand-picked.</em></h2>
+      <h2 class="section-title sec-hd__title">Hand-picked. <em>Aligned with bitcoin.</em></h2>
     </header>
     <div class="friends__tier friends__tier--platinum">
       <div class="friends__tier-label"><span>Platinum</span></div>
