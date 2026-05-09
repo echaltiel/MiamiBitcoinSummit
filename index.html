@@ -80,7 +80,6 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;scroll-padding-top:95px;background:#F4ECE0;background-color:#F4ECE0;min-height:100%}
 @media (max-width:900px){html{scroll-padding-top:80px}}
-section[id],[id="side-events"],[id="sponsors"],[id="venue"],[id="faq"],[id="speakers"],[id="agenda"],[id="tickets"]{scroll-margin-top:95px}
 body{padding-bottom:env(safe-area-inset-bottom)}
 body{font-family:var(--fb);font-size:17px;line-height:1.55;color:var(--ink);background:#F4ECE0;background-color:#F4ECE0;overflow-x:hidden;min-height:100vh}
 img,svg{display:block;max-width:100%}
@@ -450,7 +449,9 @@ body.menu-open{overflow:hidden}
 .side-event__venue-name{font-style:italic;color:var(--accent-deep);font-weight:400}
 .side-event__desc{font-family:var(--fd);font-size:.95rem;line-height:1.35;color:var(--ink-soft);flex:1}
 .side-event__meta{font-family:var(--fm);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);padding-top:.5rem;border-top:1px solid var(--rule)}
-.side-event__sponsor{display:inline-flex;align-items:center;gap:.45rem;align-self:flex-start;font-family:var(--fm);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);padding:.45rem .7rem;border:1px dashed var(--rule-str);background:transparent;transition:all .25s ease;text-decoration:none;margin-top:.15rem}
+.side-event__top{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;width:100%}
+.side-event__when{display:flex;flex-direction:column;gap:.1rem}
+.side-event__sponsor{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--fm);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);padding:.55rem .8rem;border:1px dashed var(--rule-str);background:transparent;transition:all .25s ease;text-decoration:none;flex-shrink:0}
 .side-event__sponsor:hover{background:var(--ink);color:var(--paper);border-color:var(--ink);border-style:solid}
 .side-event__sponsor-label{color:var(--accent-deep);transition:color .25s ease}
 .side-event__sponsor:hover .side-event__sponsor-label{color:var(--accent)}
@@ -472,6 +473,8 @@ body.menu-open{overflow:hidden}
     padding:.65rem .95rem;
     gap:0
   }
+  .side-event__top{display:contents}
+  .side-event__when{display:contents}
   .side-event__date{
     grid-column:1;
     grid-row:1;
@@ -1181,58 +1184,82 @@ body.menu-open{overflow:hidden}
     </header>
     <div class="side-events__grid">
       <article class="side-event">
-        <div class="side-event__date">Wed · Jan 27</div>
-        <div class="side-event__time">5PM — 6:30PM</div>
+        <div class="side-event__top">
+          <div class="side-event__when">
+            <div class="side-event__date">Wed · Jan 27</div>
+            <div class="side-event__time">5PM — 6:30PM</div>
+          </div>
+          <a class="side-event__sponsor" href="#sponsor"><span class="side-event__sponsor-label">Presented by</span> Sponsor Name <span class="side-event__sponsor-arrow">→</span></a>
+        </div>
         <h3 class="side-event__title">Bitcoin <em>for Beginners</em></h3>
         <div class="side-event__venue"><span class="side-event__venue-label">At</span><span class="side-event__venue-name">Fontainebleau</span></div>
         <p class="side-event__desc">Short thirty-minute sessions on the basics, mining, Layer 2, and the rest. The night before the summit, for anyone who wants to walk in already fluent.</p>
         <div class="side-event__meta">Free with ticket · Limited seats</div>
-        <a class="side-event__sponsor" href="#sponsor"><span class="side-event__sponsor-label">Presented by</span> Sponsor Name <span class="side-event__sponsor-arrow">→</span></a>
       </article>
       <article class="side-event">
-        <div class="side-event__date">Wed · Jan 27</div>
-        <div class="side-event__time">7PM — 10PM</div>
+        <div class="side-event__top">
+          <div class="side-event__when">
+            <div class="side-event__date">Wed · Jan 27</div>
+            <div class="side-event__time">7PM — 10PM</div>
+          </div>
+          <a class="side-event__sponsor" href="#sponsor"><span class="side-event__sponsor-label">Presented by</span> Sponsor Name <span class="side-event__sponsor-arrow">→</span></a>
+        </div>
         <h3 class="side-event__title">Welcome <em>Dinner</em></h3>
         <div class="side-event__venue"><span class="side-event__venue-label">At</span><span class="side-event__venue-name">Prime 54</span></div>
         <p class="side-event__desc">The night before, at Fontainebleau's signature steakhouse. Speakers, partners, and a small group of attendees gather over a long table for the first conversations of the week.</p>
         <div class="side-event__meta">$295 · Separate ticket</div>
-        <a class="side-event__sponsor" href="#sponsor"><span class="side-event__sponsor-label">Presented by</span> Sponsor Name <span class="side-event__sponsor-arrow">→</span></a>
       </article>
       <article class="side-event">
-        <div class="side-event__date">Thu · Jan 28</div>
-        <div class="side-event__time">7PM — 10PM</div>
+        <div class="side-event__top">
+          <div class="side-event__when">
+            <div class="side-event__date">Thu · Jan 28</div>
+            <div class="side-event__time">7PM — 10PM</div>
+          </div>
+          <a class="side-event__sponsor" href="#sponsor"><span class="side-event__sponsor-label">Presented by</span> Sponsor Name <span class="side-event__sponsor-arrow">→</span></a>
+        </div>
         <h3 class="side-event__title">After <em>Party &amp; Dinner</em></h3>
         <div class="side-event__venue"><span class="side-event__venue-label">At</span><span class="side-event__venue-name">Hakkasan</span></div>
         <p class="side-event__desc">Drinks, dinner, and unhurried conversation at Michelin-recognized Cantonese on Fontainebleau's fourth floor. The day doesn't end at 5 — the most useful conversations rarely happen in the room.</p>
         <div class="side-event__meta">$195 · Separate ticket</div>
-        <a class="side-event__sponsor" href="#sponsor"><span class="side-event__sponsor-label">Presented by</span> Sponsor Name <span class="side-event__sponsor-arrow">→</span></a>
       </article>
       <article class="side-event">
-        <div class="side-event__date">Fri · Jan 29</div>
-        <div class="side-event__time">10AM — 5PM</div>
+        <div class="side-event__top">
+          <div class="side-event__when">
+            <div class="side-event__date">Fri · Jan 29</div>
+            <div class="side-event__time">10AM — 5PM</div>
+          </div>
+          <a class="side-event__sponsor" href="#sponsor"><span class="side-event__sponsor-label">Presented by</span> Sponsor Name <span class="side-event__sponsor-arrow">→</span></a>
+        </div>
         <h3 class="side-event__title">bitcoin++ <em>finds liquidity</em></h3>
         <div class="side-event__venue"><span class="side-event__venue-label">At</span><span class="side-event__venue-name">The LAB Miami</span></div>
         <p class="side-event__desc">A hands-on builder day in Wynwood with long-form talks, workshops, and deeper conversations around Bitcoin tech. More technical and intimate than the main summit.</p>
         <div class="side-event__meta">$195 · Separate ticket</div>
-        <a class="side-event__sponsor" href="#sponsor"><span class="side-event__sponsor-label">Presented by</span> Sponsor Name <span class="side-event__sponsor-arrow">→</span></a>
       </article>
       <article class="side-event">
-        <div class="side-event__date">Sat · Jan 30</div>
-        <div class="side-event__time">2PM — 5:30PM</div>
+        <div class="side-event__top">
+          <div class="side-event__when">
+            <div class="side-event__date">Sat · Jan 30</div>
+            <div class="side-event__time">2PM — 5:30PM</div>
+          </div>
+          <a class="side-event__sponsor" href="#sponsor"><span class="side-event__sponsor-label">Presented by</span> Sponsor Name <span class="side-event__sponsor-arrow">→</span></a>
+        </div>
         <h3 class="side-event__title">Biscayne Bay <em>Boat Tour</em></h3>
         <div class="side-event__venue"><span class="side-event__venue-label">Meet at</span><span class="side-event__venue-name">Fontainebleau → Bayside Marina</span></div>
         <p class="side-event__desc">A private afternoon cruise through Biscayne Bay with skyline views, ocean air, and one last chance for relaxed conversation before everyone heads home. Shuttle from the Fontainebleau lobby to Bayside Marketplace; departs from Miami Tour Company.</p>
         <div class="side-event__meta">$195 · Separate ticket</div>
-        <a class="side-event__sponsor" href="#sponsor"><span class="side-event__sponsor-label">Presented by</span> Sponsor Name <span class="side-event__sponsor-arrow">→</span></a>
       </article>
       <article class="side-event">
-        <div class="side-event__date">Sun · Jan 31</div>
-        <div class="side-event__time">From 6AM</div>
+        <div class="side-event__top">
+          <div class="side-event__when">
+            <div class="side-event__date">Sun · Jan 31</div>
+            <div class="side-event__time">From 6AM</div>
+          </div>
+          <a class="side-event__sponsor" href="#sponsor"><span class="side-event__sponsor-label">Presented by</span> Sponsor Name <span class="side-event__sponsor-arrow">→</span></a>
+        </div>
         <h3 class="side-event__title">2027 Miami <em>Marathon</em></h3>
         <div class="side-event__venue"><span class="side-event__venue-label">Start</span><span class="side-event__venue-name">Downtown Miami → Bayfront Park</span></div>
         <p class="side-event__desc">The Life Time Miami Marathon &amp; Half — a flat, Boston-qualifying loop with skyline views, ocean breeze, and a finish at Bayfront Park. Full marathon, half marathon, and 5K (on Saturday). Sign up here so Bitcoiners can race together.</p>
         <div class="side-event__meta">Free · Sign up so Bitcoiners can race together</div>
-        <a class="side-event__sponsor" href="#sponsor"><span class="side-event__sponsor-label">Presented by</span> Sponsor Name <span class="side-event__sponsor-arrow">→</span></a>
       </article>
     </div>
   </div>
