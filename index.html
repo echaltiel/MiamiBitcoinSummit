@@ -469,7 +469,7 @@ body.menu-open{overflow:hidden}
 
 
 /* SIDE EVENTS */
-.side-events{padding:2rem 0 2rem !important}
+.side-events{padding:.5rem 0 1.5rem !important}
 .side-events .sec-hd{margin-bottom:clamp(.85rem,1.75vw,1.25rem);padding-top:1.5rem}
 .side-events .section-title{font-size:clamp(1.6rem,3vw,2.5rem)}
 .side-events__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
@@ -1635,7 +1635,7 @@ body.menu-open{overflow:hidden}
   const scrollToAnchor = (target, targetId) => {
     const navHeight = navWrap?.getBoundingClientRect().height || 80;
     // 24px buffer below nav — tight, clean visual separation.
-    const buffer = 24;
+    const buffer = 4;
     const compute = () => getDocumentY(target) - navHeight - buffer;
     window.scrollTo({ top: compute(), behavior: 'smooth' });
     if (targetId && history.pushState) history.pushState(null, '', targetId);
@@ -1659,7 +1659,7 @@ body.menu-open{overflow:hidden}
       window.addEventListener('load', () => {
         setTimeout(() => {
           const navHeight = navWrap?.getBoundingClientRect().height || 80;
-          window.scrollTo({ top: getDocumentY(initialTarget) - navHeight - 24, behavior: 'auto' });
+          window.scrollTo({ top: getDocumentY(initialTarget) - navHeight - 4, behavior: 'auto' });
         }, 50);
       });
     }
