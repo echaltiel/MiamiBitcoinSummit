@@ -78,8 +78,8 @@
 }
 :root{--ink:#131e33;--ink-deep:#0a1224;--ink-soft:#2b3a58;--paper:#F4ECE0;--paper-deep:#EADFCC;--paper-light:#FAF5EA;--accent:#D9651F;--accent-deep:#A84810;--rule:rgba(19,30,51,.18);--rule-str:rgba(19,30,51,.35);--fd:'Instrument Serif',Georgia,serif;--fb:'Archivo',system-ui,sans-serif;--fm:'JetBrains Mono',ui-monospace,monospace;--gut:clamp(1.25rem,3vw,2.5rem);--max:1360px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;scroll-padding-top:160px;background:#F4ECE0;background-color:#F4ECE0;min-height:100%}
-@media (max-width:900px){html{scroll-padding-top:140px}}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;scroll-padding-top:112px;background:#F4ECE0;background-color:#F4ECE0;min-height:100%}
+@media (max-width:900px){html{scroll-padding-top:102px}}
 body{padding-bottom:env(safe-area-inset-bottom)}
 body{font-family:var(--fb);font-size:17px;line-height:1.55;color:var(--ink);background:#F4ECE0;background-color:#F4ECE0;overflow-x:hidden;min-height:100vh}
 img,svg{display:block;max-width:100%}
@@ -383,7 +383,7 @@ body.menu-open{overflow:hidden}
 }
 
 /* TICKETS */
-.tickets{padding:4rem 0 2rem !important}
+.tickets{padding:2rem 0 2rem !important}
 .tickets .sec-hd{margin-bottom:clamp(.85rem,1.75vw,1.25rem);padding-top:1.5rem}
 .tickets .section-title{font-size:clamp(1.6rem,3vw,2.5rem)}
 .tickets__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
@@ -419,7 +419,7 @@ body.menu-open{overflow:hidden}
 .tier--featured .btn:hover{color:var(--ink);border-color:var(--paper)}
 @media (max-width:960px){.tickets__grid{grid-template-columns:1fr}.tier{min-height:auto}}
 @media (max-width:720px){
-  .tickets{padding:2.25rem 0 1.75rem !important}
+  .tickets{padding:1.25rem 0 1.75rem !important}
   .tickets .sec-hd{margin-bottom:.85rem}
   .tickets .section-title{font-size:1.65rem}
   .tickets__grid{gap:1rem}
@@ -439,7 +439,7 @@ body.menu-open{overflow:hidden}
 
 
 /* SIDE EVENTS */
-.side-events{padding:4rem 0 2rem !important}
+.side-events{padding:2rem 0 2rem !important}
 .side-events .sec-hd{margin-bottom:clamp(.85rem,1.75vw,1.25rem);padding-top:1.5rem}
 .side-events .section-title{font-size:clamp(1.6rem,3vw,2.5rem)}
 .side-events__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
@@ -466,7 +466,7 @@ body.menu-open{overflow:hidden}
 .side-events__grid > .side-event:nth-child(odd):last-child{grid-column:1/-1}
 @media (max-width:720px){.side-events__grid{grid-template-columns:1fr}}
 @media (max-width:520px){
-  .side-events{padding:3.75rem 0 1.5rem !important}
+  .side-events{padding:2rem 0 1.5rem !important}
   .side-events .sec-hd{margin-bottom:.5rem;gap:.4rem}
   .side-events .sec-hd__num{padding-top:.45rem;font-size:.7rem}
   .side-events .section-title{font-size:1.4rem}
@@ -1546,19 +1546,71 @@ body.menu-open{overflow:hidden}
 
 <script>
   const navWrap = document.getElementById('navWrap');
+  // Defensive runtime overrides — these inline styles with !important beat any cached CSS
+  // that might still have older values (large section padding, scroll-margin-top, etc).
+  // This guarantees the tight layout works even if CDN/browser is serving stale stylesheets.
+  document.documentElement.style.setProperty('scroll-padding-top', '112px', 'important');
+  document.querySelectorAll('[id]').forEach((el) => {
+    if (el.style) el.style.setProperty('scroll-margin-top', '0px', 'important');
+  });
+  document.querySelectorAll('.side-events, .tickets').forEach((el) => {
+    if (el.style) {
+      el.style.setProperty('padding-top', '1.5rem', 'important');
+    }
+  });
+  // Match mobile via CSS-style media query check
+  if (window.matchMedia('(max-width: 900px)').matches) {
+    document.documentElement.style.setProperty('scroll-padding-top', '102px', 'important');
+  }
+  if (window.matchMedia('(max-width: 520px)').matches) {
+    document.querySelectorAll('.side-events').forEach((el) => {
+      if (el.style) el.style.setProperty('padding-top', '1.25rem', 'important');
+    });
+  }
+  // Compute layout-position Y of an element relative to the document, bypassing any
+  // CSS transforms (e.g., the .reveal class's translateY(18px) which would otherwise
+  // throw off scroll calculations).
+  const getDocumentY = (el) => {
+    let y = 0;
+    while (el) { y += el.offsetTop; el = el.offsetParent; }
+    return y;
+  };
   // Shared scroll function — used for ALL in-page anchor clicks (desktop nav, mobile menu,
   // brand link, FAQ inline links, etc). Bypasses browser scroll-padding-top to avoid
   // iOS Safari quirks with smooth scrolling, and guarantees consistent breathing room
   // below the sticky nav regardless of which link was clicked.
   const scrollToAnchor = (target, targetId) => {
     const navHeight = navWrap?.getBoundingClientRect().height || 80;
-    // 40px buffer below nav — generous breathing room so the section header isn't
-    // cramped against the nav. Adjust this single value to tune all scroll offsets.
-    const buffer = 40;
-    const targetTop = target.getBoundingClientRect().top + window.scrollY;
-    window.scrollTo({ top: targetTop - navHeight - buffer, behavior: 'smooth' });
+    // 24px buffer below nav — tight, clean visual separation.
+    const buffer = 24;
+    const compute = () => getDocumentY(target) - navHeight - buffer;
+    window.scrollTo({ top: compute(), behavior: 'smooth' });
     if (targetId && history.pushState) history.pushState(null, '', targetId);
+    // Defensive: re-check position after smooth scroll, correct if anything (cached CSS,
+    // browser quirks) interfered. Snap to correct position without animation.
+    setTimeout(() => {
+      const expected = navHeight + buffer;
+      const actualTop = target.getBoundingClientRect().top;
+      if (Math.abs(actualTop - expected) > 4) {
+        window.scrollTo({ top: compute(), behavior: 'auto' });
+      }
+    }, 950);
   };
+  // On initial page load with a URL hash, override the browser's default scroll behavior
+  // (which uses scroll-padding-top and may be subject to caching/browser quirks) with our
+  // own scrollToAnchor so the offset is always exactly what we want.
+  if (window.location.hash) {
+    const initialTarget = document.querySelector(window.location.hash);
+    if (initialTarget) {
+      // Wait for layout to settle, then scroll. behavior:auto here for immediate jump.
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const navHeight = navWrap?.getBoundingClientRect().height || 80;
+          window.scrollTo({ top: getDocumentY(initialTarget) - navHeight - 24, behavior: 'auto' });
+        }, 50);
+      });
+    }
+  }
   // Wire up every in-page anchor link to use the shared scroll handler. Mobile menu
   // links have their own handler that calls this function after closing the menu.
   // Hero scroll arrow has its own custom scroll behavior, so exclude it.
