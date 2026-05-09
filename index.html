@@ -394,6 +394,28 @@ body.menu-open{overflow:hidden}
 .tier--featured::before{background:var(--accent)}
 .tier--premium{border-color:var(--accent-deep)}
 .tier--premium::before{background:var(--accent-deep)}
+/* ALL ACCESS — full-width hero tier with deep teal + warm gold (distinct from --featured navy+orange) */
+.tier--allaccess{grid-column:1/-1;background:#0E4C5C;color:var(--paper-light);border-color:#0E4C5C;padding:1.5rem 1.5rem 1.4rem;margin-bottom:.5rem}
+.tier--allaccess::before{background:#D4A93C;height:6px}
+.tier--allaccess:hover{transform:translateY(-3px);box-shadow:0 16px 44px -22px rgba(14,76,92,.45)}
+.tier__allaccess-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(1.25rem,3vw,2.75rem);align-items:start}
+.tier__allaccess-left{display:flex;flex-direction:column}
+.tier--allaccess .tier__eyebrow{color:#D4A93C;opacity:1}
+.tier--allaccess .tier__name{font-size:clamp(1.6rem,2.6vw,2.25rem)}
+.tier--allaccess .tier__name em{color:#D4A93C}
+.tier--allaccess .tier__price{font-size:clamp(2rem,3.5vw,2.75rem)}
+.tier--allaccess .tier__price-wrap{border-bottom-color:rgba(244,236,224,.28);padding-bottom:.85rem;margin-bottom:.85rem;align-items:baseline;gap:.5rem;flex-wrap:wrap}
+.tier--allaccess .tier__price-strike{font-family:var(--fd);font-size:1.05rem;color:var(--paper-deep);text-decoration:line-through;opacity:.55;margin-left:.15rem}
+.tier--allaccess .tier__price-unit{color:var(--paper-deep)}
+.tier--allaccess .tier__desc{color:var(--paper);opacity:.92;font-size:.95rem;margin-bottom:1.1rem}
+.tier--allaccess .tier__list{margin-bottom:0;flex:0}
+.tier--allaccess .tier__list li{border-bottom-color:rgba(244,236,224,.18);padding:.34rem 0;font-size:.85rem}
+.tier--allaccess .tier__list li::before{color:#D4A93C;font-weight:600}
+.tier--allaccess .tier__list strong{font-weight:500;color:#D4A93C;font-family:var(--fm);font-size:.78em;letter-spacing:.06em;margin-left:auto;padding-left:.5rem;white-space:nowrap}
+.tier--allaccess .btn{background:#D4A93C;color:#0E4C5C;border-color:#D4A93C;padding:.95rem 1.4rem;font-size:.74rem;align-self:flex-start;margin-top:auto}
+.tier--allaccess .btn::before{background:var(--paper-light)}
+.tier--allaccess .btn:hover{color:#0E4C5C;border-color:var(--paper-light)}
+.tier--allaccess .tier__ribbon{background:#D4A93C;color:#0E4C5C;font-size:.62rem;padding:.32rem .8rem}
 .tier__ribbon{position:absolute;top:-9px;right:1.25rem;background:var(--accent);color:var(--ink);font-family:var(--fm);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;padding:.25rem .65rem;font-weight:500}
 .tier__eyebrow{font-family:var(--fm);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.55rem}
 .tier--featured .tier__eyebrow{color:var(--accent)}
@@ -417,7 +439,7 @@ body.menu-open{overflow:hidden}
 .tier--featured .btn{background:var(--accent);color:var(--ink);border-color:var(--accent)}
 .tier--featured .btn::before{background:var(--paper)}
 .tier--featured .btn:hover{color:var(--ink);border-color:var(--paper)}
-@media (max-width:960px){.tickets__grid{grid-template-columns:1fr}.tier{min-height:auto}}
+@media (max-width:960px){.tickets__grid{grid-template-columns:1fr}.tier{min-height:auto}.tier__allaccess-grid{grid-template-columns:1fr;gap:1.25rem}}
 @media (max-width:720px){
   .tickets{padding:1.25rem 0 1.75rem !important}
   .tickets .sec-hd{margin-bottom:.85rem}
@@ -433,6 +455,12 @@ body.menu-open{overflow:hidden}
   .tier__list{margin-bottom:.9rem}
   .tier__list li{padding:.28rem 0;font-size:.82rem;line-height:1.3}
   .tier .btn{padding:.85rem 1rem;font-size:.7rem}
+  .tier--allaccess{padding:1.1rem 1.1rem 1.1rem}
+  .tier--allaccess .tier__name{font-size:1.6rem}
+  .tier--allaccess .tier__price{font-size:1.85rem}
+  .tier--allaccess .tier__price-strike{font-size:.95rem}
+  .tier--allaccess .tier__list li{font-size:.78rem}
+  .tier--allaccess .tier__list strong{font-size:.7em}
   .tickets__trust{margin-top:1rem;font-size:.85rem;line-height:1.45}
 }
 .tickets__trust{margin:1.75rem auto 0;max-width:760px;text-align:center;font-family:var(--fd);font-style:italic;font-size:.92rem;line-height:1.55;color:var(--ink-soft)}
@@ -1451,9 +1479,32 @@ body.menu-open{overflow:hidden}
   <div class="container">
     <header class="sec-hd" id="tickets">
       <div class="sec-hd__num">Nº 07 — Admission</div>
-      <h2 class="section-title sec-hd__title">Same Thursday. <em>Three prices.</em></h2>
+      <h2 class="section-title sec-hd__title">Pick your <em>way in.</em></h2>
     </header>
     <div class="tickets__grid">
+      <article class="tier tier--allaccess">
+        <div class="tier__ribbon">Save $738</div>
+        <div class="tier__allaccess-grid">
+          <div class="tier__allaccess-left">
+            <div class="tier__eyebrow">All Access · Early Bird</div>
+            <h3 class="tier__name">All <em>Access</em></h3>
+            <div class="tier__price-wrap"><span class="tier__price">$995</span><span class="tier__price-unit">USD</span><span class="tier__price-strike">$1,733</span></div>
+            <p class="tier__desc">Summit ticket plus all four ticketed side events bundled at one Early Bird price. Closing September 30, or when it's gone.</p>
+            <a href="#" class="btn">Reserve All Access <span class="btn__arrow">→</span></a>
+          </div>
+          <div class="tier__allaccess-right">
+            <ul class="tier__list">
+              <li>Full-day Thursday program · keynotes &amp; panels</li>
+              <li>Welcome Dinner at Prime 54 <strong>$295 value</strong></li>
+              <li>After Party at Hakkasan <strong>$195 value</strong></li>
+              <li>bitcoin++ Builder Day at The LAB Miami <strong>$149 value</strong></li>
+              <li>Biscayne Bay Boat Tour <strong>$99 value</strong></li>
+              <li>Sessions recorded · available for playback</li>
+              <li>Hotel block &amp; group rate · see Venue section</li>
+            </ul>
+          </div>
+        </div>
+      </article>
       <article class="tier tier--featured">
         <div class="tier__ribbon">Limited release</div>
         <div class="tier__eyebrow">Phase 01 · Early Bird</div>
