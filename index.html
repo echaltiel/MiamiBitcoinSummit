@@ -233,6 +233,12 @@ body.menu-open{overflow:hidden}
 
 /* PROGRAM */
 .program{background:var(--ink);color:var(--paper);padding:clamp(5rem,10vw,8rem) 0}
+/* Cream fade at the bottom of the program section. Guarantees no dark navy
+   can bleed into the side-events area regardless of where the browser lands
+   the scroll target — iOS Safari's smooth scroll can momentarily overshoot
+   and would otherwise expose a sliver of dark navy below the sticky nav. */
+.program::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(to bottom,transparent,var(--paper));pointer-events:none;z-index:1}
+@media (max-width:720px){.program::after{height:48px}}
 .program .sec-hd__num{color:var(--paper-deep);opacity:.7;border-top-color:var(--paper-deep)}
 .program .section-title{color:var(--paper)}
 .program .section-title em{color:var(--accent)}
@@ -377,7 +383,7 @@ body.menu-open{overflow:hidden}
 }
 
 /* TICKETS */
-.tickets{padding:3.5rem 0 2rem !important}
+.tickets{padding:4rem 0 2rem !important}
 .tickets .sec-hd{margin-bottom:clamp(.85rem,1.75vw,1.25rem);padding-top:1.5rem}
 .tickets .section-title{font-size:clamp(1.6rem,3vw,2.5rem)}
 .tickets__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
@@ -433,7 +439,7 @@ body.menu-open{overflow:hidden}
 
 
 /* SIDE EVENTS */
-.side-events{padding:3.5rem 0 2rem !important}
+.side-events{padding:4rem 0 2rem !important}
 .side-events .sec-hd{margin-bottom:clamp(.85rem,1.75vw,1.25rem);padding-top:1.5rem}
 .side-events .section-title{font-size:clamp(1.6rem,3vw,2.5rem)}
 .side-events__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
@@ -460,7 +466,7 @@ body.menu-open{overflow:hidden}
 .side-events__grid > .side-event:nth-child(odd):last-child{grid-column:1/-1}
 @media (max-width:720px){.side-events__grid{grid-template-columns:1fr}}
 @media (max-width:520px){
-  .side-events{padding:2.75rem 0 1.5rem !important}
+  .side-events{padding:3.75rem 0 1.5rem !important}
   .side-events .sec-hd{margin-bottom:.5rem;gap:.4rem}
   .side-events .sec-hd__num{padding-top:.45rem;font-size:.7rem}
   .side-events .section-title{font-size:1.4rem}
@@ -1540,6 +1546,34 @@ body.menu-open{overflow:hidden}
 
 <script>
   const navWrap = document.getElementById('navWrap');
+  // Shared scroll function — used for ALL in-page anchor clicks (desktop nav, mobile menu,
+  // brand link, FAQ inline links, etc). Bypasses browser scroll-padding-top to avoid
+  // iOS Safari quirks with smooth scrolling, and guarantees consistent breathing room
+  // below the sticky nav regardless of which link was clicked.
+  const scrollToAnchor = (target, targetId) => {
+    const navHeight = navWrap?.getBoundingClientRect().height || 80;
+    // 40px buffer below nav — generous breathing room so the section header isn't
+    // cramped against the nav. Adjust this single value to tune all scroll offsets.
+    const buffer = 40;
+    const targetTop = target.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({ top: targetTop - navHeight - buffer, behavior: 'smooth' });
+    if (targetId && history.pushState) history.pushState(null, '', targetId);
+  };
+  // Wire up every in-page anchor link to use the shared scroll handler. Mobile menu
+  // links have their own handler that calls this function after closing the menu.
+  // Hero scroll arrow has its own custom scroll behavior, so exclude it.
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    if (link.closest('#mobileMenu')) return; // mobile menu links handled separately
+    if (link.classList.contains('hero__scroll')) return; // hero arrow has custom scroll
+    link.addEventListener('click', (e) => {
+      const targetId = link.getAttribute('href');
+      if (!targetId || targetId === '#') return;
+      const target = document.querySelector(targetId);
+      if (!target) return;
+      e.preventDefault();
+      scrollToAnchor(target, targetId);
+    });
+  });
   // Use an invisible sentinel at the top of the page. When it scrolls out of view,
   // the IntersectionObserver fires — off the main thread, no forced reflow. Replaces
   // the old scroll-event + window.scrollY read pattern, which forced layout on every frame.
@@ -1591,14 +1625,7 @@ body.menu-open{overflow:hidden}
         e.preventDefault();
         closeMenu();
         // wait for menu transform + scroll-lock release before scrolling
-        setTimeout(() => {
-          // Manual scroll that accounts for the sticky nav height plus generous breathing room.
-          // scrollIntoView ignores scroll-padding-top, so we calculate the offset ourselves.
-          // 40px buffer below nav matches the visual breathing room that scroll-padding-top gives.
-          const navHeight = document.getElementById('navWrap')?.getBoundingClientRect().height || 80;
-          const targetTop = target.getBoundingClientRect().top + window.scrollY;
-          window.scrollTo({ top: targetTop - navHeight - 40, behavior: 'smooth' });
-        }, 280);
+        setTimeout(() => { scrollToAnchor(target, targetId); }, 280);
       });
     });
     document.addEventListener('keydown', (e) => {
