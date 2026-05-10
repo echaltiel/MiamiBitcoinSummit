@@ -760,7 +760,7 @@ body.menu-open{overflow:hidden}
 .friends__grid--silver{grid-template-columns:repeat(2,1fr)}
 .friends__grid--activation{grid-template-columns:repeat(4,1fr)}
 .friend{padding:1rem .9rem;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;text-align:center;min-height:80px;transition:background .2s;text-decoration:none;color:inherit;position:relative}
-.friend--platinum{min-height:110px;padding:1.25rem 1.25rem;gap:.4rem}
+.friend--platinum{min-height:auto;padding:1.4rem 1.25rem;gap:.4rem}
 .friend--platinum .friend__name{font-size:1.55rem}
 .friend--gold{min-height:90px;padding:1rem 1rem}
 .friend--gold .friend__name{font-size:1.3rem}
@@ -869,19 +869,30 @@ body.menu-open{overflow:hidden}
     height:56px;
     background:var(--ink)
   }
-  /* Platinum override — transparent bg so logo image renders cleanly on mobile */
+  /* Platinum override — column-centered hero treatment on mobile */
+  .friend--platinum{
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    text-align:center !important;
+    padding:1.1rem 1rem !important;
+    gap:.4rem !important;
+  }
   .friend--platinum .friend__logo{
     background:transparent;
     display:flex;
     align-items:center;
     justify-content:center;
-    flex:0 0 64px;
-    width:64px;
-    height:64px;
+    flex:0 0 auto;
+    width:auto;
+    height:54px;
+    max-width:220px;
+    margin-bottom:.15rem;
   }
   .friend--platinum .friend__logo img{
-    width:100%;
+    width:auto;
     height:100%;
+    max-width:100%;
     object-fit:contain;
     display:block;
   }
@@ -891,6 +902,18 @@ body.menu-open{overflow:hidden}
     font-size:1.6rem;
     color:#2a2d3a;
     opacity:.55;
+  }
+  .friend--platinum .friend__text{align-items:center;text-align:center}
+  .friend--platinum .friend__name{display:none}
+  .friend--platinum .friend__type{
+    font-family:var(--fm);
+    font-size:.55rem;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:#3a4060;
+    opacity:.75;
+    font-weight:500;
+    font-style:normal;
   }
   /* Gold / Silver / Activation — same transparent treatment, scaled down */
   .friend--gold .friend__logo,
@@ -1051,43 +1074,60 @@ body.menu-open{overflow:hidden}
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.85),
     inset 0 -1px 0 rgba(120,140,180,0.18),
-    0 0 28px rgba(160,180,210,0.3),
-    0 0 56px rgba(200,215,240,0.18);
-  flex-direction:row;
+    0 0 32px rgba(160,180,210,0.35),
+    0 0 64px rgba(200,215,240,0.2);
+  flex-direction:column;
   justify-content:center;
-  gap:1.5rem;
-  padding:1.5rem 1.75rem;
-  min-height:130px;
+  align-items:center;
+  gap:.5rem;
+  padding:1.4rem 1.5rem 1.2rem;
+  min-height:auto;
 }
 .friend--platinum .friend__logo{
   display:flex;
   align-items:center;
   justify-content:center;
   flex:0 0 auto;
-  width:80px;
-  height:80px;
+  width:auto;
+  height:84px;
+  max-width:340px;
   background:transparent;
   position:relative;
   z-index:2;
+  margin-bottom:.25rem;
 }
 .friend--platinum .friend__logo img{
-  width:100%;
+  width:auto;
   height:100%;
+  max-width:100%;
   object-fit:contain;
   display:block;
 }
 .friend--platinum .friend__logo-fallback{
   font-family:var(--fd);
   font-style:italic;
-  font-size:2.5rem;
+  font-size:2.2rem;
   color:#2a2d3a;
   opacity:.55;
+  letter-spacing:-.02em;
 }
-.friend--platinum .friend__logo .friend__logo-fallback{display:flex}
+.friend--platinum .friend__logo--has-image .friend__logo-fallback{display:none}
 .friend--platinum .friend__text{
-  align-items:flex-start;
-  text-align:left;
-  flex:0 1 auto;
+  align-items:center;
+  text-align:center;
+  flex:0 0 auto;
+}
+/* Hide the redundant company name when logo includes the wordmark.
+   The logo already says "Mastercard" — repeating it is visual noise. */
+.friend--platinum .friend__name{display:none}
+.friend--platinum .friend__type{
+  font-family:var(--fm);
+  font-size:.62rem;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:#3a4060;
+  opacity:.75;
+  font-weight:500;
 }
 .friend--platinum::before{
   background:linear-gradient(90deg,
