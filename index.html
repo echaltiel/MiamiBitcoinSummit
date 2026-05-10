@@ -762,9 +762,10 @@ body.menu-open{overflow:hidden}
 .friend{padding:1rem .9rem;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;text-align:center;min-height:80px;transition:background .2s;text-decoration:none;color:inherit;position:relative}
 .friend--platinum{min-height:auto;padding:1.4rem 1.25rem;gap:.4rem}
 .friend--platinum .friend__name{font-size:1.55rem}
-.friend--gold{min-height:90px;padding:1rem 1rem}
-.friend--gold .friend__name{font-size:1.3rem}
-.friend--silver{min-height:80px}
+.friend--gold{min-height:auto;padding:1.1rem 1rem 1rem;gap:.35rem}
+.friend--gold .friend__name{font-size:1.05rem}
+.friend--silver{min-height:auto;padding:.95rem 1rem .85rem;gap:.3rem}
+.friend--silver .friend__name{font-size:.95rem}
 .friend--activation{min-height:62px;padding:.7rem .6rem;gap:.25rem}
 .friend--activation .friend__name{font-size:.95rem}
 .friends__grid--activation > .friend:last-child:nth-child(4n+3){grid-column:span 2}
@@ -774,8 +775,37 @@ body.menu-open{overflow:hidden}
 .friend:hover .friend__name{color:var(--accent-deep)}
 .friend__logo{display:none}
 /* Gold / Silver / Activation logo support — show logo area when tier card has a logo image */
+/* Gold / Silver — hero-logo-first centered (matches platinum pattern, scaled down) */
 .friend--gold .friend__logo,
-.friend--silver .friend__logo,
+.friend--silver .friend__logo{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:transparent;
+  position:relative;
+  z-index:2;
+  flex:0 0 auto;
+  width:auto;
+  max-width:100%;
+}
+.friend--gold .friend__logo{height:46px;max-width:200px;margin-bottom:.25rem}
+.friend--silver .friend__logo{height:38px;max-width:170px;margin-bottom:.2rem}
+.friend--gold .friend__logo img,
+.friend--silver .friend__logo img{
+  width:auto;
+  height:100%;
+  max-width:100%;
+  object-fit:contain;
+  display:block;
+}
+/* Activation — compact horizontal (logo + text on one row) */
+.friend--activation{
+  flex-direction:row;
+  align-items:center;
+  justify-content:center;
+  gap:.55rem;
+  text-align:left;
+}
 .friend--activation .friend__logo{
   display:flex;
   align-items:center;
@@ -783,28 +813,54 @@ body.menu-open{overflow:hidden}
   background:transparent;
   position:relative;
   z-index:2;
-  flex-shrink:0;
+  flex:0 0 32px;
+  width:32px;
+  height:32px;
+  margin-bottom:0;
 }
-.friend--gold .friend__logo{width:56px;height:56px;margin-bottom:.4rem}
-.friend--silver .friend__logo{width:48px;height:48px;margin-bottom:.35rem}
-.friend--activation .friend__logo{width:40px;height:40px;margin-bottom:.25rem}
-.friend--gold .friend__logo img,
-.friend--silver .friend__logo img,
 .friend--activation .friend__logo img{
   width:100%;
   height:100%;
   object-fit:contain;
   display:block;
 }
+.friend--activation .friend__text{
+  align-items:flex-start;
+  text-align:left;
+}
+/* Fallback placeholders for all tiers */
 .friend--gold .friend__logo-fallback,
-.friend--silver .friend__logo-fallback,
+.friend--silver .friend__logo-fallback{
+  font-family:var(--fd);
+  font-style:italic;
+  font-size:1.4rem;
+  letter-spacing:-.01em;
+  opacity:.5;
+}
+.friend--gold .friend__logo-fallback{color:#4a3208}
+.friend--silver .friend__logo-fallback{color:#14151a}
 .friend--activation .friend__logo-fallback{
   font-family:var(--fm);
-  font-size:.7rem;
+  font-size:.62rem;
   letter-spacing:.18em;
   color:currentColor;
   opacity:.4;
 }
+/* Hide tier name when wordmark is in logo (consistent with platinum pattern).
+   Show only when logo file isn't present yet. */
+.friend--gold .friend__logo--has-image ~ .friend__text .friend__name,
+.friend--silver .friend__logo--has-image ~ .friend__text .friend__name{display:none}
+/* Tier label refinement (matches platinum styling) */
+.friend--gold .friend__type,
+.friend--silver .friend__type{
+  font-family:var(--fm);
+  font-size:.55rem;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  font-weight:500;
+}
+.friend--gold .friend__type{color:#4a3208;opacity:.8}
+.friend--silver .friend__type{color:#14151a;opacity:.7}
 /* Hide the placeholder once a logo image successfully loads */
 .friend__logo--has-image .friend__logo-fallback{display:none}
 .friend__text{display:contents}
@@ -915,15 +971,89 @@ body.menu-open{overflow:hidden}
     font-weight:500;
     font-style:normal;
   }
-  /* Gold / Silver / Activation — same transparent treatment, scaled down */
+  /* Gold / Silver — column-centered hero treatment on mobile (matches platinum) */
+  .friend--gold,
+  .friend--silver{
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    text-align:center !important;
+    padding:.95rem 1rem !important;
+    gap:.3rem !important;
+  }
   .friend--gold .friend__logo,
-  .friend--silver .friend__logo,
+  .friend--silver .friend__logo{
+    background:transparent;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex:0 0 auto;
+    width:auto;
+    max-width:180px;
+    margin-bottom:.15rem;
+  }
+  .friend--gold .friend__logo{height:42px}
+  .friend--silver .friend__logo{height:36px}
+  .friend--gold .friend__logo img,
+  .friend--silver .friend__logo img{
+    width:auto;
+    height:100%;
+    max-width:100%;
+    object-fit:contain;
+    display:block;
+  }
+  .friend--gold .friend__logo-fallback,
+  .friend--silver .friend__logo-fallback{
+    font-family:var(--fd);
+    font-style:italic;
+    font-size:1.3rem;
+    opacity:.55;
+  }
+  .friend--gold .friend__logo-fallback{color:#4a3208}
+  .friend--silver .friend__logo-fallback{color:#14151a}
+  .friend--gold .friend__text,
+  .friend--silver .friend__text{align-items:center;text-align:center}
+  .friend--gold .friend__name,
+  .friend--silver .friend__name{font-style:normal}
+  .friend--gold .friend__logo--has-image ~ .friend__text .friend__name,
+  .friend--silver .friend__logo--has-image ~ .friend__text .friend__name{display:none}
+  .friend--gold .friend__type,
+  .friend--silver .friend__type{
+    font-family:var(--fm);
+    font-size:.52rem;
+    letter-spacing:.26em;
+    text-transform:uppercase;
+    font-weight:500;
+    font-style:normal;
+  }
+  .friend--gold .friend__type{color:#4a3208;opacity:.8}
+  .friend--silver .friend__type{color:#14151a;opacity:.7}
+
+  /* Activation — compact horizontal layout, consistent across all 7 cards */
+  .friend--activation{
+    flex-direction:row !important;
+    align-items:center !important;
+    justify-content:flex-start !important;
+    text-align:left !important;
+    padding:.65rem .85rem !important;
+    gap:.65rem !important;
+  }
   .friend--activation .friend__logo{
     background:transparent;
-    flex:0 0 48px;
-    width:48px;
-    height:48px;
+    flex:0 0 32px;
+    width:32px;
+    height:32px;
     margin-bottom:0;
+  }
+  .friend--activation .friend__text{align-items:flex-start;text-align:left}
+  .friend--activation .friend__name{font-size:.92rem;font-style:normal}
+  .friend--activation .friend__type{
+    font-family:var(--fm);
+    font-size:.5rem;
+    letter-spacing:.18em;
+    line-height:1.3;
+    color:var(--ink-soft);
+    text-transform:uppercase;
   }
   .friend__text{
     display:flex;
