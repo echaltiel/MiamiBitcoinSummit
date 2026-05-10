@@ -261,15 +261,16 @@ body.menu-open{overflow:hidden}
 .program__footnote em{color:var(--accent)}
 
 /* SPEAKERS */
-.speakers__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
+.speakers__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--ink);border-left:1px solid var(--ink);border-right:1px solid var(--ink)}
 /* Tier 2/3 grid — 8 columns of compact medium cards */
-.speakers__grid--md{grid-template-columns:repeat(8,1fr);border-top:none;margin-top:-1px}
+.speakers__grid--md{grid-template-columns:repeat(8,1fr);border-top:none}
 .speaker{padding:1.75rem 1.5rem 1.5rem;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);background:var(--paper-light);position:relative;transition:background .3s;text-decoration:none;color:inherit;display:flex;flex-direction:column;cursor:pointer}
+.speaker:nth-child(4n){border-right:none}
 .speaker--hidden{display:none}
 .speaker.speaker--hidden{display:none}
-.speakers{padding:clamp(1rem,2vw,1.5rem) 0 clamp(1rem,2vw,1.5rem)}
-.speakers .sec-hd{margin-bottom:.85rem;padding-top:.5rem}
-.speakers__actions{display:flex;justify-content:center;margin-top:1rem}
+.speakers{padding:clamp(.75rem,1.5vw,1.25rem) 0 clamp(.75rem,1.5vw,1.25rem)}
+.speakers .sec-hd{margin-bottom:.65rem;padding-top:.4rem}
+.speakers__actions{display:flex;justify-content:center;margin-top:.85rem}
 .speakers__toggle-hide{display:none}
 .speakers__toggle[aria-expanded="true"] .speakers__toggle-show{display:none}
 .speakers__toggle[aria-expanded="true"] .speakers__toggle-hide{display:inline}
@@ -280,29 +281,48 @@ body.menu-open{overflow:hidden}
 .speaker:hover{background:var(--paper-deep)}
 .speaker__index{position:absolute;top:1rem;right:1rem;font-family:var(--fm);font-size:.64rem;letter-spacing:.18em;color:var(--ink-soft)}
 
-.speaker__name{font-family:var(--fd);font-size:1.75rem;line-height:1.05;letter-spacing:-.01em;margin-bottom:.45rem;font-weight:400}
+.speaker__name{font-family:var(--fd);font-size:1.55rem;line-height:1.05;letter-spacing:-.01em;margin-bottom:.4rem;font-weight:400}
 .speaker__name em{font-style:italic}
-.speaker__role{font-family:var(--fm);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.85rem;line-height:1.55}
-.speaker__topic{font-family:var(--fd);font-style:italic;font-size:1.05rem;line-height:1.35;color:var(--accent-deep);padding-top:.85rem;border-top:1px solid var(--rule)}
+.speaker__role{font-family:var(--fm);font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.7rem;line-height:1.5}
+.speaker__topic{font-family:var(--fd);font-style:italic;font-size:.95rem;line-height:1.3;color:var(--accent-deep);padding-top:.7rem;border-top:1px solid var(--rule)}
+
+/* Tier 1 cards (within the 4-col grid) — slimmer than original to free vertical space */
+.speakers__grid:not(.speakers__grid--md) .speaker{padding:1.1rem 1.1rem 1rem}
+.speakers__grid:not(.speakers__grid--md) .speaker__portrait{width:64px;height:64px;font-size:1.7rem;margin-bottom:.85rem}
+.speakers__grid:not(.speakers__grid--md) .speaker__placeholder{font-size:1.7rem}
 
 /* MEDIUM speaker card — used in tier 2/3 grids of 8 */
-.speaker--md{padding:.85rem .65rem .75rem;align-items:center;text-align:center}
+.speaker--md{padding:.6rem .5rem .55rem;align-items:center;text-align:center}
 .speaker--md .speaker__index{display:none}
-.speaker--md .speaker__portrait{width:54px;height:54px;margin-bottom:.55rem;font-size:1.4rem}
-.speaker--md .speaker__placeholder{font-size:1.4rem}
-.speaker--md .speaker__name{font-size:.92rem;line-height:1.1;margin-bottom:.2rem;letter-spacing:-.005em}
-.speaker--md .speaker__role{font-size:.54rem;letter-spacing:.13em;margin-bottom:0;line-height:1.35}
+.speaker--md .speaker__portrait{width:42px;height:42px;margin-bottom:.4rem;font-size:1.1rem}
+.speaker--md .speaker__placeholder{font-size:1.1rem}
+.speaker--md .speaker__name{font-size:.82rem;line-height:1.05;margin-bottom:.15rem;letter-spacing:-.005em}
+.speaker--md .speaker__role{font-size:.5rem;letter-spacing:.12em;margin-bottom:0;line-height:1.3}
 .speaker--md .speaker__topic{display:none}
+/* Override the tier-1 :nth-child(4n) right-border removal for medium grid */
+.speakers__grid--md .speaker{border-right:1px solid var(--ink)}
+.speakers__grid--md .speaker:nth-child(8n){border-right:none}
 
-@media (max-width:1080px){.speakers__grid{grid-template-columns:repeat(2,1fr)}.speakers__grid--md{grid-template-columns:repeat(4,1fr)}}
-@media (max-width:640px){.speakers__grid--md{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:1080px){
+  .speakers__grid{grid-template-columns:repeat(2,1fr)}
+  .speakers__grid--md{grid-template-columns:repeat(4,1fr)}
+  .speakers__grid:not(.speakers__grid--md) .speaker:nth-child(4n){border-right:1px solid var(--ink)}
+  .speakers__grid:not(.speakers__grid--md) .speaker:nth-child(2n){border-right:none}
+  .speakers__grid--md .speaker:nth-child(8n){border-right:1px solid var(--ink)}
+  .speakers__grid--md .speaker:nth-child(4n){border-right:none}
+}
+@media (max-width:640px){
+  .speakers__grid--md{grid-template-columns:repeat(3,1fr)}
+  .speakers__grid--md .speaker:nth-child(4n){border-right:1px solid var(--ink)}
+  .speakers__grid--md .speaker:nth-child(3n){border-right:none}
+}
 @media (max-width:520px){
   .speakers{padding:1rem 0 1.5rem}
   .speakers .sec-hd{margin-bottom:.65rem;gap:.4rem;padding-top:0}
   .speakers .sec-hd__num{padding-top:.5rem;font-size:.7rem}
   .speakers .section-title{font-size:1.5rem}
   .speakers .sec-hd__title{padding-top:0}
-  .speakers__grid{grid-template-columns:1fr}
+  .speakers__grid{grid-template-columns:1fr;border-right:none}
   .speakers__grid--md{grid-template-columns:repeat(2,1fr)}
   .speakers__actions{margin-top:.75rem}
   .speakers__toggle{padding:.7rem 1rem;font-size:.66rem;letter-spacing:.12em}
@@ -313,8 +333,11 @@ body.menu-open{overflow:hidden}
     grid-template-rows:auto auto auto;
     column-gap:.85rem;
     align-items:center;
-    padding:.7rem .9rem
+    padding:.7rem .9rem;
+    border-right:none !important
   }
+  .speakers__grid--md .speaker:nth-child(2n){border-right:none}
+  .speakers__grid--md .speaker:nth-child(odd){border-right:1px solid var(--ink) !important}
   .speaker__index{top:.6rem;right:.8rem;font-size:.55rem}
   .speaker__portrait{
     grid-column:1;
@@ -324,6 +347,8 @@ body.menu-open{overflow:hidden}
     margin-bottom:0;
     align-self:center
   }
+  .speakers__grid:not(.speakers__grid--md) .speaker__portrait{width:48px;height:48px;margin-bottom:0;font-size:1.25rem}
+  .speakers__grid:not(.speakers__grid--md) .speaker__placeholder{font-size:1.25rem}
   .speaker__placeholder{font-size:1.25rem}
   .speaker__name{
     grid-column:2;
@@ -362,7 +387,7 @@ body.menu-open{overflow:hidden}
   .speaker--md .speaker__name{font-size:.9rem;margin-bottom:.05rem;padding-right:0;text-align:left}
   .speaker--md .speaker__role{font-size:.5rem;text-align:left}
 }
-.speakers__footnote{margin-top:1rem;font-family:var(--fd);font-style:italic;font-size:1.1rem;color:var(--ink-soft);text-align:center;max-width:48ch;margin-left:auto;margin-right:auto}
+.speakers__footnote{margin-top:.75rem;font-family:var(--fd);font-style:italic;font-size:.95rem;color:var(--ink-soft);text-align:center;max-width:48ch;margin-left:auto;margin-right:auto}
 .speakers__footnote em{color:var(--accent-deep)}
 
 /* PARTNERS — mirrors .speakers structure */
