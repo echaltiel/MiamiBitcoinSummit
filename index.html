@@ -262,12 +262,14 @@ body.menu-open{overflow:hidden}
 
 /* SPEAKERS */
 .speakers__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
+/* Tier 2/3 grid — 8 columns of compact medium cards */
+.speakers__grid--md{grid-template-columns:repeat(8,1fr);border-top:none;margin-top:-1px}
 .speaker{padding:1.75rem 1.5rem 1.5rem;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);background:var(--paper-light);position:relative;transition:background .3s;text-decoration:none;color:inherit;display:flex;flex-direction:column;cursor:pointer}
 .speaker--hidden{display:none}
 .speaker.speaker--hidden{display:none}
 .speakers{padding:clamp(1rem,2vw,1.5rem) 0 clamp(1rem,2vw,1.5rem)}
-.speakers .sec-hd{margin-bottom:clamp(1.5rem,3vw,2.5rem)}
-.speakers__actions{display:flex;justify-content:center;margin-top:1.25rem}
+.speakers .sec-hd{margin-bottom:.85rem;padding-top:.5rem}
+.speakers__actions{display:flex;justify-content:center;margin-top:1rem}
 .speakers__toggle-hide{display:none}
 .speakers__toggle[aria-expanded="true"] .speakers__toggle-show{display:none}
 .speakers__toggle[aria-expanded="true"] .speakers__toggle-hide{display:inline}
@@ -282,14 +284,26 @@ body.menu-open{overflow:hidden}
 .speaker__name em{font-style:italic}
 .speaker__role{font-family:var(--fm);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.85rem;line-height:1.55}
 .speaker__topic{font-family:var(--fd);font-style:italic;font-size:1.05rem;line-height:1.35;color:var(--accent-deep);padding-top:.85rem;border-top:1px solid var(--rule)}
-@media (max-width:1080px){.speakers__grid{grid-template-columns:repeat(2,1fr)}}
+
+/* MEDIUM speaker card — used in tier 2/3 grids of 8 */
+.speaker--md{padding:.85rem .65rem .75rem;align-items:center;text-align:center}
+.speaker--md .speaker__index{display:none}
+.speaker--md .speaker__portrait{width:54px;height:54px;margin-bottom:.55rem;font-size:1.4rem}
+.speaker--md .speaker__placeholder{font-size:1.4rem}
+.speaker--md .speaker__name{font-size:.92rem;line-height:1.1;margin-bottom:.2rem;letter-spacing:-.005em}
+.speaker--md .speaker__role{font-size:.54rem;letter-spacing:.13em;margin-bottom:0;line-height:1.35}
+.speaker--md .speaker__topic{display:none}
+
+@media (max-width:1080px){.speakers__grid{grid-template-columns:repeat(2,1fr)}.speakers__grid--md{grid-template-columns:repeat(4,1fr)}}
+@media (max-width:640px){.speakers__grid--md{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:520px){
   .speakers{padding:1rem 0 1.5rem}
-  .speakers .sec-hd{margin-bottom:.65rem;gap:.4rem}
+  .speakers .sec-hd{margin-bottom:.65rem;gap:.4rem;padding-top:0}
   .speakers .sec-hd__num{padding-top:.5rem;font-size:.7rem}
   .speakers .section-title{font-size:1.5rem}
   .speakers .sec-hd__title{padding-top:0}
   .speakers__grid{grid-template-columns:1fr}
+  .speakers__grid--md{grid-template-columns:repeat(2,1fr)}
   .speakers__actions{margin-top:.75rem}
   .speakers__toggle{padding:.7rem 1rem;font-size:.66rem;letter-spacing:.12em}
   .speakers__footnote{margin-top:.85rem;font-size:.9rem;line-height:1.4}
@@ -334,6 +348,19 @@ body.menu-open{overflow:hidden}
     padding-top:.35rem;
     line-height:1.25
   }
+  /* Medium cards on mobile go back to compact stacked layout */
+  .speaker--md{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    text-align:left;
+    gap:.7rem;
+    padding:.55rem .75rem
+  }
+  .speaker--md .speaker__portrait{width:38px;height:38px;margin-bottom:0;flex-shrink:0}
+  .speaker--md .speaker__placeholder{font-size:1.05rem}
+  .speaker--md .speaker__name{font-size:.9rem;margin-bottom:.05rem;padding-right:0;text-align:left}
+  .speaker--md .speaker__role{font-size:.5rem;text-align:left}
 }
 .speakers__footnote{margin-top:1rem;font-family:var(--fd);font-style:italic;font-size:1.1rem;color:var(--ink-soft);text-align:center;max-width:48ch;margin-left:auto;margin-right:auto}
 .speakers__footnote em{color:var(--accent-deep)}
@@ -1119,150 +1146,332 @@ body.menu-open{overflow:hidden}
       <h2 class="section-title sec-hd__title">The <em>voices</em> on stage.</h2>
     </header>
     <div class="speakers__grid" id="speakersGrid">
-      <a class="speaker" href="#" data-speaker="01" aria-label="Speaker 01 — To be announced">
+      <a class="speaker" href="#" data-speaker="01" aria-label="Michael Saylor — Strategy">
         <div class="speaker__index">01</div>
         <div class="speaker__portrait">
           <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
-          <div class="speaker__placeholder">?</div>
+          <div class="speaker__placeholder">M</div>
         </div>
-        <h3 class="speaker__name">To be <em>announced</em></h3>
-        <div class="speaker__role">Speaker 01 · TBA</div>
+        <h3 class="speaker__name">Michael <em>Saylor</em></h3>
+        <div class="speaker__role">Strategy</div>
         <div class="speaker__topic">"Talk title coming soon."</div>
       </a>
-      <a class="speaker" href="#" data-speaker="02" aria-label="Speaker 02 — To be announced">
+      <a class="speaker" href="#" data-speaker="02" aria-label="Jack Dorsey — Block">
         <div class="speaker__index">02</div>
         <div class="speaker__portrait">
           <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
-          <div class="speaker__placeholder">?</div>
+          <div class="speaker__placeholder">J</div>
         </div>
-        <h3 class="speaker__name">To be <em>announced</em></h3>
-        <div class="speaker__role">Speaker 02 · TBA</div>
+        <h3 class="speaker__name">Jack <em>Dorsey</em></h3>
+        <div class="speaker__role">Block</div>
         <div class="speaker__topic">"Talk title coming soon."</div>
       </a>
-      <a class="speaker" href="#" data-speaker="03" aria-label="Speaker 03 — To be announced">
+      <a class="speaker" href="#" data-speaker="03" aria-label="Adam Back — Blockstream">
         <div class="speaker__index">03</div>
         <div class="speaker__portrait">
           <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
-          <div class="speaker__placeholder">?</div>
+          <div class="speaker__placeholder">A</div>
         </div>
-        <h3 class="speaker__name">To be <em>announced</em></h3>
-        <div class="speaker__role">Speaker 03 · TBA</div>
+        <h3 class="speaker__name">Adam <em>Back</em></h3>
+        <div class="speaker__role">Blockstream</div>
         <div class="speaker__topic">"Talk title coming soon."</div>
       </a>
-      <a class="speaker" href="#" data-speaker="04" aria-label="Speaker 04 — To be announced">
+      <a class="speaker" href="#" data-speaker="04" aria-label="Cathie Wood — ARK Invest">
         <div class="speaker__index">04</div>
         <div class="speaker__portrait">
           <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
-          <div class="speaker__placeholder">?</div>
+          <div class="speaker__placeholder">C</div>
         </div>
-        <h3 class="speaker__name">To be <em>announced</em></h3>
-        <div class="speaker__role">Speaker 04 · TBA</div>
+        <h3 class="speaker__name">Cathie <em>Wood</em></h3>
+        <div class="speaker__role">ARK Invest</div>
         <div class="speaker__topic">"Talk title coming soon."</div>
       </a>
-      <a class="speaker speaker--hidden" href="#" data-speaker="05" aria-label="Speaker 05 — To be announced">
+    </div>
+    <div class="speakers__grid speakers__grid--md" id="speakersGridMd">
+      <a class="speaker speaker--md" href="#" data-speaker="05" aria-label="Lyn Alden — Macro Strategist">
         <div class="speaker__index">05</div>
         <div class="speaker__portrait">
           <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
-          <div class="speaker__placeholder">?</div>
+          <div class="speaker__placeholder">L</div>
         </div>
-        <h3 class="speaker__name">To be <em>announced</em></h3>
-        <div class="speaker__role">Speaker 05 · TBA</div>
+        <h3 class="speaker__name">Lyn <em>Alden</em></h3>
+        <div class="speaker__role">Macro Strategist</div>
         <div class="speaker__topic">"Talk title coming soon."</div>
       </a>
-      <a class="speaker speaker--hidden" href="#" data-speaker="06" aria-label="Speaker 06 — To be announced">
+      <a class="speaker speaker--md" href="#" data-speaker="06" aria-label="Jeff Booth — Author · The Price of Tomorrow">
         <div class="speaker__index">06</div>
         <div class="speaker__portrait">
           <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
-          <div class="speaker__placeholder">?</div>
+          <div class="speaker__placeholder">J</div>
         </div>
-        <h3 class="speaker__name">To be <em>announced</em></h3>
-        <div class="speaker__role">Speaker 06 · TBA</div>
+        <h3 class="speaker__name">Jeff <em>Booth</em></h3>
+        <div class="speaker__role">Author · The Price of Tomorrow</div>
         <div class="speaker__topic">"Talk title coming soon."</div>
       </a>
-      <a class="speaker speaker--hidden" href="#" data-speaker="07" aria-label="Speaker 07 — To be announced">
+      <a class="speaker speaker--md" href="#" data-speaker="07" aria-label="Alex Gladstein — Human Rights Foundation">
         <div class="speaker__index">07</div>
         <div class="speaker__portrait">
           <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
-          <div class="speaker__placeholder">?</div>
+          <div class="speaker__placeholder">A</div>
         </div>
-        <h3 class="speaker__name">To be <em>announced</em></h3>
-        <div class="speaker__role">Speaker 07 · TBA</div>
+        <h3 class="speaker__name">Alex <em>Gladstein</em></h3>
+        <div class="speaker__role">Human Rights Foundation</div>
         <div class="speaker__topic">"Talk title coming soon."</div>
       </a>
-      <a class="speaker speaker--hidden" href="#" data-speaker="08" aria-label="Speaker 08 — To be announced">
+      <a class="speaker speaker--md" href="#" data-speaker="08" aria-label="Caitlin Long — Custodia Bank">
         <div class="speaker__index">08</div>
         <div class="speaker__portrait">
           <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
-          <div class="speaker__placeholder">?</div>
+          <div class="speaker__placeholder">C</div>
         </div>
-        <h3 class="speaker__name">To be <em>announced</em></h3>
-        <div class="speaker__role">Speaker 08 · TBA</div>
+        <h3 class="speaker__name">Caitlin <em>Long</em></h3>
+        <div class="speaker__role">Custodia Bank</div>
         <div class="speaker__topic">"Talk title coming soon."</div>
       </a>
-      <a class="speaker speaker--hidden" href="#" data-speaker="09" aria-label="Speaker 09 — To be announced">
+      <a class="speaker speaker--md" href="#" data-speaker="09" aria-label="Natalie Brunell — Coin Stories">
         <div class="speaker__index">09</div>
         <div class="speaker__portrait">
           <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
-          <div class="speaker__placeholder">?</div>
+          <div class="speaker__placeholder">N</div>
         </div>
-        <h3 class="speaker__name">To be <em>announced</em></h3>
-        <div class="speaker__role">Speaker 09 · TBA</div>
+        <h3 class="speaker__name">Natalie <em>Brunell</em></h3>
+        <div class="speaker__role">Coin Stories</div>
         <div class="speaker__topic">"Talk title coming soon."</div>
       </a>
-      <a class="speaker speaker--hidden" href="#" data-speaker="10" aria-label="Speaker 10 — To be announced">
+      <a class="speaker speaker--md" href="#" data-speaker="10" aria-label="Peter McCormack — What Bitcoin Did">
         <div class="speaker__index">10</div>
         <div class="speaker__portrait">
           <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
-          <div class="speaker__placeholder">?</div>
+          <div class="speaker__placeholder">P</div>
         </div>
-        <h3 class="speaker__name">To be <em>announced</em></h3>
-        <div class="speaker__role">Speaker 10 · TBA</div>
+        <h3 class="speaker__name">Peter <em>McCormack</em></h3>
+        <div class="speaker__role">What Bitcoin Did</div>
         <div class="speaker__topic">"Talk title coming soon."</div>
       </a>
-      <a class="speaker speaker--hidden" href="#" data-speaker="11" aria-label="Speaker 11 — To be announced">
+      <a class="speaker speaker--md" href="#" data-speaker="11" aria-label="David Marcus — Lightspark">
         <div class="speaker__index">11</div>
         <div class="speaker__portrait">
           <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
-          <div class="speaker__placeholder">?</div>
+          <div class="speaker__placeholder">D</div>
         </div>
-        <h3 class="speaker__name">To be <em>announced</em></h3>
-        <div class="speaker__role">Speaker 11 · TBA</div>
+        <h3 class="speaker__name">David <em>Marcus</em></h3>
+        <div class="speaker__role">Lightspark</div>
         <div class="speaker__topic">"Talk title coming soon."</div>
       </a>
-      <a class="speaker speaker--hidden" href="#" data-speaker="12" aria-label="Speaker 12 — To be announced">
+      <a class="speaker speaker--md" href="#" data-speaker="12" aria-label="Elizabeth Stark — Lightning Labs">
         <div class="speaker__index">12</div>
         <div class="speaker__portrait">
           <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
-          <div class="speaker__placeholder">?</div>
+          <div class="speaker__placeholder">E</div>
         </div>
-        <h3 class="speaker__name">To be <em>announced</em></h3>
-        <div class="speaker__role">Speaker 12 · TBA</div>
+        <h3 class="speaker__name">Elizabeth <em>Stark</em></h3>
+        <div class="speaker__role">Lightning Labs</div>
         <div class="speaker__topic">"Talk title coming soon."</div>
       </a>
-      <a class="speaker speaker--hidden" href="#" data-speaker="13" aria-label="Speaker 13 — To be announced">
+      <a class="speaker speaker--md" href="#" data-speaker="13" aria-label="Stephan Livera — Stephan Livera Podcast">
         <div class="speaker__index">13</div>
         <div class="speaker__portrait">
           <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
-          <div class="speaker__placeholder">?</div>
+          <div class="speaker__placeholder">S</div>
         </div>
-        <h3 class="speaker__name">To be <em>announced</em></h3>
-        <div class="speaker__role">Speaker 13 · TBA</div>
+        <h3 class="speaker__name">Stephan <em>Livera</em></h3>
+        <div class="speaker__role">Stephan Livera Podcast</div>
         <div class="speaker__topic">"Talk title coming soon."</div>
       </a>
-      <a class="speaker speaker--hidden" href="#" data-speaker="14" aria-label="Speaker 14 — To be announced">
+      <a class="speaker speaker--md" href="#" data-speaker="14" aria-label="Parker Lewis — Zaprite">
         <div class="speaker__index">14</div>
         <div class="speaker__portrait">
           <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
-          <div class="speaker__placeholder">?</div>
+          <div class="speaker__placeholder">P</div>
         </div>
-        <h3 class="speaker__name">To be <em>announced</em></h3>
-        <div class="speaker__role">Speaker 14 · TBA</div>
+        <h3 class="speaker__name">Parker <em>Lewis</em></h3>
+        <div class="speaker__role">Zaprite</div>
+        <div class="speaker__topic">"Talk title coming soon."</div>
+      </a>
+      <a class="speaker speaker--md" href="#" data-speaker="15" aria-label="Vijay Boyapati — Author · The Bullish Case">
+        <div class="speaker__index">15</div>
+        <div class="speaker__portrait">
+          <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
+          <div class="speaker__placeholder">V</div>
+        </div>
+        <h3 class="speaker__name">Vijay <em>Boyapati</em></h3>
+        <div class="speaker__role">Author · The Bullish Case</div>
+        <div class="speaker__topic">"Talk title coming soon."</div>
+      </a>
+      <a class="speaker speaker--md" href="#" data-speaker="16" aria-label="Jimmy Song — Programming Bitcoin">
+        <div class="speaker__index">16</div>
+        <div class="speaker__portrait">
+          <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
+          <div class="speaker__placeholder">J</div>
+        </div>
+        <h3 class="speaker__name">Jimmy <em>Song</em></h3>
+        <div class="speaker__role">Programming Bitcoin</div>
+        <div class="speaker__topic">"Talk title coming soon."</div>
+      </a>
+      <a class="speaker speaker--md" href="#" data-speaker="17" aria-label="Pete Rizzo — Bitcoin Magazine">
+        <div class="speaker__index">17</div>
+        <div class="speaker__portrait">
+          <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
+          <div class="speaker__placeholder">P</div>
+        </div>
+        <h3 class="speaker__name">Pete <em>Rizzo</em></h3>
+        <div class="speaker__role">Bitcoin Magazine</div>
+        <div class="speaker__topic">"Talk title coming soon."</div>
+      </a>
+      <a class="speaker speaker--md" href="#" data-speaker="18" aria-label="Dylan LeClair — UTXO Management">
+        <div class="speaker__index">18</div>
+        <div class="speaker__portrait">
+          <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
+          <div class="speaker__placeholder">D</div>
+        </div>
+        <h3 class="speaker__name">Dylan <em>LeClair</em></h3>
+        <div class="speaker__role">UTXO Management</div>
+        <div class="speaker__topic">"Talk title coming soon."</div>
+      </a>
+      <a class="speaker speaker--md" href="#" data-speaker="19" aria-label="Troy Cross — Reed College">
+        <div class="speaker__index">19</div>
+        <div class="speaker__portrait">
+          <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
+          <div class="speaker__placeholder">T</div>
+        </div>
+        <h3 class="speaker__name">Troy <em>Cross</em></h3>
+        <div class="speaker__role">Reed College</div>
+        <div class="speaker__topic">"Talk title coming soon."</div>
+      </a>
+      <a class="speaker speaker--md" href="#" data-speaker="20" aria-label="David Bailey — BTC Inc.">
+        <div class="speaker__index">20</div>
+        <div class="speaker__portrait">
+          <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
+          <div class="speaker__placeholder">D</div>
+        </div>
+        <h3 class="speaker__name">David <em>Bailey</em></h3>
+        <div class="speaker__role">BTC Inc.</div>
+        <div class="speaker__topic">"Talk title coming soon."</div>
+      </a>
+      <a class="speaker speaker--md speaker--hidden" href="#" data-speaker="21" aria-label="Alex Leishman — River">
+        <div class="speaker__index">21</div>
+        <div class="speaker__portrait">
+          <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
+          <div class="speaker__placeholder">A</div>
+        </div>
+        <h3 class="speaker__name">Alex <em>Leishman</em></h3>
+        <div class="speaker__role">River</div>
+        <div class="speaker__topic">"Talk title coming soon."</div>
+      </a>
+      <a class="speaker speaker--md speaker--hidden" href="#" data-speaker="22" aria-label="Beau Turner — Speaker">
+        <div class="speaker__index">22</div>
+        <div class="speaker__portrait">
+          <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
+          <div class="speaker__placeholder">B</div>
+        </div>
+        <h3 class="speaker__name">Beau <em>Turner</em></h3>
+        <div class="speaker__role">Speaker</div>
+        <div class="speaker__topic">"Talk title coming soon."</div>
+      </a>
+      <a class="speaker speaker--md speaker--hidden" href="#" data-speaker="23" aria-label="Cedric Youngelman — The Bitcoin Matrix">
+        <div class="speaker__index">23</div>
+        <div class="speaker__portrait">
+          <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
+          <div class="speaker__placeholder">C</div>
+        </div>
+        <h3 class="speaker__name">Cedric <em>Youngelman</em></h3>
+        <div class="speaker__role">The Bitcoin Matrix</div>
+        <div class="speaker__topic">"Talk title coming soon."</div>
+      </a>
+      <a class="speaker speaker--md speaker--hidden" href="#" data-speaker="24" aria-label="Danny Knowles — What Bitcoin Did">
+        <div class="speaker__index">24</div>
+        <div class="speaker__portrait">
+          <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
+          <div class="speaker__placeholder">D</div>
+        </div>
+        <h3 class="speaker__name">Danny <em>Knowles</em></h3>
+        <div class="speaker__role">What Bitcoin Did</div>
+        <div class="speaker__topic">"Talk title coming soon."</div>
+      </a>
+      <a class="speaker speaker--md speaker--hidden" href="#" data-speaker="25" aria-label="Dhruv Patel — Speaker">
+        <div class="speaker__index">25</div>
+        <div class="speaker__portrait">
+          <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
+          <div class="speaker__placeholder">D</div>
+        </div>
+        <h3 class="speaker__name">Dhruv <em>Patel</em></h3>
+        <div class="speaker__role">Speaker</div>
+        <div class="speaker__topic">"Talk title coming soon."</div>
+      </a>
+      <a class="speaker speaker--md speaker--hidden" href="#" data-speaker="26" aria-label="Joe Burnett — Unchained">
+        <div class="speaker__index">26</div>
+        <div class="speaker__portrait">
+          <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
+          <div class="speaker__placeholder">J</div>
+        </div>
+        <h3 class="speaker__name">Joe <em>Burnett</em></h3>
+        <div class="speaker__role">Unchained</div>
+        <div class="speaker__topic">"Talk title coming soon."</div>
+      </a>
+      <a class="speaker speaker--md speaker--hidden" href="#" data-speaker="27" aria-label="Joe Kelly — Unchained">
+        <div class="speaker__index">27</div>
+        <div class="speaker__portrait">
+          <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
+          <div class="speaker__placeholder">J</div>
+        </div>
+        <h3 class="speaker__name">Joe <em>Kelly</em></h3>
+        <div class="speaker__role">Unchained</div>
+        <div class="speaker__topic">"Talk title coming soon."</div>
+      </a>
+      <a class="speaker speaker--md speaker--hidden" href="#" data-speaker="28" aria-label="Kent Halliburton — Sazmining">
+        <div class="speaker__index">28</div>
+        <div class="speaker__portrait">
+          <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
+          <div class="speaker__placeholder">K</div>
+        </div>
+        <h3 class="speaker__name">Kent <em>Halliburton</em></h3>
+        <div class="speaker__role">Sazmining</div>
+        <div class="speaker__topic">"Talk title coming soon."</div>
+      </a>
+      <a class="speaker speaker--md speaker--hidden" href="#" data-speaker="29" aria-label="Matt Cole — Strive">
+        <div class="speaker__index">29</div>
+        <div class="speaker__portrait">
+          <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
+          <div class="speaker__placeholder">M</div>
+        </div>
+        <h3 class="speaker__name">Matt <em>Cole</em></h3>
+        <div class="speaker__role">Strive</div>
+        <div class="speaker__topic">"Talk title coming soon."</div>
+      </a>
+      <a class="speaker speaker--md speaker--hidden" href="#" data-speaker="30" aria-label="Michael Tanguma — Onramp">
+        <div class="speaker__index">30</div>
+        <div class="speaker__portrait">
+          <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
+          <div class="speaker__placeholder">M</div>
+        </div>
+        <h3 class="speaker__name">Michael <em>Tanguma</em></h3>
+        <div class="speaker__role">Onramp</div>
+        <div class="speaker__topic">"Talk title coming soon."</div>
+      </a>
+      <a class="speaker speaker--md speaker--hidden" href="#" data-speaker="31" aria-label="Sam Callahan — Speaker">
+        <div class="speaker__index">31</div>
+        <div class="speaker__portrait">
+          <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
+          <div class="speaker__placeholder">S</div>
+        </div>
+        <h3 class="speaker__name">Sam <em>Callahan</em></h3>
+        <div class="speaker__role">Speaker</div>
+        <div class="speaker__topic">"Talk title coming soon."</div>
+      </a>
+      <a class="speaker speaker--md speaker--hidden" href="#" data-speaker="32" aria-label="Will Foxley — Media">
+        <div class="speaker__index">32</div>
+        <div class="speaker__portrait">
+          <img class="speaker__photo" src="" alt="" onerror="this.style.display='none'" />
+          <div class="speaker__placeholder">W</div>
+        </div>
+        <h3 class="speaker__name">Will <em>Foxley</em></h3>
+        <div class="speaker__role">Media</div>
         <div class="speaker__topic">"Talk title coming soon."</div>
       </a>
     </div>
     <div class="speakers__actions">
       <button type="button" class="btn speakers__toggle" id="speakersToggle" aria-expanded="false">
-        <span class="speakers__toggle-show">Show all 14 speakers</span>
+        <span class="speakers__toggle-show">Show all 32 speakers</span>
         <span class="speakers__toggle-hide">Show fewer</span>
         <span class="btn__arrow">↓</span>
       </button>
@@ -1960,16 +2169,15 @@ body.menu-open{overflow:hidden}
     });
   });
 
-  // Speakers show-all toggle
+  // Speakers show-all toggle (controls tier 3: cards 21-32 in the medium grid)
   const speakersToggle = document.getElementById('speakersToggle');
   if (speakersToggle) {
     speakersToggle.addEventListener('click', () => {
-      const grid = document.getElementById('speakersGrid');
       const expanded = speakersToggle.getAttribute('aria-expanded') === 'true';
       const next = !expanded;
       speakersToggle.setAttribute('aria-expanded', String(next));
-      grid.querySelectorAll('.speaker').forEach((card) => {
-        card.classList.toggle('speaker--hidden', !next && parseInt(card.dataset.speaker, 10) > 4);
+      document.querySelectorAll('.speakers__grid--md .speaker').forEach((card) => {
+        card.classList.toggle('speaker--hidden', !next && parseInt(card.dataset.speaker, 10) > 20);
       });
     });
   }
