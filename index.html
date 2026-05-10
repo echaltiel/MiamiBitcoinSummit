@@ -773,6 +773,40 @@ body.menu-open{overflow:hidden}
 .friend:hover{background:var(--paper-light)}
 .friend:hover .friend__name{color:var(--accent-deep)}
 .friend__logo{display:none}
+/* Gold / Silver / Activation logo support — show logo area when tier card has a logo image */
+.friend--gold .friend__logo,
+.friend--silver .friend__logo,
+.friend--activation .friend__logo{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:transparent;
+  position:relative;
+  z-index:2;
+  flex-shrink:0;
+}
+.friend--gold .friend__logo{width:56px;height:56px;margin-bottom:.4rem}
+.friend--silver .friend__logo{width:48px;height:48px;margin-bottom:.35rem}
+.friend--activation .friend__logo{width:40px;height:40px;margin-bottom:.25rem}
+.friend--gold .friend__logo img,
+.friend--silver .friend__logo img,
+.friend--activation .friend__logo img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+.friend--gold .friend__logo-fallback,
+.friend--silver .friend__logo-fallback,
+.friend--activation .friend__logo-fallback{
+  font-family:var(--fm);
+  font-size:.7rem;
+  letter-spacing:.18em;
+  color:currentColor;
+  opacity:.4;
+}
+/* Hide the placeholder once a logo image successfully loads */
+.friend__logo--has-image .friend__logo-fallback{display:none}
 .friend__text{display:contents}
 .friend__name{font-family:var(--fd);font-size:1.15rem;font-style:italic;line-height:1.1}
 .friend__type{font-family:var(--fm);font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
@@ -834,6 +868,39 @@ body.menu-open{overflow:hidden}
     width:56px;
     height:56px;
     background:var(--ink)
+  }
+  /* Platinum override — transparent bg so logo image renders cleanly on mobile */
+  .friend--platinum .friend__logo{
+    background:transparent;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex:0 0 64px;
+    width:64px;
+    height:64px;
+  }
+  .friend--platinum .friend__logo img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+  }
+  .friend--platinum .friend__logo-fallback{
+    font-family:var(--fd);
+    font-style:italic;
+    font-size:1.6rem;
+    color:#2a2d3a;
+    opacity:.55;
+  }
+  /* Gold / Silver / Activation — same transparent treatment, scaled down */
+  .friend--gold .friend__logo,
+  .friend--silver .friend__logo,
+  .friend--activation .friend__logo{
+    background:transparent;
+    flex:0 0 48px;
+    width:48px;
+    height:48px;
+    margin-bottom:0;
   }
   .friend__text{
     display:flex;
@@ -986,6 +1053,41 @@ body.menu-open{overflow:hidden}
     inset 0 -1px 0 rgba(120,140,180,0.18),
     0 0 28px rgba(160,180,210,0.3),
     0 0 56px rgba(200,215,240,0.18);
+  flex-direction:row;
+  justify-content:center;
+  gap:1.5rem;
+  padding:1.5rem 1.75rem;
+  min-height:130px;
+}
+.friend--platinum .friend__logo{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  width:80px;
+  height:80px;
+  background:transparent;
+  position:relative;
+  z-index:2;
+}
+.friend--platinum .friend__logo img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+.friend--platinum .friend__logo-fallback{
+  font-family:var(--fd);
+  font-style:italic;
+  font-size:2.5rem;
+  color:#2a2d3a;
+  opacity:.55;
+}
+.friend--platinum .friend__logo .friend__logo-fallback{display:flex}
+.friend--platinum .friend__text{
+  align-items:flex-start;
+  text-align:left;
+  flex:0 1 auto;
 }
 .friend--platinum::before{
   background:linear-gradient(90deg,
@@ -1662,33 +1764,42 @@ body.menu-open{overflow:hidden}
     <div class="friends__tier friends__tier--platinum">
       <div class="friends__tier-label"><span>Platinum</span></div>
       <div class="friends__grid friends__grid--platinum">
-        <a class="friend friend--platinum" href="#"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Platinum</div></div></a>
+        <a class="friend friend--platinum" href="https://www.mastercard.com" target="_blank" rel="noopener" aria-label="Mastercard — Platinum sponsor">
+          <div class="friend__logo">
+            <img src="/images/sponsors/platinum.webp" alt="Mastercard logo" onload="this.parentElement.classList.add('friend__logo--has-image')" onerror="this.style.display='none'" />
+            <span class="friend__logo-fallback">M</span>
+          </div>
+          <div class="friend__text">
+            <div class="friend__name">Mastercard</div>
+            <div class="friend__type">Platinum Sponsor</div>
+          </div>
+        </a>
       </div>
     </div>
     <div class="friends__tier friends__tier--gold">
       <div class="friends__tier-label"><span>Gold</span></div>
       <div class="friends__grid friends__grid--gold">
-        <a class="friend friend--gold" href="#"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Gold</div></div></a>
-        <a class="friend friend--gold" href="#"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Gold</div></div></a>
+        <a class="friend friend--gold" href="#" aria-label="Gold sponsor — to be announced"><div class="friend__logo"><img src="/images/sponsors/gold-01.webp" alt="Gold sponsor logo" onload="this.parentElement.classList.add('friend__logo--has-image')" onerror="this.style.display='none'" /><span class="friend__logo-fallback">?</span></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Gold</div></div></a>
+        <a class="friend friend--gold" href="#" aria-label="Gold sponsor — to be announced"><div class="friend__logo"><img src="/images/sponsors/gold-02.webp" alt="Gold sponsor logo" onload="this.parentElement.classList.add('friend__logo--has-image')" onerror="this.style.display='none'" /><span class="friend__logo-fallback">?</span></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Gold</div></div></a>
       </div>
     </div>
     <div class="friends__tier friends__tier--silver">
       <div class="friends__tier-label"><span>Silver</span></div>
       <div class="friends__grid friends__grid--silver">
-        <a class="friend friend--silver" href="#"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Silver</div></div></a>
-        <a class="friend friend--silver" href="#"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Silver</div></div></a>
+        <a class="friend friend--silver" href="#" aria-label="Silver sponsor — to be announced"><div class="friend__logo"><img src="/images/sponsors/silver-01.webp" alt="Silver sponsor logo" onload="this.parentElement.classList.add('friend__logo--has-image')" onerror="this.style.display='none'" /><span class="friend__logo-fallback">?</span></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Silver</div></div></a>
+        <a class="friend friend--silver" href="#" aria-label="Silver sponsor — to be announced"><div class="friend__logo"><img src="/images/sponsors/silver-02.webp" alt="Silver sponsor logo" onload="this.parentElement.classList.add('friend__logo--has-image')" onerror="this.style.display='none'" /><span class="friend__logo-fallback">?</span></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Silver</div></div></a>
       </div>
     </div>
     <div class="friends__tier friends__tier--hidden" id="friendsActivations">
       <div class="friends__tier-label">Activation Sponsors</div>
       <div class="friends__grid friends__grid--activation">
-        <a class="friend friend--activation" href="#"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Badge</div></div></a>
-        <a class="friend friend--activation" href="#"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Lanyard</div></div></a>
-        <a class="friend friend--activation" href="#"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Coffee &amp; Water</div></div></a>
-        <a class="friend friend--activation" href="#"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Bag</div></div></a>
-        <a class="friend friend--activation" href="#"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Exhibition Table</div></div></a>
-        <a class="friend friend--activation" href="#"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Side Event</div></div></a>
-        <a class="friend friend--activation" href="#"><div class="friend__logo"></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Promotional Insert</div></div></a>
+        <a class="friend friend--activation" href="#" aria-label="Activation sponsor — to be announced"><div class="friend__logo"><img src="/images/sponsors/activation-01.webp" alt="Activation sponsor logo" onload="this.parentElement.classList.add('friend__logo--has-image')" onerror="this.style.display='none'" /><span class="friend__logo-fallback">?</span></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Badge</div></div></a>
+        <a class="friend friend--activation" href="#" aria-label="Activation sponsor — to be announced"><div class="friend__logo"><img src="/images/sponsors/activation-02.webp" alt="Activation sponsor logo" onload="this.parentElement.classList.add('friend__logo--has-image')" onerror="this.style.display='none'" /><span class="friend__logo-fallback">?</span></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Lanyard</div></div></a>
+        <a class="friend friend--activation" href="#" aria-label="Activation sponsor — to be announced"><div class="friend__logo"><img src="/images/sponsors/activation-03.webp" alt="Activation sponsor logo" onload="this.parentElement.classList.add('friend__logo--has-image')" onerror="this.style.display='none'" /><span class="friend__logo-fallback">?</span></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Coffee &amp; Water</div></div></a>
+        <a class="friend friend--activation" href="#" aria-label="Activation sponsor — to be announced"><div class="friend__logo"><img src="/images/sponsors/activation-04.webp" alt="Activation sponsor logo" onload="this.parentElement.classList.add('friend__logo--has-image')" onerror="this.style.display='none'" /><span class="friend__logo-fallback">?</span></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Bag</div></div></a>
+        <a class="friend friend--activation" href="#" aria-label="Activation sponsor — to be announced"><div class="friend__logo"><img src="/images/sponsors/activation-05.webp" alt="Activation sponsor logo" onload="this.parentElement.classList.add('friend__logo--has-image')" onerror="this.style.display='none'" /><span class="friend__logo-fallback">?</span></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Exhibition Table</div></div></a>
+        <a class="friend friend--activation" href="#" aria-label="Activation sponsor — to be announced"><div class="friend__logo"><img src="/images/sponsors/activation-06.webp" alt="Activation sponsor logo" onload="this.parentElement.classList.add('friend__logo--has-image')" onerror="this.style.display='none'" /><span class="friend__logo-fallback">?</span></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Side Event</div></div></a>
+        <a class="friend friend--activation" href="#" aria-label="Activation sponsor — to be announced"><div class="friend__logo"><img src="/images/sponsors/activation-07.webp" alt="Activation sponsor logo" onload="this.parentElement.classList.add('friend__logo--has-image')" onerror="this.style.display='none'" /><span class="friend__logo-fallback">?</span></div><div class="friend__text"><div class="friend__name">TBD</div><div class="friend__type">Promotional Insert</div></div></a>
       </div>
     </div>
     <div class="friends__actions">
