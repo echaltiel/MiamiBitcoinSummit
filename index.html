@@ -276,8 +276,9 @@ body.menu-open{overflow:hidden}
 .speakers__toggle[aria-expanded="true"] .speakers__toggle-hide{display:inline}
 .speakers__toggle[aria-expanded="true"] .btn__arrow{transform:rotate(180deg)}
 .speaker__portrait{width:88px;height:88px;border-radius:50%;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-style:italic;font-size:2.3rem;line-height:1;margin-bottom:1.5rem;overflow:hidden;position:relative;flex-shrink:0}
-.speaker__photo{width:100%;height:100%;object-fit:cover;border-radius:50%;position:absolute;inset:0}
-.speaker__placeholder{font-family:var(--fd);font-style:italic;font-size:2.3rem;color:var(--paper);opacity:.5}
+.speaker__photo{width:100%;height:100%;object-fit:cover;border-radius:50%;position:absolute;inset:0;z-index:2}
+.speaker__placeholder{font-family:var(--fd);font-style:italic;font-size:2.3rem;color:var(--paper);opacity:.5;position:relative;z-index:1}
+.speaker__portrait--hasphoto .speaker__placeholder{display:none}
 .speaker:hover{background:var(--paper-deep)}
 .speaker__index{position:absolute;top:1rem;right:1rem;font-family:var(--fm);font-size:.64rem;letter-spacing:.18em;color:var(--ink-soft)}
 
@@ -1192,7 +1193,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker" href="https://x.com/saylor" target="_blank" rel="noopener" data-speaker="01" aria-label="Michael Saylor on X">
         <div class="speaker__index">01</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/saylor.webp" alt="Michael Saylor" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/saylor.webp" alt="Michael Saylor" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">M</div>
         </div>
         <h3 class="speaker__name">Michael <em>Saylor</em></h3>
@@ -1202,7 +1203,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker" href="https://x.com/jack" target="_blank" rel="noopener" data-speaker="02" aria-label="Jack Dorsey on X">
         <div class="speaker__index">02</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/dorsey.webp" alt="Jack Dorsey" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/dorsey.webp" alt="Jack Dorsey" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">J</div>
         </div>
         <h3 class="speaker__name">Jack <em>Dorsey</em></h3>
@@ -1212,7 +1213,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker" href="https://x.com/adam3us" target="_blank" rel="noopener" data-speaker="03" aria-label="Adam Back on X">
         <div class="speaker__index">03</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/back.webp" alt="Adam Back" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/back.webp" alt="Adam Back" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">A</div>
         </div>
         <h3 class="speaker__name">Adam <em>Back</em></h3>
@@ -1222,7 +1223,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker" href="https://x.com/CathieDWood" target="_blank" rel="noopener" data-speaker="04" aria-label="Cathie Wood on X">
         <div class="speaker__index">04</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/wood.webp" alt="Cathie Wood" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/wood.webp" alt="Cathie Wood" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">C</div>
         </div>
         <h3 class="speaker__name">Cathie <em>Wood</em></h3>
@@ -1234,7 +1235,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md" href="https://x.com/LynAldenContact" target="_blank" rel="noopener" data-speaker="05" aria-label="Lyn Alden on X">
         <div class="speaker__index">05</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/alden.webp" alt="Lyn Alden" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/alden.webp" alt="Lyn Alden" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">L</div>
         </div>
         <h3 class="speaker__name">Lyn <em>Alden</em></h3>
@@ -1244,7 +1245,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md" href="https://x.com/JeffBooth" target="_blank" rel="noopener" data-speaker="06" aria-label="Jeff Booth on X">
         <div class="speaker__index">06</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/booth.webp" alt="Jeff Booth" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/booth.webp" alt="Jeff Booth" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">J</div>
         </div>
         <h3 class="speaker__name">Jeff <em>Booth</em></h3>
@@ -1254,7 +1255,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md" href="https://x.com/gladstein" target="_blank" rel="noopener" data-speaker="07" aria-label="Alex Gladstein on X">
         <div class="speaker__index">07</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/gladstein.webp" alt="Alex Gladstein" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/gladstein.webp" alt="Alex Gladstein" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">A</div>
         </div>
         <h3 class="speaker__name">Alex <em>Gladstein</em></h3>
@@ -1264,7 +1265,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md" href="https://x.com/CaitlinLong_" target="_blank" rel="noopener" data-speaker="08" aria-label="Caitlin Long on X">
         <div class="speaker__index">08</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/long.webp" alt="Caitlin Long" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/long.webp" alt="Caitlin Long" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">C</div>
         </div>
         <h3 class="speaker__name">Caitlin <em>Long</em></h3>
@@ -1274,7 +1275,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md" href="https://x.com/natbrunell" target="_blank" rel="noopener" data-speaker="09" aria-label="Natalie Brunell on X">
         <div class="speaker__index">09</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/brunell.webp" alt="Natalie Brunell" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/brunell.webp" alt="Natalie Brunell" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">N</div>
         </div>
         <h3 class="speaker__name">Natalie <em>Brunell</em></h3>
@@ -1284,7 +1285,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md" href="https://x.com/PeterMcCormack" target="_blank" rel="noopener" data-speaker="10" aria-label="Peter McCormack on X">
         <div class="speaker__index">10</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/mccormack.webp" alt="Peter McCormack" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/mccormack.webp" alt="Peter McCormack" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">P</div>
         </div>
         <h3 class="speaker__name">Peter <em>McCormack</em></h3>
@@ -1294,7 +1295,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md" href="https://x.com/davidmarcus" target="_blank" rel="noopener" data-speaker="11" aria-label="David Marcus on X">
         <div class="speaker__index">11</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/marcus.webp" alt="David Marcus" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/marcus.webp" alt="David Marcus" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">D</div>
         </div>
         <h3 class="speaker__name">David <em>Marcus</em></h3>
@@ -1304,7 +1305,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md" href="https://x.com/starkness" target="_blank" rel="noopener" data-speaker="12" aria-label="Elizabeth Stark on X">
         <div class="speaker__index">12</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/stark.webp" alt="Elizabeth Stark" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/stark.webp" alt="Elizabeth Stark" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">E</div>
         </div>
         <h3 class="speaker__name">Elizabeth <em>Stark</em></h3>
@@ -1314,7 +1315,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md" href="https://x.com/stephanlivera" target="_blank" rel="noopener" data-speaker="13" aria-label="Stephan Livera on X">
         <div class="speaker__index">13</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/livera.webp" alt="Stephan Livera" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/livera.webp" alt="Stephan Livera" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">S</div>
         </div>
         <h3 class="speaker__name">Stephan <em>Livera</em></h3>
@@ -1324,7 +1325,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md" href="https://x.com/parkeralewis" target="_blank" rel="noopener" data-speaker="14" aria-label="Parker Lewis on X">
         <div class="speaker__index">14</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/lewis.webp" alt="Parker Lewis" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/lewis.webp" alt="Parker Lewis" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">P</div>
         </div>
         <h3 class="speaker__name">Parker <em>Lewis</em></h3>
@@ -1334,7 +1335,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md" href="https://x.com/real_vijay" target="_blank" rel="noopener" data-speaker="15" aria-label="Vijay Boyapati on X">
         <div class="speaker__index">15</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/boyapati.webp" alt="Vijay Boyapati" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/boyapati.webp" alt="Vijay Boyapati" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">V</div>
         </div>
         <h3 class="speaker__name">Vijay <em>Boyapati</em></h3>
@@ -1344,7 +1345,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md" href="https://x.com/jimmysong" target="_blank" rel="noopener" data-speaker="16" aria-label="Jimmy Song on X">
         <div class="speaker__index">16</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/song.webp" alt="Jimmy Song" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/song.webp" alt="Jimmy Song" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">J</div>
         </div>
         <h3 class="speaker__name">Jimmy <em>Song</em></h3>
@@ -1354,7 +1355,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md" href="https://x.com/pete_rizzo_" target="_blank" rel="noopener" data-speaker="17" aria-label="Pete Rizzo on X">
         <div class="speaker__index">17</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/rizzo.webp" alt="Pete Rizzo" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/rizzo.webp" alt="Pete Rizzo" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">P</div>
         </div>
         <h3 class="speaker__name">Pete <em>Rizzo</em></h3>
@@ -1364,7 +1365,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md" href="https://x.com/DylanLeClair_" target="_blank" rel="noopener" data-speaker="18" aria-label="Dylan LeClair on X">
         <div class="speaker__index">18</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/leclair.webp" alt="Dylan LeClair" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/leclair.webp" alt="Dylan LeClair" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">D</div>
         </div>
         <h3 class="speaker__name">Dylan <em>LeClair</em></h3>
@@ -1374,7 +1375,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md" href="https://x.com/thetrocro" target="_blank" rel="noopener" data-speaker="19" aria-label="Troy Cross on X">
         <div class="speaker__index">19</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/cross.webp" alt="Troy Cross" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/cross.webp" alt="Troy Cross" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">T</div>
         </div>
         <h3 class="speaker__name">Troy <em>Cross</em></h3>
@@ -1384,7 +1385,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md" href="https://x.com/DavidFBailey" target="_blank" rel="noopener" data-speaker="20" aria-label="David Bailey on X">
         <div class="speaker__index">20</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/bailey-d.webp" alt="David Bailey" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/bailey-d.webp" alt="David Bailey" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">D</div>
         </div>
         <h3 class="speaker__name">David <em>Bailey</em></h3>
@@ -1394,7 +1395,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md speaker--hidden" href="https://x.com/AlexLeishman" target="_blank" rel="noopener" data-speaker="21" aria-label="Alex Leishman on X">
         <div class="speaker__index">21</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/leishman.webp" alt="Alex Leishman" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/leishman.webp" alt="Alex Leishman" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">A</div>
         </div>
         <h3 class="speaker__name">Alex <em>Leishman</em></h3>
@@ -1404,7 +1405,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md speaker--hidden" href="#" data-speaker="22" aria-label="Beau Turner">
         <div class="speaker__index">22</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/turner.webp" alt="Beau Turner" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/turner.webp" alt="Beau Turner" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">B</div>
         </div>
         <h3 class="speaker__name">Beau <em>Turner</em></h3>
@@ -1414,7 +1415,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md speaker--hidden" href="https://x.com/CedYoungelman" target="_blank" rel="noopener" data-speaker="23" aria-label="Cedric Youngelman on X">
         <div class="speaker__index">23</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/youngelman.webp" alt="Cedric Youngelman" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/youngelman.webp" alt="Cedric Youngelman" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">C</div>
         </div>
         <h3 class="speaker__name">Cedric <em>Youngelman</em></h3>
@@ -1424,7 +1425,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md speaker--hidden" href="https://x.com/DannyKnowles" target="_blank" rel="noopener" data-speaker="24" aria-label="Danny Knowles on X">
         <div class="speaker__index">24</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/knowles.webp" alt="Danny Knowles" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/knowles.webp" alt="Danny Knowles" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">D</div>
         </div>
         <h3 class="speaker__name">Danny <em>Knowles</em></h3>
@@ -1434,7 +1435,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md speaker--hidden" href="#" data-speaker="25" aria-label="Dhruv Patel">
         <div class="speaker__index">25</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/patel.webp" alt="Dhruv Patel" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/patel.webp" alt="Dhruv Patel" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">D</div>
         </div>
         <h3 class="speaker__name">Dhruv <em>Patel</em></h3>
@@ -1444,7 +1445,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md speaker--hidden" href="https://x.com/IIICapital" target="_blank" rel="noopener" data-speaker="26" aria-label="Joe Burnett on X">
         <div class="speaker__index">26</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/burnett.webp" alt="Joe Burnett" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/burnett.webp" alt="Joe Burnett" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">J</div>
         </div>
         <h3 class="speaker__name">Joe <em>Burnett</em></h3>
@@ -1454,7 +1455,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md speaker--hidden" href="https://x.com/JoeKellyOne" target="_blank" rel="noopener" data-speaker="27" aria-label="Joe Kelly on X">
         <div class="speaker__index">27</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/kelly.webp" alt="Joe Kelly" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/kelly.webp" alt="Joe Kelly" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">J</div>
         </div>
         <h3 class="speaker__name">Joe <em>Kelly</em></h3>
@@ -1464,7 +1465,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md speaker--hidden" href="https://x.com/KentHalliburton" target="_blank" rel="noopener" data-speaker="28" aria-label="Kent Halliburton on X">
         <div class="speaker__index">28</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/halliburton.webp" alt="Kent Halliburton" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/halliburton.webp" alt="Kent Halliburton" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">K</div>
         </div>
         <h3 class="speaker__name">Kent <em>Halliburton</em></h3>
@@ -1474,7 +1475,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md speaker--hidden" href="https://x.com/MattColeStrive" target="_blank" rel="noopener" data-speaker="29" aria-label="Matt Cole on X">
         <div class="speaker__index">29</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/cole.webp" alt="Matt Cole" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/cole.webp" alt="Matt Cole" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">M</div>
         </div>
         <h3 class="speaker__name">Matt <em>Cole</em></h3>
@@ -1484,7 +1485,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md speaker--hidden" href="https://x.com/michaeltanguma" target="_blank" rel="noopener" data-speaker="30" aria-label="Michael Tanguma on X">
         <div class="speaker__index">30</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/tanguma.webp" alt="Michael Tanguma" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/tanguma.webp" alt="Michael Tanguma" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">M</div>
         </div>
         <h3 class="speaker__name">Michael <em>Tanguma</em></h3>
@@ -1494,7 +1495,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md speaker--hidden" href="https://x.com/samcallah" target="_blank" rel="noopener" data-speaker="31" aria-label="Sam Callahan on X">
         <div class="speaker__index">31</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/callahan.webp" alt="Sam Callahan" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/callahan.webp" alt="Sam Callahan" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">S</div>
         </div>
         <h3 class="speaker__name">Sam <em>Callahan</em></h3>
@@ -1504,7 +1505,7 @@ body.menu-open{overflow:hidden}
       <a class="speaker speaker--md speaker--hidden" href="https://x.com/WSFoxley" target="_blank" rel="noopener" data-speaker="32" aria-label="Will Foxley on X">
         <div class="speaker__index">32</div>
         <div class="speaker__portrait">
-          <img class="speaker__photo" src="/images/speakers/foxley.webp" alt="Will Foxley" onerror="this.style.display='none'" />
+          <img class="speaker__photo" src="/images/speakers/foxley.webp" alt="Will Foxley" onload="this.parentElement.classList.add('speaker__portrait--hasphoto')" onerror="this.style.display='none'" />
           <div class="speaker__placeholder">W</div>
         </div>
         <h3 class="speaker__name">Will <em>Foxley</em></h3>
