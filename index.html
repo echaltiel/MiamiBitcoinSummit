@@ -443,9 +443,11 @@ body.menu-open{overflow:hidden}
   .partners .section-title{font-size:1.5rem}
   .partners .sec-hd__title{padding-top:0}
   /* On mobile, override partner--hidden for cards 5 and 6 so 6 are visible by default.
-     The toggle still reveals cards 7 and 8 (which keep .partner--hidden until clicked). */
+     The toggle still reveals cards 7 and 8 (which keep .partner--hidden until clicked).
+     Use display:grid to match the mobile horizontal layout of cards 1-4 (not the
+     desktop vertical layout that .partner uses by default). */
   .partners__grid .partner[data-partner="05"].partner--hidden,
-  .partners__grid .partner[data-partner="06"].partner--hidden{display:flex}
+  .partners__grid .partner[data-partner="06"].partner--hidden{display:grid}
   .partners__grid{grid-template-columns:1fr}
   .partners__actions{margin-top:.75rem}
   .partners__toggle{padding:.7rem 1rem;font-size:.66rem;letter-spacing:.12em}
