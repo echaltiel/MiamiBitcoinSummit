@@ -324,54 +324,72 @@ body.menu-open{overflow:hidden}
   .speakers .sec-hd__title{padding-top:0}
   .speakers__grid{grid-template-columns:1fr;border-right:none}
   .speakers__grid--md{grid-template-columns:repeat(2,1fr)}
-  .speakers__actions{margin-top:.75rem}
-  .speakers__toggle{padding:.7rem 1rem;font-size:.66rem;letter-spacing:.12em}
-  .speakers__footnote{margin-top:.85rem;font-size:.9rem;line-height:1.4}
+  .speakers__actions{margin-top:.65rem}
+  .speakers__toggle{padding:.65rem 1rem;font-size:.64rem;letter-spacing:.12em}
+  .speakers__footnote{display:none}
+  /* On mobile, also hide cards 13-20 by default — only first 8 medium cards visible.
+     The toggle reveals everything from card 13 onward. */
+  .speakers__grid--md .speaker[data-speaker="13"],
+  .speakers__grid--md .speaker[data-speaker="14"],
+  .speakers__grid--md .speaker[data-speaker="15"],
+  .speakers__grid--md .speaker[data-speaker="16"],
+  .speakers__grid--md .speaker[data-speaker="17"],
+  .speakers__grid--md .speaker[data-speaker="18"],
+  .speakers__grid--md .speaker[data-speaker="19"],
+  .speakers__grid--md .speaker[data-speaker="20"]{display:none}
+  .speakers__grid--md.is-expanded .speaker[data-speaker="13"],
+  .speakers__grid--md.is-expanded .speaker[data-speaker="14"],
+  .speakers__grid--md.is-expanded .speaker[data-speaker="15"],
+  .speakers__grid--md.is-expanded .speaker[data-speaker="16"],
+  .speakers__grid--md.is-expanded .speaker[data-speaker="17"],
+  .speakers__grid--md.is-expanded .speaker[data-speaker="18"],
+  .speakers__grid--md.is-expanded .speaker[data-speaker="19"],
+  .speakers__grid--md.is-expanded .speaker[data-speaker="20"]{display:flex}
   .speaker{
     display:grid;
-    grid-template-columns:48px 1fr;
+    grid-template-columns:42px 1fr;
     grid-template-rows:auto auto auto;
-    column-gap:.85rem;
+    column-gap:.7rem;
     align-items:center;
-    padding:.7rem .9rem;
+    padding:.5rem .75rem;
     border-right:none !important
   }
   .speakers__grid--md .speaker:nth-child(2n){border-right:none}
   .speakers__grid--md .speaker:nth-child(odd){border-right:1px solid var(--ink) !important}
-  .speaker__index{top:.6rem;right:.8rem;font-size:.55rem}
+  .speaker__index{top:.45rem;right:.7rem;font-size:.5rem}
   .speaker__portrait{
     grid-column:1;
     grid-row:1 / span 3;
-    width:48px;
-    height:48px;
+    width:42px;
+    height:42px;
     margin-bottom:0;
     align-self:center
   }
-  .speakers__grid:not(.speakers__grid--md) .speaker__portrait{width:48px;height:48px;margin-bottom:0;font-size:1.25rem}
-  .speakers__grid:not(.speakers__grid--md) .speaker__placeholder{font-size:1.25rem}
-  .speaker__placeholder{font-size:1.25rem}
+  .speakers__grid:not(.speakers__grid--md) .speaker__portrait{width:42px;height:42px;margin-bottom:0;font-size:1.1rem}
+  .speakers__grid:not(.speakers__grid--md) .speaker__placeholder{font-size:1.1rem}
+  .speaker__placeholder{font-size:1.1rem}
   .speaker__name{
     grid-column:2;
     grid-row:1;
-    font-size:1.1rem;
-    margin-bottom:.1rem;
+    font-size:1rem;
+    margin-bottom:.05rem;
     line-height:1.05;
-    padding-right:1.5rem
+    padding-right:1.25rem
   }
   .speaker__role{
     grid-column:2;
     grid-row:2;
-    font-size:.55rem;
-    margin-bottom:.35rem;
+    font-size:.52rem;
+    margin-bottom:.25rem;
     letter-spacing:.13em;
-    line-height:1.4
+    line-height:1.35
   }
   .speaker__topic{
     grid-column:2;
     grid-row:3;
-    font-size:.8rem;
-    padding-top:.35rem;
-    line-height:1.25
+    font-size:.74rem;
+    padding-top:.28rem;
+    line-height:1.2
   }
   /* Medium cards on mobile go back to compact stacked layout */
   .speaker--md{
@@ -379,13 +397,13 @@ body.menu-open{overflow:hidden}
     flex-direction:row;
     align-items:center;
     text-align:left;
-    gap:.7rem;
-    padding:.55rem .75rem
+    gap:.6rem;
+    padding:.45rem .65rem
   }
-  .speaker--md .speaker__portrait{width:38px;height:38px;margin-bottom:0;flex-shrink:0}
-  .speaker--md .speaker__placeholder{font-size:1.05rem}
-  .speaker--md .speaker__name{font-size:.9rem;margin-bottom:.05rem;padding-right:0;text-align:left}
-  .speaker--md .speaker__role{font-size:.5rem;text-align:left}
+  .speaker--md .speaker__portrait{width:32px;height:32px;margin-bottom:0;flex-shrink:0;font-size:.9rem}
+  .speaker--md .speaker__placeholder{font-size:.9rem}
+  .speaker--md .speaker__name{font-size:.78rem;margin-bottom:.02rem;padding-right:0;text-align:left;line-height:1.05}
+  .speaker--md .speaker__role{font-size:.46rem;text-align:left;line-height:1.3}
 }
 .speakers__footnote{margin-top:.75rem;font-family:var(--fd);font-style:italic;font-size:.95rem;color:var(--ink-soft);text-align:center;max-width:48ch;margin-left:auto;margin-right:auto}
 .speakers__footnote em{color:var(--accent-deep)}
@@ -2194,16 +2212,25 @@ body.menu-open{overflow:hidden}
     });
   });
 
-  // Speakers show-all toggle (controls tier 3: cards 21-32 in the medium grid)
+  // Speakers show-all toggle
+  // Desktop: hides cards 21-32 by default (via .speaker--hidden class on the markup),
+  //          toggle reveals them.
+  // Mobile (≤520px): also hides cards 13-20 via CSS rule on the grid; toggle adds
+  //          .is-expanded to the grid to reveal them.
+  // Both behaviors are driven by the same toggle for a unified UX.
   const speakersToggle = document.getElementById('speakersToggle');
   if (speakersToggle) {
     speakersToggle.addEventListener('click', () => {
       const expanded = speakersToggle.getAttribute('aria-expanded') === 'true';
       const next = !expanded;
       speakersToggle.setAttribute('aria-expanded', String(next));
+      // Tier 3 reveal (cards 21-32) — applies on all viewports
       document.querySelectorAll('.speakers__grid--md .speaker').forEach((card) => {
         card.classList.toggle('speaker--hidden', !next && parseInt(card.dataset.speaker, 10) > 20);
       });
+      // Mobile second-row reveal (cards 13-20) — driven by class on the grid
+      const mdGrid = document.getElementById('speakersGridMd');
+      if (mdGrid) mdGrid.classList.toggle('is-expanded', next);
     });
   }
 
