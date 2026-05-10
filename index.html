@@ -418,9 +418,12 @@ body.menu-open{overflow:hidden}
 .partner.partner--hidden{display:none}
 .partner:hover{background:var(--paper-deep)}
 .partner__index{position:absolute;top:1rem;right:1rem;font-family:var(--fm);font-size:.64rem;letter-spacing:.18em;color:var(--ink-soft)}
-.partner__portrait{width:88px;height:88px;border-radius:50%;background:var(--ink);color:var(--paper);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-style:italic;font-size:2.3rem;line-height:1;margin-bottom:1.5rem;overflow:hidden;position:relative;flex-shrink:0}
-.partner__photo{width:100%;height:100%;object-fit:cover;border-radius:50%;position:absolute;inset:0}
-.partner__placeholder{font-family:var(--fd);font-style:italic;font-size:2.3rem;color:var(--paper);opacity:.5}
+.partner__portrait{width:88px;height:88px;border-radius:50%;background:var(--paper-deep);color:var(--ink);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-style:italic;font-size:2.3rem;line-height:1;margin-bottom:1.5rem;overflow:visible;position:relative;flex-shrink:0;border:1px solid var(--rule);transition:background .3s,border-color .3s}
+.partner__photo{width:100%;height:100%;object-fit:contain;border-radius:0;position:absolute;top:0;left:0;z-index:2}
+.partner__placeholder{font-family:var(--fd);font-style:italic;font-size:2.3rem;color:var(--ink);opacity:.35;position:relative;z-index:1}
+/* When a logo loads, drop the circle chip entirely — the logo IS the visual */
+.partner__portrait--haslogo{background:transparent;border:none;border-radius:0}
+.partner__portrait--haslogo .partner__placeholder{display:none}
 .partner__name{font-family:var(--fd);font-size:1.75rem;line-height:1.05;letter-spacing:-.01em;margin-bottom:.45rem;font-weight:400}
 .partner__name em{font-style:italic}
 .partner__role{font-family:var(--fm);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.85rem;line-height:1.55}
@@ -1706,7 +1709,7 @@ body.menu-open{overflow:hidden}
       <a class="partner" href="#" data-partner="01" aria-label="Partner 01 — To be announced">
         <div class="partner__index">01</div>
         <div class="partner__portrait">
-          <img class="partner__photo" src="" alt="" onerror="this.style.display='none'" />
+          <img class="partner__photo" src="/images/partners/partner-01.webp" alt="Partner 01 logo" onload="this.parentElement.classList.add('partner__portrait--haslogo')" onerror="this.style.display='none'" />
           <div class="partner__placeholder">?</div>
         </div>
         <h3 class="partner__name">To be <em>announced</em></h3>
@@ -1716,7 +1719,7 @@ body.menu-open{overflow:hidden}
       <a class="partner" href="#" data-partner="02" aria-label="Partner 02 — To be announced">
         <div class="partner__index">02</div>
         <div class="partner__portrait">
-          <img class="partner__photo" src="" alt="" onerror="this.style.display='none'" />
+          <img class="partner__photo" src="/images/partners/partner-02.webp" alt="Partner 02 logo" onload="this.parentElement.classList.add('partner__portrait--haslogo')" onerror="this.style.display='none'" />
           <div class="partner__placeholder">?</div>
         </div>
         <h3 class="partner__name">To be <em>announced</em></h3>
@@ -1726,7 +1729,7 @@ body.menu-open{overflow:hidden}
       <a class="partner" href="#" data-partner="03" aria-label="Partner 03 — To be announced">
         <div class="partner__index">03</div>
         <div class="partner__portrait">
-          <img class="partner__photo" src="" alt="" onerror="this.style.display='none'" />
+          <img class="partner__photo" src="/images/partners/partner-03.webp" alt="Partner 03 logo" onload="this.parentElement.classList.add('partner__portrait--haslogo')" onerror="this.style.display='none'" />
           <div class="partner__placeholder">?</div>
         </div>
         <h3 class="partner__name">To be <em>announced</em></h3>
@@ -1736,7 +1739,7 @@ body.menu-open{overflow:hidden}
       <a class="partner" href="#" data-partner="04" aria-label="Partner 04 — To be announced">
         <div class="partner__index">04</div>
         <div class="partner__portrait">
-          <img class="partner__photo" src="" alt="" onerror="this.style.display='none'" />
+          <img class="partner__photo" src="/images/partners/partner-04.webp" alt="Partner 04 logo" onload="this.parentElement.classList.add('partner__portrait--haslogo')" onerror="this.style.display='none'" />
           <div class="partner__placeholder">?</div>
         </div>
         <h3 class="partner__name">To be <em>announced</em></h3>
@@ -1746,7 +1749,7 @@ body.menu-open{overflow:hidden}
       <a class="partner partner--hidden" href="#" data-partner="05" aria-label="Partner 05 — To be announced">
         <div class="partner__index">05</div>
         <div class="partner__portrait">
-          <img class="partner__photo" src="" alt="" onerror="this.style.display='none'" />
+          <img class="partner__photo" src="/images/partners/partner-05.webp" alt="Partner 05 logo" onload="this.parentElement.classList.add('partner__portrait--haslogo')" onerror="this.style.display='none'" />
           <div class="partner__placeholder">?</div>
         </div>
         <h3 class="partner__name">To be <em>announced</em></h3>
@@ -1756,7 +1759,7 @@ body.menu-open{overflow:hidden}
       <a class="partner partner--hidden" href="#" data-partner="06" aria-label="Partner 06 — To be announced">
         <div class="partner__index">06</div>
         <div class="partner__portrait">
-          <img class="partner__photo" src="" alt="" onerror="this.style.display='none'" />
+          <img class="partner__photo" src="/images/partners/partner-06.webp" alt="Partner 06 logo" onload="this.parentElement.classList.add('partner__portrait--haslogo')" onerror="this.style.display='none'" />
           <div class="partner__placeholder">?</div>
         </div>
         <h3 class="partner__name">To be <em>announced</em></h3>
@@ -1766,7 +1769,7 @@ body.menu-open{overflow:hidden}
       <a class="partner partner--hidden" href="#" data-partner="07" aria-label="Partner 07 — To be announced">
         <div class="partner__index">07</div>
         <div class="partner__portrait">
-          <img class="partner__photo" src="" alt="" onerror="this.style.display='none'" />
+          <img class="partner__photo" src="/images/partners/partner-07.webp" alt="Partner 07 logo" onload="this.parentElement.classList.add('partner__portrait--haslogo')" onerror="this.style.display='none'" />
           <div class="partner__placeholder">?</div>
         </div>
         <h3 class="partner__name">To be <em>announced</em></h3>
@@ -1776,7 +1779,7 @@ body.menu-open{overflow:hidden}
       <a class="partner partner--hidden" href="#" data-partner="08" aria-label="Partner 08 — To be announced">
         <div class="partner__index">08</div>
         <div class="partner__portrait">
-          <img class="partner__photo" src="" alt="" onerror="this.style.display='none'" />
+          <img class="partner__photo" src="/images/partners/partner-08.webp" alt="Partner 08 logo" onload="this.parentElement.classList.add('partner__portrait--haslogo')" onerror="this.style.display='none'" />
           <div class="partner__placeholder">?</div>
         </div>
         <h3 class="partner__name">To be <em>announced</em></h3>
