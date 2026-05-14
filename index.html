@@ -405,6 +405,7 @@ body.menu-open{overflow:hidden}
   .speakers__footnote{display:none}
   /* On mobile, also hide cards 13-20 by default — only first 8 medium cards visible.
      The toggle reveals everything from card 13 onward. */
+  .speakers__grid--md .speaker[data-speaker="13"],
   .speakers__grid--md .speaker[data-speaker="14"],
   .speakers__grid--md .speaker[data-speaker="15"],
   .speakers__grid--md .speaker[data-speaker="16"],
@@ -413,6 +414,7 @@ body.menu-open{overflow:hidden}
   .speakers__grid--md .speaker[data-speaker="19"],
   .speakers__grid--md .speaker[data-speaker="20"],
   .speakers__grid--md .speaker[data-speaker="21"]{display:none}
+  .speakers__grid--md.is-expanded .speaker[data-speaker="13"],
   .speakers__grid--md.is-expanded .speaker[data-speaker="14"],
   .speakers__grid--md.is-expanded .speaker[data-speaker="15"],
   .speakers__grid--md.is-expanded .speaker[data-speaker="16"],
